@@ -1,0 +1,45 @@
+%{
+  /* types.tmc defines data types for HFEMS	*/
+%}
+
+/* Output types */
+TM typedef double VOLTS { text "%4.2lf"; }
+TM typedef unsigned short UINT { text "%5u"; }
+TM typedef signed short SINT { text "%6d"; }
+TM typedef unsigned long int TMLONG { text "%8ld"; }
+
+/* Input types */
+TM typedef unsigned short AD12 {
+  collect x = (sbrwa(x.address) & 0x0FFF)<<4;
+  convert VOLTS;
+  text "%6.4lf";
+}
+
+/* 12 bits is capable of more precision, but their screen isn't */
+TM typedef short AD12_Biplr { convert VOLTS; text "%6.3lf"; }
+Calibration (AD12_Biplr, VOLTS) {
+	-32768, -10.,
+	 32768,  10
+}
+TM typedef AD12 AD12_2_5 { convert VOLTS; text "%6.3lf"; }
+Calibration (AD12_2_5, VOLTS) {
+	0,       0.,
+	65536, 2.50
+}
+
+TM typedef UINT Ct16 { collect x = sbrwa(x.address); }
+TM typedef UINT DASPt {
+  collect x = cache_read(x.address);
+  text "%4u";
+}
+
+TM typedef unsigned char DStat {
+  collect x = sbrba(x.address);
+  text "%08b";
+}
+
+TM typedef SINT Anemo { text "%6.2lf"; }
+TM typedef unsigned char UBYTE { text "%3u"; }
+
+TM 0 Hz UINT  MFCtr;
+TM 0 Hz UINT  Synch;

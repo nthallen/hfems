@@ -1,0 +1,186 @@
+;       Configuration commmands.
+;       Number of commands
+8
+;       Configuration command info, one command per line:
+;       address(hex), data (hex)
+      0x818, 0                  ; Card 0, Connector 1 reset
+      0x81A, 0x0102		; Card 0, Connector 1 config
+      0x838, 0                  ; Card 0, Connector 2 reset
+      0x83A, 0x0102		; Card 0, Connector 2 config
+      0x858, 0                  ; Card 1, Connector 1 reset
+      0x85A, 0x0102		; Card 1, Connector 1 config
+      0x878, 0                  ; Card 1, Connector 2 reset
+      0x87A, 0x0102		; Card 1, Connector 2 config
+;       Ports.
+;       Number of ports
+;       Port numbering in this file differs from port numbering
+;       on the digio board since we do not count the input
+;       ports here.
+16
+;       port info, one port per line:
+;       sub_addr(hex), default value(hex)
+        0x808, 0
+        0x810, 0
+        0x812, 0
+        0x80C, 0
+        0x828, 0
+        0x830, 0
+        0x832, 0
+        0x82C, 0
+        0x848, 0
+        0x850, 0
+        0x852, 0
+        0x84C, 0
+        0x868, 0
+        0x870, 0
+        0x872, 0
+        0x86C, 0
+
+;
+;       Commands; Command ?  128 commands
+;
+;
+;       Commands, one per line; Command ? 
+;       type, port, mask  (******* need to check on the port definitions)
+;       type(text); Command ?    SPARE, STRB, STEP, SET
+;               SPARE indicates that dccc does not take any action
+;               STRB  indicates the designated bit should be set and the
+;                     strobe set also.  These commands must be sent to dccc
+;                     twice; Command ?  once to start and once to stop.  The strobed
+;                     command controller will do the necessary waiting.
+;               STEP  indicates the designated bit is a motor step command.
+;                     The line should be set and then immediately reset.
+;               SET   indicates that the bit will be set or cleared.
+;       port number(decimal)
+;       port mask(hex)
+128
+
+  STRB, 0, 0x0001 ; Command 0  Solenoid Lvl1 ON 
+  STRB, 0, 0x0002 ; Command 1  Solenoid Lvl1 OFF  
+  STRB, 0, 0x0004 ; Command 2  Solenoid Lvl2 ON  
+  STRB, 0, 0x0008 ; Command 3  Solenoid Lvl2 OFF  
+  STRB, 0, 0x0010 ; Command 4  Solenoid Lvl3 ON  
+  STRB, 0, 0x0020 ; Command 5  Solenoid Lvl3 OFF  
+  STRB, 0, 0x0040 ; Command 6  Solenoid Lvl4 ON  
+  STRB, 0, 0x0080 ; Command 7  Solenoid Lvl4 OFF  
+  STRB, 1, 0x0100 ; Command 8  Solenoid Lvl5 ON  
+  STRB, 1, 0x0200 ; Command 9  Solenoid Lvl5 OFF  
+  STRB, 1, 0x0400 ; Command 10  Solenoid Lvl6 ON   
+  STRB, 1, 0x0800 ; Command 11  Solenoid Lvl6 OFF  
+  STRB, 1, 0x1000 ; Command 12  Solenoid Lvl7 ON   
+  STRB, 1, 0x2000 ; Command 13  Solenoid Lvl7 OFF  
+  STRB, 1, 0x4000 ; Command 14  Solenoid Lvl8 ON   
+  STRB, 1, 0x8000 ; Command 15  Solenoid Lvl8 OFF  
+  STRB, 2, 0x0100 ; Command 16  Solenoid eCO2cal_on ON  
+  STRB, 2, 0x0200 ; Command 17  Solenoid eCO2cal_on OFF  
+  STRB, 2, 0x0400 ; Command 18  Solenoid CO2add1 ON  
+  STRB, 2, 0x0800 ; Command 19  Solenoid CO2add1 OFF  
+  STRB, 2, 0x1000 ; Command 20  Solenoid CO2add2 ON  
+  STRB, 2, 0x2000 ; Command 21  Solenoid CO2add2 OFF  
+  STRB, 2, 0x4000 ; Command 22  Solenoid CO_smpl ON  
+  STRB, 2, 0x8000 ; Command 23  Solenoid CO_smpl OFF  
+  STRB, 3, 0x0001 ; Command 24  Solenoid CO_cal1 ON  
+  STRB, 3, 0x0002 ; Command 25  Solenoid CO_cal1 OFF  
+  STRB, 3, 0x0004 ; Command 26  Solenoid CO_cal2 ON  
+  STRB, 3, 0x0008 ; Command 27  Solenoid CO_cal2 OFF  
+  STRB, 3, 0x0010 ; Command 28  Solenoid CO_zer ON  
+  STRB, 3, 0x0020 ; Command 29  Solenoid CO_zer OFF  
+  STRB, 3, 0x0040 ; Command 30  Solenoid eff_Hg ON  
+  STRB, 3, 0x0080 ; Command 31  Solenoid eff_Hg OFF  
+  SPARE, 4, 0x0001 ; Command 32  Solenoid SpCmd_17 ON  
+  SPARE, 4, 0x0002 ; Command 33  Solenoid SpCmd_17 OFF  
+  SPARE, 4, 0x0004 ; Command 34  Solenoid SpCmd_18 ON  
+  SPARE, 4, 0x0008 ; Command 35  Solenoid SpCmd_18 OFF  
+  SPARE, 4, 0x0010 ; Command 36  Solenoid SpCmd_19 ON  
+  SPARE, 4, 0x0020 ; Command 37  Solenoid SpCmd_19 OFF  
+  SPARE, 4, 0x0040 ; Command 38  Solenoid SpCmd_20 ON  
+  SPARE, 4, 0x0080 ; Command 39  Solenoid SpCmd_20 OFF  
+  SPARE, 5, 0x0100 ; Command 40  Solenoid SpCmd_21 ON  
+  SPARE, 5, 0x0200 ; Command 41  Solenoid SpCmd_21 OFF  
+  SPARE, 5, 0x0400 ; Command 42  Solenoid SpCmd_22 ON  
+  SPARE, 5, 0x0800 ; Command 43  Solenoid SpCmd_22 OFF  
+  SPARE, 5, 0x1000 ; Command 44  Solenoid SpCmd_23 ON  
+  SPARE, 5, 0x2000 ; Command 45  Solenoid SpCmd_23 OFF  
+  SPARE, 5, 0x4000 ; Command 46  Solenoid SpCmd_24 ON  
+  SPARE, 5, 0x8000 ; Command 47  Solenoid SpCmd_24 OFF  
+  SPARE, 6, 0x0100 ; Command 48  Solenoid SpCmd_25 ON  
+  SPARE, 6, 0x0200 ; Command 49  Solenoid SpCmd_25 OFF  
+  SPARE, 6, 0x0400 ; Command 50  Solenoid SpCmd_26 ON  
+  SPARE, 6, 0x0800 ; Command 51  Solenoid SpCmd_26 OFF  
+  SPARE, 6, 0x1000 ; Command 52  Solenoid SpCmd_27 ON  
+  SPARE, 6, 0x2000 ; Command 53  Solenoid SpCmd_27 OFF  
+  SPARE, 6, 0x4000 ; Command 54  Solenoid SpCmd_28 ON  
+  SPARE, 6, 0x8000 ; Command 55  Solenoid SpCmd_28 OFF  
+  SPARE, 7, 0x0001 ; Command 56  Solenoid SpCmd_29 ON  
+  SPARE, 7, 0x0002 ; Command 57  Solenoid SpCmd_29 OFF  
+  SPARE, 7, 0x0004 ; Command 58  Solenoid SpCmd_30 ON  
+  SPARE, 7, 0x0008 ; Command 59  Solenoid SpCmd_30 OFF  
+  SPARE, 7, 0x0010 ; Command 60  Solenoid SpCmd_31 ON  
+  SPARE, 7, 0x0020 ; Command 61  Solenoid SpCmd_31 OFF  
+  SPARE, 7, 0x0040 ; Command 62  Solenoid SpCmd_32 ON  
+  SPARE, 7, 0x0080 ; Command 63  Solenoid SpCmd_32 OFF  
+  STRB, 8, 0x0001 ; Command 64  Solenoid zNOy_Hg ON  
+  STRB, 8, 0x0002 ; Command 65  Solenoid zNOy_Hg OFF  
+  STRB, 8, 0x0004 ; Command 66  Solenoid NO_NOy_on ON  
+  STRB, 8, 0x0008 ; Command 67  Solenoid NO_NOy_on OFF  
+  STRB, 8, 0x0010 ; Command 68  Solenoid NPN_on ON  
+  STRB, 8, 0x0020 ; Command 69  Solenoid NPN_on OFF  
+  STRB, 8, 0x0040 ; Command 70  Solenoid NO_NOy_add ON  
+  STRB, 8, 0x0080 ; Command 71  Solenoid NO_NOy_add OFF  
+  STRB, 9, 0x0100 ; Command 72  Solenoid NPN_add ON  
+  STRB, 9, 0x0200 ; Command 73  Solenoid NPN_add OFF  
+  STRB, 9, 0x0400 ; Command 74  Solenoid NOy_eff_add ON  
+  STRB, 9, 0x0800 ; Command 75  Solenoid NOy_eff_add OFF  
+  STRB, 9, 0x1000 ; Command 76  Solenoid zNOy_add ON  
+  STRB, 9, 0x2000 ; Command 77  Solenoid zNOy_add OFF  
+  STRB, 9, 0x4000 ; Command 78  Solenoid zNOx_Hg ON  
+  STRB, 9, 0x8000 ; Command 79  Solenoid zNOx_Hg OFF  
+  STRB, 10, 0x0100 ; Command 80  Solenoid NO_NOx_on ON  
+  STRB, 10, 0x0200 ; Command 81  Solenoid NO_NOx OFF  
+  STRB, 10, 0x0400 ; Command 83  Solenoid NO2_on ON  
+  STRB, 10, 0x0800 ; Command 83  Solenoid NO2_on OFF  
+  STRB, 10, 0x1000 ; Command 84  Solenoid zNOx_add ON  
+  STRB, 10, 0x2000 ; Command 85  Solenoid zNOx_add OFF  
+  STRB, 10, 0x4000 ; Command 86  Solenoid NO_NOx_add ON  
+  STRB, 10, 0x8000 ; Command 87  Solenoid NO_NOx_add OFF  
+  STRB, 11, 0x0001 ; Command 88  Solenoid NO2_add ON  
+  STRB, 11, 0x0002 ; Command 89  Solenoid NO2_add OFF  
+  STRB, 11, 0x0004 ; Command 90  Solenoid Shutter ON  
+  STRB, 11, 0x0008 ; Command 91  Solenoid Shutter OFF  
+  STRB, 11, 0x0010 ; Command 92  Solenoid pCO2_smpl ON  
+  STRB, 11, 0x0020 ; Command 93  Solenoid pCO2_smpl OFF  
+  STRB, 11, 0x0040 ; Command 94  Solenoid pCO2_cal1 ON  
+  STRB, 11, 0x0080 ; Command 95  Solenoid pCO2_cal1 OFF  
+  STRB, 12, 0x0001 ; Command 96  Solenoid pCO2_cal2 ON  
+  STRB, 12, 0x0002 ; Command 97  Solenoid pCO2_cal2 OFF  
+  STRB, 12, 0x0004 ; Command 98  Solenoid pCO2_cal3 ON  
+  STRB, 12, 0x0008 ; Command 99  Solenoid pCO2_cal3 OFF  
+  STRB, 12, 0x0010 ; Command 100  Solenoid pCO2_cala ON  
+  STRB, 12, 0x0020 ; Command 101  Solenoid pCO2_cala OFF  
+  STRB, 12, 0x0040 ; Command 102  Solenoid pCO2_calR ON  
+  STRB, 12, 0x0080 ; Command 103  Solenoid pCO2_calR OFF  
+  STRB, 13, 0x0100 ; Command 104  Solenoid Hub_sp1 ON  
+  STRB, 13, 0x0200 ; Command 105  Solenoid Hub_sp1 OFF  
+  STRB, 13, 0x0400 ; Command 106  Solenoid Hub_sp2 ON  
+  STRB, 13, 0x0800 ; Command 107  Solenoid Hub_sp2 OFF  
+  STRB, 13, 0x1000 ; Command 108  Solenoid Shk_sp1 ON  
+  STRB, 13, 0x2000 ; Command 109  Solenoid Shk_sp1 OFF  
+  STRB, 13, 0x4000 ; Command 110  Solenoid Shk_sp2 ON  
+  STRB, 13, 0x8000 ; Command 111  Solenoid Shk_sp2 OFF  
+  SPARE, 14, 0x0100 ; Command 112  Solenoid Sol_41 ON  
+  SPARE, 14, 0x0200 ; Command 113  Solenoid Sol_41 OFF  
+  SPARE, 14, 0x0400 ; Command 114  Solenoid Sol_42 ON  
+  SPARE, 14, 0x0800 ; Command 115  Solenoid Sol_42 OFF  
+  SPARE, 14, 0x1000 ; Command 116  Solenoid Sol_43 ON  
+  SPARE, 14, 0x2000 ; Command 117  Solenoid Sol_43 OFF  
+  SPARE, 14, 0x4000 ; Command 118  Solenoid Sol_44 ON  
+  SPARE, 14, 0x8000 ; Command 119  Solenoid Sol_44 OFF  
+  SPARE, 15, 0x0001 ; Command 120  Solenoid Sol_45 ON  
+  SPARE, 15, 0x0002 ; Command 121  Solenoid Sol_45 OFF  
+  SPARE, 15, 0x0004 ; Command 122  Solenoid Sol_46 ON  
+  SPARE, 15, 0x0008 ; Command 123  Solenoid Sol_46 OFF  
+  SPARE, 15, 0x0010 ; Command 124  Solenoid Sol_47 ON  
+  SPARE, 15, 0x0020 ; Command 125  Solenoid Sol_47 OFF  
+  SPARE, 15, 0x0040 ; Command 126  Solenoid Sol_48 ON  
+  SPARE, 15, 0x0080 ; Command 127  Solenoid Sol_48 OFF  
+

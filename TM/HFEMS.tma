@@ -1,0 +1,25 @@
+%{
+  #include <stdlib.h>
+%}
+State Initialize {
+        > telemetry start
+
+# modify these initial set points as needed to tune the system
+      1 > Set Pman setpoint 8000
+      1 > Set PrCO2p setpoint 7000
+      1 > Set FlCO2p setpoint 2000
+      1 > Set PrCO2e1 setpoint 8000
+      1 > Set PrCO2e2 setpoint 8000
+      1 > Set PrCO setpoint A000
+      1 > Set fcNO_NOx setpoint 0
+      1 > Set fcNO2_NOx setpoint 0
+      1 > Set fc_CO2e setpoint 0
+      1 > Set fcNO_NOy setpoint 0
+      1 > Set fcEff_NOy setpoint 0
+      1 > Set fcZer_NOy setpoint 0
+      1 > Set FlNOx setpoint 6000
+      1 > Set FlNOy setpoint 6000
+      1 > Set PrO3e setpoint 0
+      1 > Set FlCO setpoint 8000
+}
+

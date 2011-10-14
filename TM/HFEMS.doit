@@ -1,0 +1,3 @@
+display HFEMSdisp able
+client HFEMSclt
+memo HFEMS.log
