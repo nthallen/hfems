@@ -21,8 +21,8 @@ Eddy_Profile {
  vCO2prf: (vCO2prf,5);
      vCO: (vCO,5);
 HBox { +-; "Counts"; -+ };
-NOx_count: (NOx_count,5);
-NOy_count: (NOy_count,5);
+NOx: (NOx,5);
+NOy: (NOy,5);
 }
 
 Status {

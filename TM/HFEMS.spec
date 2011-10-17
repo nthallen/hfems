@@ -14,7 +14,7 @@ SCRIPT = HFEMS.dccc Experiment.config HFEMS.cfg readme.changes
 SCRIPT = clear_all standards.record
 TGTDIR = $(TGTNODE)/home/hfems
 
-HFEMScol : HFEMScol.tmc
+HFEMScol : HFEMScol.tmc -lsubbus
 #HFEMSdoit : HFEMS.doit
 #sonic : sonic.c
 HFEMSdisp : HFEMS.tbl
