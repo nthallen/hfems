@@ -7,6 +7,7 @@
 %}
 
 %INTERFACE <dccc:dccc>
+%INTERFACE <SoldrvA>
 
 &command
 	: &HFEMScmdset { if_dccc.Turf( "D%d\n", $1 ); }
@@ -20,26 +21,26 @@
 	  }
 	;
 &daspt_cmd <unsigned short>
-	: Pman setpoint { $0 = Pman_SP_addr  ; }
-	: PrCO2p setpoint { $0 = PrCO2p_SP_addr; }
-	: FlCO2p setpoint { $0 = FlCO2p_SP_addr; }
-	: PrCO2e1 setpoint { $0 = PrCO2e1_SP_addr; }
-	: PrCO2e2 setpoint { $0 = PrCO2e2_SP_addr; }
-	: PrCO setpoint { $0 = PrCO_SP_addr; }
-	: fcNO_NOx setpoint { $0 = fcNO_NOx_SP_addr; }
-	: fcNO2_NOx setpoint { $0 = fcNO2_NOx_SP_addr; }
-	: fc_CO2e setpoint { $0 = fc_CO2e_SP_addr; }
-	: fcNO_NOy setpoint { $0 = fcNO_NOy_SP_addr; }
-	: fcEff_NOy setpoint { $0 = fcEff_NOy_SP_addr; }
-	: fcZer_NOy setpoint { $0 = fcZer_NOy_SP_addr; }
-	: FlNOx setpoint { $0 = FlNOx_SP_addr; }
-	: FlNOy setpoint { $0 = FlNOy_SP_addr; }
-	: PrO3e setpoint { $0 = PrO3e_SP_addr; }
-	: FlCO setpoint { $0 = FlCO_SP_addr; }
+	: Pman setpoint { $0 = Pman_SP_Address; }
+	: PrCO2p setpoint { $0 = PrCO2p_SP_Address; }
+	: FlCO2p setpoint { $0 = FlCO2p_SP_Address; }
+	: PrCO2e1 setpoint { $0 = PrCO2e1_SP_Address; }
+	: PrCO2e2 setpoint { $0 = PrCO2e2_SP_Address; }
+	: PrCO setpoint { $0 = PrCO_SP_Address; }
+	: fcNO_NOx setpoint { $0 = fcNO_NOx_SP_Address; }
+	: fcNO2_NOx setpoint { $0 = fcNO2_NOx_SP_Address; }
+	: fc_CO2e setpoint { $0 = fc_CO2e_SP_Address; }
+	: fcNO_NOy setpoint { $0 = fcNO_NOy_SP_Address; }
+	: fcEff_NOy setpoint { $0 = fcEff_NOy_SP_Address; }
+	: fcZer_NOy setpoint { $0 = fcZer_NOy_SP_Address; }
+	: FlNOx setpoint { $0 = FlNOx_SP_Address; }
+	: FlNOy setpoint { $0 = FlNOy_SP_Address; }
+	: PrO3e setpoint { $0 = PrO3e_SP_Address; }
+	: FlCO setpoint { $0 = FlCO_SP_Address; }
 ;
 #
 
-&HFEMScmdset
+&HFEMScmdset <int>
 	: Solenoid Lvl1 ON * { $0 = 0; } 
 	: Solenoid Lvl1 OFF  * { $0 = 1 ; } 
 	: Solenoid Lvl2 ON  * { $0 = 2 ; } 
@@ -169,7 +170,8 @@
 	: Solenoid Sol_48 ON  * { $0 = 126 ; }
 	: Solenoid Sol_48 OFF  * { $0 = 127 ; }
 	: Soldrv select mode %d (Enter Mode Number) *
-	  { send_dascmd(DCT_SOLDRV_A, $4, 0); }
+	  { if_SoldrvA.Turf("S%d\n", $4 ); }
+	;
 
 ####### need to redefine this - if we need it ######################
 #	: Reset Digital Outputs * {

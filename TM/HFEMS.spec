@@ -13,8 +13,10 @@ SCRIPT = hf_interact hf_saverun hf_clean
 SCRIPT = HFEMS.dccc Experiment.config HFEMS.cfg readme.changes
 SCRIPT = clear_all standards.record
 TGTDIR = $(TGTNODE)/home/hfems
+OBJ = address.h
 
 HFEMScol : HFEMScol.tmc -lsubbus
+HFEMSsrvr : -lsubbus
 #HFEMSdoit : HFEMS.doit
 #sonic : sonic.c
 HFEMSdisp : HFEMS.tbl
@@ -27,7 +29,9 @@ HFEMS.sft : HFEMS.sol
 #ext_rhext : ext_rh.edf
 #noxcext : noxc.edf
 #quickext : quick.edf
-cycleext : /usr/local/lib/src/flttime.tmc HFEMS.cyc HFEMScycle.tmc 
+#cycleext : /usr/local/share/huarp/flttime.tmc HFEMS.cyc HFEMScycle.tmc 
 %%
-HFEMSdoit : HFEMS.fld
+COLFLAGS=-Haddress.h
+address.h : HFEMScol.cc
+HFEMSsrvr.o : address.h
 CYCLE=cycle > $@
