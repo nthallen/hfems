@@ -11,15 +11,20 @@ Sonic {
  Teddy2: (teddy2,6);
 }
 
-Eddy_Profile {
-  HBox { +-; "Eddy_Profile"; -+ };
+Eddy{
+  HBox { +-; "Eddy"; -+ };
   vCO2e1: (vCO2e1,5);
   vH2Oe1: (vH2Oe1,5);
   vCO2e2: (vCO2e2,5);
-  vH2Oe2: (vH2Oe2,5);
-   vO3ed: (vO3ed,5);
- vCO2prf: (vCO2prf,5);
+  vH2Oe2: (vCO2e2,5);
+  vO3ed:  (vO3ed,5);
+}
+Profile{
+   HBox {+-;"Profile";-+};
+   vCO2prf: (vCO2prf,5);
      vCO: (vCO,5);
+}
+Counts{
 HBox { +-; "Counts"; -+ };
 NOx: (NOx,5);
 NOy: (NOy,5);
@@ -50,19 +55,18 @@ PPFD_gnd: (PPFD_gnd,5);
 
 Pressure {
 HBox { +-;Pressure; -+ };
-  pman:  (pman,5) ;
-  pbeck: (pbeck,5);
-  pbins: (pbins,5);
-  mb3T1: (mb3T1,4);
-  pNOx:  (pNOx,4) ;
-  pNOy:  (pNOy,4) ;
+  Pman:  (Pman,5) ;
+  PrCO2p: (PrCO2p,5);
+  PrCO2e1: (PrCO2e1,5);
+  PrCO2e2: (PrCO2e2,5);
+  PrNOx:  (PrNOx,4) ;
+  PrNOy:  (PrNOy,4) ;
 }
 
 Flow {
          HBox { +-;Flow; -+ };
           FlowT: (FlowT,5);
-          FlCO2p: (FlCO2p2,5);
-          VGlue 1;
+          FlCO2p: (FlCO2p,5);
           FlNOx: (FlNOx,5);
           FlO3_NOx: (FlO3_NOx,5);
           FlNOy: (FlNOy,5);
@@ -85,7 +89,7 @@ Pressure_Flow {
 
 RH {
   +-+;
-  RH1: (RH,5);
+  RH1: (RH1,5);
   RH2: (RH2,5);
   RH3: (RH3,5);
   RH4: (RH4,5);
@@ -142,7 +146,7 @@ Temp {
 
 {
   HBox { |+;
-        { [Sonic]; [Eddy_Profile];[Radiation]}; |+;
+        { [Sonic]; [Eddy];[Profile];[Radiation]}; |+;
         { [Pressure_Flow];
           HBox { [RH]; |+; { +-+; VGlue 0+1; >MFCtr: (MFCtr,5) }; };
         }; |+;    
