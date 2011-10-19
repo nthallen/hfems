@@ -6,10 +6,10 @@
 State Initialize {
         > telemetry start
 
-/* modify these initial set points as needed to tune the system
-	this assumes that the D/A setpoints are configured to be given the c
+# modify these initial set points as needed to tune the system
+# this assumes that the D/A setpoints are configured to be given the
+# command in volts - verify this
 
-       command in volts - verify this*/
      +1 > Set Pman setpoint 5.0
         > Set PrCO2p setpoint 4.5
         > Set FlCO2p setpoint 2.
@@ -29,7 +29,7 @@ State Initialize {
 }
 State RunMode {
       +2 > Soldrv Select Mode 0
-	/* at +5:00 we will want to initiate a startup cal sequence */
+	# at +5:00 we will want to initiate a startup cal sequence
 	depending on (1 Hz) {
             int cur_day;
             cur_day = (itime()-(5*3600))/86400L;
@@ -41,9 +41,9 @@ State RunMode {
           }
 }
 State Restart{
-        /*> Soldrv Select Mode 7
-        Hold until (SolSt == 1) or 45:00
-        else > Soldrv Select Mode 0 */
+        # > Soldrv Select Mode 7
+        # Hold until (SolSt == 1) or 45:00
+        # else > Soldrv Select Mode 0
         > Savelog Automatic Restart
         > Quit
 }

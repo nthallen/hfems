@@ -1,9 +1,10 @@
-# Makefile Generated Wed Oct 19 11:36:46 EDT 2011
+# Makefile Generated Wed Oct 19 14:10:47 EDT 2011
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
 SRC=a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c types.tmc
 SRC+=HFEMS.tmc HFEMScol.tmc HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol
+SRC+=HFEMS.tma
 TOOL=HFEMS.spec Makefile
 SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
@@ -11,13 +12,14 @@ OBJ+=HFEMScoloui.o HFEMScol.o HFEMScmd.cc HFEMScmd.dat HFEMSsrvr.o
 OBJ+=HFEMSsrvroui.c HFEMSsrvroui.o HFEMSdoit.dep HFEMStbl.tmc
 OBJ+=HFEMSdisp.cc HFEMSdispoui.c HFEMSdispoui.o HFEMSdisp.o
 OBJ+=HFEMStblnc.tmc HFEMSdispnc.cc HFEMSdispncoui.c HFEMSdispncoui.o
-OBJ+=HFEMSdispnc.o HFEMSclt.o HFEMScltoui.c HFEMScltoui.o
-OBJ+=HFEMScltnc.o HFEMScltncoui.c HFEMScltncoui.o
+OBJ+=HFEMSdispnc.o HFEMSalgoa.tmc HFEMSalgo.cc HFEMSalgooui.c
+OBJ+=HFEMSalgooui.o HFEMSalgo.o HFEMSclt.o HFEMScltoui.c
+OBJ+=HFEMScltoui.o HFEMScltnc.o HFEMScltncoui.c HFEMScltncoui.o
 TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
-TGT+=HFEMSclt HFEMScltnc
+TGT+=HFEMSalgo HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft HFEMS.pcm tm.dac
 IDISTRIB=Experiment.config VERSION HFEMSdoit
-SRCDIST=HFEMS.tbl HFEMS.sol types.tmc HFEMS.tmc
+SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
 NONRCS=
 TMCBASE=types.tmc HFEMS.tmc
 CMDBASE=/usr/local/share/huarp/root.cmd HFEMS.cmd
@@ -61,6 +63,9 @@ HFEMSdispnc : HFEMSdispnc.o HFEMSdispncoui.o
 	$(OUIUSE) HFEMSdispncoui.c
 HFEMS.sft : HFEMS.sol
 	solfmt -oHFEMS.sft  HFEMS.sol
+HFEMSalgo : HFEMSalgo.o HFEMSalgooui.o
+	$(LINK.normCXX) HFEMSalgo.o HFEMSalgooui.o -ltmpp -ltm -lnort
+	$(OUIUSE) HFEMSalgooui.c
 HFEMSclt : HFEMSclt.o HFEMScltoui.o
 	$(LINK.normCXX) HFEMSclt.o HFEMScltoui.o -ltmph -lph -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMScltoui.c
@@ -99,6 +104,15 @@ HFEMSdispncoui.c : $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSdispncoui.o : HFEMSdispncoui.c
 HFEMSdispnc.o : HFEMSdispnc.cc
+HFEMSalgoa.tmc : HFEMS.tma HFEMSsrvr
+	$(SERVER) ./HFEMSsrvr
+	$(TMCALGO) -V "`./HFEMSsrvr -R`" HFEMS.tma
+HFEMSalgo.cc : types.tmc HFEMS.tmc HFEMSalgoa.tmc
+	$(TMC) types.tmc HFEMS.tmc HFEMSalgoa.tmc
+HFEMSalgooui.c : $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
+	$(OUI) $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
+HFEMSalgooui.o : HFEMSalgooui.c
+HFEMSalgo.o : HFEMSalgo.cc
 HFEMSclt.o : HFEMScmd.cc
 	$(COMPILE.clt) HFEMScmd.cc
 HFEMScltoui.c : $(OUIDIR)/kbdclt.oui $(OUIDIR)/msg.oui
