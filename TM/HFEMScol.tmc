@@ -1,32 +1,8 @@
 %{
   #include "subbus.h"
   unsigned int SolStatA;
-%}
 
-TM "Receive" SolStatA 0;
-Collect SolSt = SolStatA;
-
-%{
   #include "sonic.h"
   sonic_t SonicData1;
   sonic_t SonicData2;
 %}
-
-TM "Receive" SonicData1 1;
-group anemometer1 ( ueddy1, veddy1, weddy1, teddy1 ) {
-  ueddy1 = SonicData1.U;
-  veddy1 = SonicData1.V;
-  weddy1 = SonicData1.W;
-  teddy1 = SonicData1.T;
-  SonicData1_obj->synch();
-}
-
-TM "Receive" SonicData2 1;
-group anemometer2 ( ueddy2, veddy2, weddy2, teddy2 ) {
-  ueddy2 = SonicData2.U;
-  veddy2 = SonicData2.V;
-  weddy2 = SonicData2.W;
-  teddy2 = SonicData2.T;
-  SonicData2_obj->synch();
-}
-

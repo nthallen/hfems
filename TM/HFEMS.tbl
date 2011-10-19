@@ -42,44 +42,44 @@ Status {
 
 Radiation {
   HBox { +-; "Radiation"; -+ };
-  Rnet: (Rnet,5);
-Rnet_cal: (Rnet_cal,5);
-PPFD_top: (PPFD_top,5);
-PPFD_mid: (PPFD_mid,5);
-PPFD_ref: (PPFD_ref,5);
-PPFD_cal: (PPFD_cal,5);
-PPFD_gnd: (PPFD_gnd,5);
-  PPFD_t: (PPFD_t,5);
-  PPFD_d: (PPFD_d,5);
+  Rnet: (Rnet,6);
+  Rnet_cal: (Rnet_cal,6);
+  PPFD_top: (PPFD_top,6);
+  PPFD_mid: (PPFD_mid,6);
+  PPFD_ref: (PPFD_ref,6);
+  PPFD_cal: (PPFD_cal,6);
+  PPFD_gnd: (PPFD_gnd,6);
+  PPFD_t: (PPFD_t,6);
+  PPFD_d: (PPFD_d,6);
 }
 
 Pressure {
 HBox { +-;Pressure; -+ };
-  Pman:  (Pman,5) ;
-  PrCO2p: (PrCO2p,5);
-  PrCO2e1: (PrCO2e1,5);
-  PrCO2e2: (PrCO2e2,5);
-  PrNOx:  (PrNOx,4) ;
-  PrNOy:  (PrNOy,4) ;
+  Pman:  (Pman,6) ;
+  PrCO2p: (PrCO2p,6);
+  PrCO2e1: (PrCO2e1,6);
+  PrCO2e2: (PrCO2e2,6);
+  PrNOx:  (PrNOx,6) ;
+  PrNOy:  (PrNOy,6) ;
 }
 
 Flow {
          HBox { +-;Flow; -+ };
-          FlowT: (FlowT,5);
-          FlCO2p: (FlCO2p,5);
-          FlNOx: (FlNOx,5);
-          FlO3_NOx: (FlO3_NOx,5);
-          FlNOy: (FlNOy,5);
-          FlO3_NOy: (FlO3_NOy,5);
-          FlCO2e1: (FlCO2e1,5);
-          FlCO2e2: (FlCO2e2,5);
-          FlCO: (FlCO,5);
-          fcNO_NOx: (fcNO_NOx,5);
-          fcNO2_NOx: (fcNO2_NOx,5);
-          fcNO_NOy: (fcNO_NOy,5);
-          fcEff_NOy: (fcEff_NOy,5);
-          fcZer_NOy: (fcZer_NOy,5);
-          fc_CO2e: (fc_CO2e,5);
+          FlowT: (FlowT,6);
+          FlCO2p: (FlCO2p,6);
+          FlNOx: (FlNOx,6);
+          FlO3_NOx: (FlO3_NOx,6);
+          FlNOy: (FlNOy,6);
+          FlO3_NOy: (FlO3_NOy,6);
+          FlCO2e1: (FlCO2e1,6);
+          FlCO2e2: (FlCO2e2,6);
+          FlCO: (FlCO,6);
+          fcNO_NOx: (fcNO_NOx,6);
+          fcNO2_NOx: (fcNO2_NOx,6);
+          fcNO_NOy: (fcNO_NOy,6);
+          fcEff_NOy: (fcEff_NOy,6);
+          fcZer_NOy: (fcZer_NOy,6);
+          fc_CO2e: (fc_CO2e,6);
 }
 
 Pressure_Flow {
@@ -89,54 +89,53 @@ Pressure_Flow {
 
 RH {
   +-+;
-  RH1: (RH1,5);
-  RH2: (RH2,5);
-  RH3: (RH3,5);
-  RH4: (RH4,5);
-  RH5: (RH5,5);
-  RH6: (RH6,5);
-  RH7: (RH7,5);
-  RH8: (RH8,5);
-  RH9: (RH9,5);
- RH10: (RH10,5);
+  RH1: (RH1,6);
+  RH2: (RH2,6);
+  RH3: (RH3,6);
+  RH4: (RH4,6);
+  RH5: (RH5,6);
+  RH6: (RH6,6);
+  RH7: (RH7,6);
+  RH8: (RH8,6);
+  RH9: (RH9,6);
+ RH10: (RH10,6);
 }
 
 Ts {
   HBox { +-; Ts; -+ };
-Ts1: (Ts1,5);
-  Ts2: (Ts2,5);
-  Ts3: (Ts3,5);
-  Ts4: (Ts4,5);
-  Ts5: (Ts5,5);
-  Ts6: (Ts6,5);
-  Ts7: (Ts7,5);
-  Ts8: (Ts8,5);
-  Ts9: (Ts9,5);
- Ts10: (Ts10,5);
- Ts11: (Ts11,5);
- HBox { -;TCells; - };
-  T_MB: (T_MB,5);
-  TCO2e1: (TCO2e1,5);
-  TCO2e2: (TCO2e2,5);
-  TCO2p: (TCO2p,5);    
+  Ts1: (Ts1,6);
+  Ts2: (Ts2,6);
+  Ts3: (Ts3,6);
+  Ts4: (Ts4,6);
+  Ts5: (Ts5,6);
+  Ts6: (Ts6,6);
+  Ts7: (Ts7,6);
+  Ts8: (Ts8,6);
+  Ts9: (Ts9,6);
+  Ts10: (Ts10,6);
+  Ts11: (Ts11,6);
+  HBox { -;TCells; - };
+  T_MB: (T_MB,6);
+  TCO2e1: (TCO2e1,6);
+  TCO2e2: (TCO2e2,6);
+  TCO2p: (TCO2p,6);    
 }
 Ta {
   HBox { +-; Ta; -+ };
-  Ta1: (Ta1,5);
-  Ta2: (Ta2,5);
-  Ta3: (Ta3,5);
-  Ta4: (Ta4,5);
-  Ta5: (Ta5,5);
-  Ta6: (Ta6,5);
-  Ta7: (Ta7,5);
-  Ta8: (Ta8,5);
-  Ta9: (Ta9,5);
- Ta10: (Ta10,5);
- Tcal: (Tcal,5);
-  Tr1: (Tr1,5);
-  Tr2: (Tr2,5);
-  Tr3: (Tr3,5);
-  
+  Ta1: (Ta1,6);
+  Ta2: (Ta2,6);
+  Ta3: (Ta3,6);
+  Ta4: (Ta4,6);
+  Ta5: (Ta5,6);
+  Ta6: (Ta6,6);
+  Ta7: (Ta7,6);
+  Ta8: (Ta8,6);
+  Ta9: (Ta9,6);
+  Ta10: (Ta10,6);
+  Tcal: (Tcal,6);
+  Tr1: (Tr1,6);
+  Tr2: (Tr2,6);
+  Tr3: (Tr3,6);
 }
 Temp {
   HBox { +-;Temp; -+ };

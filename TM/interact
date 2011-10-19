@@ -12,4 +12,4 @@
 # Launch -          sonic /dev/ser1
 # Launch -          sonic /dev/ser2
   Launch -          soldrv $TMBINDIR/HFEMS.sft
-# Launch -          HFEMSalgo -v
+  Launch -          HFEMSalgo -v
