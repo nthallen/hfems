@@ -1,24 +1,22 @@
-# Makefile Generated Tue Oct 18 11:25:10 EDT 2011
+# Makefile Generated Wed Oct 19 11:36:46 EDT 2011
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
 SRC=a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c types.tmc
-SRC+=HFEMS.tmc HFEMScol.tmc HFEMS.cmd HFEMS.tbl HFEMS.sol
+SRC+=HFEMS.tmc HFEMScol.tmc HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol
 TOOL=HFEMS.spec Makefile
-SCRIPT=interact *.xnp temps.edf o3_adj tempsext.tmc tempsext *.edf
-SCRIPT+=hf_interact hf_saverun hf_clean HFEMS.dccc Experiment.config
-SCRIPT+=HFEMS.cfg readme.changes clear_all standards.record
+SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
 OBJ+=HFEMScoloui.o HFEMScol.o HFEMScmd.cc HFEMScmd.dat HFEMSsrvr.o
-OBJ+=HFEMSsrvroui.c HFEMSsrvroui.o HFEMStbl.tmc HFEMSdisp.cc
-OBJ+=HFEMSdispoui.c HFEMSdispoui.o HFEMSdisp.o HFEMStblnc.tmc
-OBJ+=HFEMSdispnc.cc HFEMSdispncoui.c HFEMSdispncoui.o HFEMSdispnc.o
-OBJ+=HFEMSclt.o HFEMScltoui.c HFEMScltoui.o HFEMScltnc.o
-OBJ+=HFEMScltncoui.c HFEMScltncoui.o
-TGT=HFEMScol HFEMSsrvr HFEMSdisp HFEMSdispnc HFEMS.sft HFEMSclt
-TGT+=HFEMScltnc
-DISTRIB=HFEMS.pcm tm.dac
-IDISTRIB=Experiment.config VERSION
+OBJ+=HFEMSsrvroui.c HFEMSsrvroui.o HFEMSdoit.dep HFEMStbl.tmc
+OBJ+=HFEMSdisp.cc HFEMSdispoui.c HFEMSdispoui.o HFEMSdisp.o
+OBJ+=HFEMStblnc.tmc HFEMSdispnc.cc HFEMSdispncoui.c HFEMSdispncoui.o
+OBJ+=HFEMSdispnc.o HFEMSclt.o HFEMScltoui.c HFEMScltoui.o
+OBJ+=HFEMScltnc.o HFEMScltncoui.c HFEMScltncoui.o
+TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
+TGT+=HFEMSclt HFEMScltnc
+DISTRIB=HFEMS.sft HFEMS.pcm tm.dac
+IDISTRIB=Experiment.config VERSION HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol types.tmc HFEMS.tmc
 NONRCS=
 TMCBASE=types.tmc HFEMS.tmc
@@ -53,6 +51,8 @@ HFEMSsrvr : HFEMSsrvr.o HFEMSsrvroui.o
 	$(LINK.privCXX) HFEMSsrvr.o HFEMSsrvroui.o -lsubbus -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMSsrvroui.c
 	$(PROMOTE) HFEMSsrvr
+HFEMSdoit : HFEMS.doit
+	mkdoit3 -o HFEMSdoit  HFEMS.doit
 HFEMSdisp : HFEMSdisp.o HFEMSdispoui.o
 	$(LINK.normCXX) HFEMSdisp.o HFEMSdispoui.o -ldisp -ltmph -lph -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMSdispoui.c
@@ -80,6 +80,9 @@ HFEMSsrvr.o : HFEMScmd.cc
 HFEMSsrvroui.c : $(OUIDIR)/cis.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/cis.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 HFEMSsrvroui.o : HFEMSsrvroui.c
+HFEMSdoit.dep : HFEMS.doit
+	mkdoit3 -M -o HFEMSdoit  HFEMS.doit
+-include HFEMSdoit.dep
 HFEMStbl.tmc : HFEMS.tbl
 	$(TABLE) HFEMS.tbl
 HFEMSdisp.cc : types.tmc HFEMS.tmc HFEMStbl.tmc
