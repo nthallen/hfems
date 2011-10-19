@@ -1,25 +1,49 @@
 %{
   #include <stdlib.h>
+
+  int initial_day = 0;
 %}
 State Initialize {
         > telemetry start
 
-# modify these initial set points as needed to tune the system
-      1 > Set Pman setpoint 8000
-      1 > Set PrCO2p setpoint 7000
-      1 > Set FlCO2p setpoint 2000
-      1 > Set PrCO2e1 setpoint 8000
-      1 > Set PrCO2e2 setpoint 8000
-      1 > Set PrCO setpoint A000
-      1 > Set fcNO_NOx setpoint 0
-      1 > Set fcNO2_NOx setpoint 0
-      1 > Set fc_CO2e setpoint 0
-      1 > Set fcNO_NOy setpoint 0
-      1 > Set fcEff_NOy setpoint 0
-      1 > Set fcZer_NOy setpoint 0
-      1 > Set FlNOx setpoint 6000
-      1 > Set FlNOy setpoint 6000
-      1 > Set PrO3e setpoint 0
-      1 > Set FlCO setpoint 8000
-}
+/* modify these initial set points as needed to tune the system
+	this assumes that the D/A setpoints are configured to be given the c
 
+       command in volts - verify this*/
+     +1 > Set Pman setpoint 5.0
+        > Set PrCO2p setpoint 4.5
+        > Set FlCO2p setpoint 2.
+        > Set PrCO2e1 setpoint 5.0
+        > Set PrCO2e2 setpoint 5.0
+        > Set PrCO setpoint 5.0
+        > Set fcNO_NOx setpoint 0
+        > Set fcNO2_NOx setpoint 0
+        > Set fc_CO2e setpoint 0
+        > Set fcNO_NOy setpoint 0
+        > Set fcEff_NOy setpoint 0
+        > Set fcZer_NOy setpoint 0
+        > Set FlNOx setpoint 4.5
+        > Set FlNOy setpoint 4.5
+        > Set PrO3e setpoint 0
+        > Set FlCO setpoint 5.0
+}
+State RunMode {
+      +2 > Soldrv Select Mode 0
+	/* at +5:00 we will want to initiate a startup cal sequence */
+	depending on (1 Hz) {
+            int cur_day;
+            cur_day = (itime()-(5*3600))/86400L;
+
+            if (initial_day == 0)
+              initial_day = cur_day;
+            else if (initial_day != cur_day)
+              Validate Restart;
+          }
+}
+State Restart{
+        /*> Soldrv Select Mode 7
+        Hold until (SolSt == 1) or 45:00
+        else > Soldrv Select Mode 0 */
+        > Savelog Automatic Restart
+        > Quit
+}

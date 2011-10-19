@@ -26,14 +26,7 @@ HFEMSdoit : HFEMS.doit
 #sonic : sonic.c
 HFEMSdisp : HFEMS.tbl
 HFEMS.sft : HFEMS.sol
-#HFEMSalgo : HFEMS.tma
-#eddyext : eddy.edf
-#e_tedext : e_ted.edf
-#ext_4ext : ext_4.edf
-#ext_5ext : ext_5.edf
-#ext_rhext : ext_rh.edf
-#noxcext : noxc.edf
-#quickext : quick.edf
+HFEMSalgo : HFEMS.tma
 #cycleext : /usr/local/share/huarp/flttime.tmc HFEMS.cyc HFEMScycle.tmc 
 %%
 COLFLAGS=-Haddress.h
