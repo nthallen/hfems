@@ -1,3 +1,5 @@
-display HFEMSdisp able
+display HFEMSdisp
 client HFEMSclt
-memo HFEMS.log
+memo
+batchfile interact
+
