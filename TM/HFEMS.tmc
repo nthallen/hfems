@@ -110,13 +110,13 @@ TM 1/2  Hz DStat      DSt7;
 /* Address NOx 0xcounts */
 /* Address NOy 0xcounts */
 Address DSt0   0x80A;
-Address DSt1   0x814;
+Address DSt1   0x815;
 Address DSt2   0x82A;
-Address DSt3   0x834;
+Address DSt3   0x835;
 Address DSt4   0x84A;
-Address DSt5   0x854;
+Address DSt5   0x855;
 Address DSt6   0x86A;
-Address DSt7   0x874;
+Address DSt7   0x875;
 Address vCO2e1 0xC10;
 Address vH2Oe1 0xC12;
 Address vCO2e2 0xC14;
