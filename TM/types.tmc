@@ -29,7 +29,7 @@ Calibration (AD12_2_5, VOLTS) {
 
 TM typedef UINT Ct16 { collect x = sbrwa(x.address); }
 TM typedef UINT DASPt {
-  collect x = cache_read(x.address);
+  collect x = sbrwa(x.address) & 0xFFF;
   text "%4u";
 }
 

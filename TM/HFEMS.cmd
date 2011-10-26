@@ -24,9 +24,9 @@
 	: Savelog %s (Enter Log Message) * { write_savelog($2); }
 	: &HFEMScmdset { if_dccc.Turf( "D%d\n", $1 ); }
 	: Set &daspt_cmd %lf (Enter Setpoint Value in Volts) * {
-	    double N = $3 * 6553.6;
+	    double N = $3 * 409.6;
 	    unsigned short bits;
-	    if ( N > 65535. ) bits = 65535;
+	    if ( N > 4095. ) bits = 4095;
 	    else if ( N < 0 ) bits = 0;
 	    else bits = (unsigned short)N;
 	    sbwr($2,bits);
