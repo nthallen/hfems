@@ -32,11 +32,11 @@ NOy: (NOy,5);
 
 Status {
   HBox { +-; Status; -+ };
-  (DSt0,8);
-  (DSt1,8);
-  (DSt4,8);
-  (DSt5,8);
-  (DSt6,8);
+  DSt0:  (DSt0,8);
+  DSt1:  (DSt1,8);
+  DSt4:  (DSt4,8);
+  DSt5:  (DSt5,8);
+  DSt6:  (DSt6,8);
 }
 
 Radiation {
