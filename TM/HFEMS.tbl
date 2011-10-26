@@ -34,10 +34,9 @@ Status {
   HBox { +-; Status; -+ };
   (DSt0,8);
   (DSt1,8);
-  (DSt2,8);
-  (DSt3,8);
   (DSt4,8);
   (DSt5,8);
+  (DSt6,8);
 }
 
 Radiation {
