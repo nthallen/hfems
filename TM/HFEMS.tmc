@@ -87,7 +87,7 @@ TM 1/2 Hz AD12_2_5 PrNOy;
 TM 1/2 Hz AD12_2_5 T_MB;
 TM 1/2 Hz AD12_Biplr FlCO2e1;
 TM 1/2 Hz AD12_Biplr fc_CO2e;
-TM 1/2 Hz AD12_Biplr PrCO2e1;
+TM 1/2 Hz AD12_2_5 PrCO2e1;
 TM 1/2 Hz AD12_2_5 TCO2e1;
 TM 1/2 Hz AD12_Biplr FlCO2e2;
 TM 1/2 Hz AD12_2_5 PrCO2e2;

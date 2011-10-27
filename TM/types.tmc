@@ -14,9 +14,13 @@ TM typedef unsigned short AD12 {
   convert VOLTS;
   text "%6.4lf";
 }
+TM typedef short AD12_Biplr {
+  collect x = (sbrwa(x.address) & 0x0fff) << 4;
+  convert VOLTS;
+  text "%6.4lf";
+}
 
-/* 12 bits is capable of more precision, but their screen isn't */
-TM typedef short AD12_Biplr { convert VOLTS; text "%6.3lf"; }
+TM typedef short AD12_Biplr { convert VOLTS; text "%6.4lf"; }
 Calibration (AD12_Biplr, VOLTS) {
 	-32768, -10.,
 	 32768,  10

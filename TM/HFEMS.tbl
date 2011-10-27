@@ -22,7 +22,8 @@ Eddy{
 Profile{
    HBox {+-;"Profile";-+};
    vCO2prf: (vCO2prf,5);
-     vCO: (vCO,5);
+   vO3prf: (vO3prf,5);
+    vCO: (vCO,5);
 }
 Counts{
 HBox { +-; "Counts"; -+ };
@@ -58,8 +59,10 @@ HBox { +-;Pressure; -+ };
   PrCO2p: (PrCO2p,6);
   PrCO2e1: (PrCO2e1,6);
   PrCO2e2: (PrCO2e2,6);
+  PrCO:   (PrCO,6);
   PrNOx:  (PrNOx,6) ;
   PrNOy:  (PrNOy,6) ;
+  PrO3e:  (PrO3e,6) ;
 }
 
 Flow {
