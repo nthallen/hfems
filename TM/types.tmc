@@ -20,11 +20,11 @@ TM typedef short AD12_Biplr {
   text "%6.4lf";
 }
 
-TM typedef short AD12_Biplr { convert VOLTS; text "%6.4lf"; }
 Calibration (AD12_Biplr, VOLTS) {
 	-32768, -10.,
 	 32768,  10
 }
+
 TM typedef AD12 AD12_2_5 { convert VOLTS; text "%6.3lf"; }
 Calibration (AD12_2_5, VOLTS) {
 	0,       0.,
