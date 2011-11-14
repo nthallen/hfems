@@ -72,7 +72,7 @@ TM 1/2 Hz AD12_2_5 Pamb;
 TM 1/2 Hz AD12_Biplr FlowT;
 TM 1/2 Hz AD12_2_5 Pman;
 TM 1/2 Hz AD12_Biplr FlCO2p;
-TM 1/2 Hz AD12_Biplr PrCO2p;
+TM 1/2 Hz AD12_2_5 PrCO2p;
 TM 1/2 Hz AD12_Biplr FlNOx;
 TM 1/2 Hz AD12_Biplr FlO3_NOx;
 TM 1/2 Hz AD12_Biplr fcNO_NOx;
