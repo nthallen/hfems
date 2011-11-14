@@ -1,16 +1,20 @@
 ;       Configuration commmands.
 ;       Number of commands
-8
+10
 ;       Configuration command info, one command per line:
 ;       address(hex), data (hex)
-      0x818, 0                  ; Card 0, Connector 1 reset
-      0x81A, 0x0102		; Card 0, Connector 1 config
-      0x838, 0                  ; Card 0, Connector 2 reset
-      0x83A, 0x0102		; Card 0, Connector 2 config
-      0x858, 0                  ; Card 1, Connector 1 reset
-      0x85A, 0x0102		; Card 1, Connector 1 config
-      0x878, 0                  ; Card 1, Connector 2 reset
-      0x87A, 0x0102		; Card 1, Connector 2 config
+	0x818, 0   ; Card 0, Connector 1 reset
+	0x806, 0x0102 ; Card 0, Connector 1 config
+	0x81A, 0   ; Card 0 Connector 1 use cmdenbl
+	0x838, 0   ; Card 0, Connector 2 reset
+	0x826, 0x0102  ; Card 0, Connector 2 config
+	0x83A, 1  ; Card 0, Connector 2 use cmdstrobe
+	0x858, 0                  ; Card 1, Connector 1 reset
+	0x846, 0x0102		; Card 1, Connector 1 config
+	;0x85A,	0  Card 1, Connector 1 use cmdenbl by default
+	0x878, 0                  ; Card 1, Connector 2 reset
+	0x866, 0x0102		; Card 1, Connector 2 config
+	;0x87A, 0  Card 1, Connector 2 use cmdenbl by default
 ;       Ports.
 ;       Number of ports
 ;       Port numbering in this file differs from port numbering
