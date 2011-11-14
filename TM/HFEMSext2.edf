@@ -1,0 +1,88 @@
+	spreadsheet pressure		
+1	Pamb	%5.0lf	To_Double
+2	Pman	%5.0lf	To_Double
+3	PrCO2p	%5.0lf	To_Double
+4	PrNOx	%5.0lf	To_Double
+5	PrNOy	%5.0lf	To_Double
+6	PrCO2e1	%5.0lf	To_Double
+7	PrCO2e2	%5.0lf	To_Double
+8	PrO3e	%5.0lf	To_Double
+9	PrCO	%5.0lf	To_Double
+
+	spreadsheet flow		
+1	FlowT	%5.0lf	To_Double
+2	FlCO2p	%5.0lf	To_Double
+3	FlNOx	%5.0lf	To_Double
+4	FlO3_NOx	%5.0lf	To_Double
+5	fcNO_NOx	%5.0lf	To_Double
+6	fcNO2_NOx	%5.0lf	To_Double
+7	FlNOy	%5.0lf	To_Double
+8	fcNO_NOy	%5.0lf	To_Double
+9	fcEff_NOy	%5.0lf	To_Double
+10	fcZer_NOy	%5.0lf	To_Double
+11	FlO3_NOy	%5.0lf	To_Double
+12	fc_CO2e	%5.0lf	To_Double
+13	FlCO	%5.0lf	To_Double
+
+	spreadsheet profile		
+1	vCO2prf		
+2	vO3prf		
+3	vCO		
+
+	spreadsheet radiation		
+1	Rnet	%5.0lf	To_Double
+2	Rnet_cal	%5.0lf	To_Double
+3	PPFD_top	%4.2lf	To_Double
+4	PPFD_mid	%4.2lf	To_Double
+5	PPFD_ref	%4.2lf	To_Double
+6	PPFD_cal	%4.2lf	To_Double
+7	PPFD_gnd	%4.2lf	To_Double
+8	PPFD_t	%4.2lf	To_Double
+9	PPFD_d	%4.2lf	To_Double
+
+	spreadsheet RH		
+1	RH1	%5.2lf	
+2	RH2	%5.2lf	
+3	RH3	%5.2lf	
+4	RH4	%5.2lf	
+5	RH5	%5.2lf	
+6	RH6	%5.2lf
+7	RH7	%5.2lf
+8	RH8	%5.2lf
+9	RH9	%5.2lf
+10	RH10	%5.2lf
+
+	spreadsheet tair	
+1	Ta1	%7.4lf
+2	Ta2	%7.4lf
+3	Ta3	%7.4lf
+4	Ta4	%7.4lf
+5	Ta5	%7.4lf
+6	Ta6	%7.4lf
+7	Ta7	%7.4lf
+8	Ta8	%7.4lf
+9	Ta9	%7.4lf
+10	Ta10	%7.4lf
+11	Tcal	%7.4lf
+12	Tr1	%7.4lf
+13	Tr2	%7.4lf
+14	Tr3	%7.4lf
+
+	spreadsheet tsoil	
+1	Ts1	%7.4lf
+2	Ts2	%7.4lf
+3	TS3	%7.4lf
+4	Ts4	%7.4lf
+5	Ts5	%7.4lf
+6	Ts6	%7.4lf
+7	Ts7	%7.4lf
+8	TS8	%7.4lf
+9	TS9	%7.4lf
+10	Ts10	%7.4lf
+11	Ts11	%7.4lf
+
+	spreadsheet tcells	
+1	T_MB	%7.4lf
+2	TCO2e1	%7.4lf
+3	TCO2e2	%7.4lf
+4	TCO2p	%7.4lf

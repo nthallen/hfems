@@ -1,0 +1,22 @@
+	spreadsheet eddy		
+1	ueddy1	%5.0lf	To_Double
+2	veddy1	%5.0lf	To_Double
+3	weddy1	%5.0lf	To_Double
+4	Teddy1	%5.0lf	To_Double
+5	ueddy2	%5.0lf	To_Double
+6	veddy2	%5.0lf	To_Double
+7	weddy2	%5.0lf	To_Double
+8	Teddy2	%5.0lf	To_Double
+9	vCO2e1	%5.0lf	To_Double
+10	vH2Oe1	%5.0lf	To_Double
+11	vCO2e2	%5.0lf	To_Double
+12	vH2Oe2	%5.0lf	To_Double
+13	vO3ed	%5.0lf	To_Double
+
+	spreadsheet counts		
+1	NOx	count	%5.0lf To_Double 
+2	NOy	count	%5.0lf To_Double 
+
+	spreadsheet eddy flows		
+1	FlCO2e1	%5.0lf	To_Double
+2	FlCO2e2	%5.0lf	To_Double
