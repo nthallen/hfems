@@ -55,6 +55,7 @@ Radiation {
 
 Pressure {
 HBox { +-;Pressure; -+ };
+  Pamb: (Pamb,6);
   Pman:  (Pman,6) ;
   PrCO2p: (PrCO2p,6);
   PrCO2e1: (PrCO2e1,6);
