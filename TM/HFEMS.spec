@@ -33,3 +33,6 @@ COLFLAGS=-Haddress.h
 address.h : HFEMScol.cc
 HFEMSsrvr.o : address.h
 CYCLE=cycle > $@
+
+HFEMSeddy.ext:HFEMSeddy.edf
+HFEMSext2.ext:HFEMSext2.edf
