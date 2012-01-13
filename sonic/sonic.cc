@@ -32,9 +32,7 @@ Quitter::Quitter() : Selectee() {
 
 /** If Quitter is ready for read, it's time to quit */
 int Quitter::ProcessData(int flag) {
-  nl_error( 0, "Resynchronized %ld times", resynchs );
-  nl_error( 0, "Untransferred records: %ld", untransferred );
-  nl_error( 0, "Retransferred records: %ld", retransferred );
+
   return 1;
 }
 
@@ -56,7 +54,7 @@ TMcollect::TMcollect() : Selectee() {
 
 int TMcollect::ProcessData( int flag ){
   flags = 0;
-  par->Request();
+//  par->Request();
   return 0;
 }
 
@@ -77,7 +75,7 @@ int TMcollect::send(){
   return 0;
 }
 
-sonic_ctrl::sonic_ctrl(int serdevice) : Selectee() {
+sonic_ctrl::sonic_ctrl( char* serdevice) : Selectee() {
   
   buf = new char[SONIC_REC_SIZE+1];
   TM.init( this, "Sonic", &TMdata, sizeof(TMdata) );
@@ -125,13 +123,14 @@ void got_collect_proxy( void ) {
 void sonic_ctrl::sonic_fillbuf( void ) {
   static armed = 0;
   unsigned n;
-  
+/*  
   while ( armed ) {
 	pid_t who = Receive( 0, NULL, 0 );
 	if ( who == collect_proxy ) got_collect_proxy();
 	else if ( who == quit_proxy ) got_quit_proxy();
 	else if ( who == serdev_proxy ) armed = 0;
   }
+*/
   n = ( chars_accepted >= SONIC_REC_SIZE ) ?
 		1 : SONIC_REC_SIZE - chars_accepted;
   buf_high = dev_read( sonic_fd, buf, SONIC_REC_SIZE, n, 0, 0,
@@ -215,4 +214,7 @@ void main( int argc, char **argv ) {
   Sr.add_child(&SC.TM);
   if ( serdev_proxy == -1 )	nl_error( 3, "Unable to attach proxy" );
   Sr.event_loop();
+  nl_error( 0, "Resynchronized %ld times", SC.resynchs );
+  nl_error( 0, "Untransferred records: %ld", SC.untransferred );
+  nl_error( 0, "Retransferred records: %ld", SC.retransferred );
 }

@@ -41,12 +41,12 @@ class sonic_ctrl : public Selectee {
   public:
     TMcollect TM;
 	struct termios termios_p;
-	sonic_ctrl(int serdevice);
+	sonic_ctrl(char* serdevice);
 	int ProcessData(int flag);
 	void sonic_record( short U, short V, short W, short T );
 	void sonic_fillbuf( void );
 	int sonic_getc( void );
-	int sonic_not_c( int c )
+	int sonic_not_c( int c );
 	int sonic_not_num( signed short *num );
 		
   private:
