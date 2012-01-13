@@ -11,13 +11,15 @@
 #include <fcntl.h>
 #include "nortlib.h"
 #include "collect.h"
-#include "msg.h"
 #include "oui.h"
 #include "cltsrvr.h"
 #include "sonic.h"
 #include "Selector.h"
 #include "Timeout.h"
 #define SONIC_REC_SIZE 35
+#include <errno.h>
+#include <string.h>
+#include "tm.h"
 
 
 /** Establish connection to Quit stream */
@@ -30,10 +32,9 @@ Quitter::Quitter() : Selectee() {
 
 /** If Quitter is ready for read, it's time to quit */
 int Quitter::ProcessData(int flag) {
-  msg( 0, "Resynchronized %ld times", resynchs );
-  msg( 0, "Untransferred records: %ld", untransferred );
-  msg( 0, "Retransferred records: %ld", retransferred );
-  DONE_MSG;
+  nl_error( 0, "Resynchronized %ld times", resynchs );
+  nl_error( 0, "Untransferred records: %ld", untransferred );
+  nl_error( 0, "Retransferred records: %ld", retransferred );
   return 1;
 }
 
@@ -86,11 +87,11 @@ sonic_ctrl::sonic_ctrl(int serdevice) : Selectee() {
   retransferred = 0;
   sonic_fd = open( serdevice, O_RDONLY );
   if ( sonic_fd == -1 )
-	msg( 3, "Unable to open serial device \"%s\"", argv[optind] );  
+	nl_error( 3, "Unable to open serial device \"%s\"", serdevice );  
   collect_proxy = Col_set_proxy( SONIC_PROXY, 0 );
   quit_proxy    = cc_quit_request( 0 );
   serdev_proxy  = qnx_proxy_attach( 0, NULL, 0, -1 );
-  if ( serdev_proxy == -1 )	msg( 3, "Unable to attach proxy" );
+  if ( serdev_proxy == -1 )	nl_error( 3, "Unable to attach proxy" );
   if( tcgetattr( fd, &termios_p ) )
     nl_error( 3, "Invalid fildes" );
   // following are just place holder values until I figure out what
@@ -136,7 +137,7 @@ void sonic_ctrl::sonic_fillbuf( void ) {
   buf_high = dev_read( sonic_fd, buf, SONIC_REC_SIZE, n, 0, 0,
 						serdev_proxy, &armed );
   if ( buf_high == -1 )
-	msg( 2, "Error %d reading from sonic", errno );
+	nl_error( 2, "Error %d reading from sonic", errno );
   buf_low = 0;
 }
 
@@ -203,16 +204,15 @@ int sonic_ctrl::ProcessData( int flag ){
 
 void main( int argc, char **argv ) {
   oui_init_options(argc, argv);
-  BEGIN_MSG;
   Selector Sr;
   if ( optind >= argc )
-	msg( 3, "Must specify a serial device: optind = %d", optind );
+	nl_error( 3, "Must specify a serial device: optind = %d", optind );
   Quitter Q;
   sonic_ctrl SC( argv[optind] );
   if ( Q.fd >= 0)
     Sr.add_child(&Q);
   Sr.add_child(&SC);
   Sr.add_child(&SC.TM);
-  if ( serdev_proxy == -1 )	msg( 3, "Unable to attach proxy" );
+  if ( serdev_proxy == -1 )	nl_error( 3, "Unable to attach proxy" );
   Sr.event_loop();
 }

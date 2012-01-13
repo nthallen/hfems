@@ -47,7 +47,7 @@ class sonic_ctrl : public Selectee {
 	void sonic_fillbuf( void );
 	int sonic_getc( void );
 	int sonic_not_c( int c )
-	int sonic_not_num( signed short *num )
+	int sonic_not_num( signed short *num );
 		
   private:
 	char *buf;
@@ -60,7 +60,7 @@ class sonic_ctrl : public Selectee {
 	pid_t serdev_proxy;
 	send_id col_id;
 	sonic_t collect_buf;
-	long resynchs
+	long resynchs;
 	long untransferred;
 	long retransferred;
 };
