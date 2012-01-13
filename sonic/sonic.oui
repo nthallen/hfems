@@ -1,0 +1,6 @@
+<package> sonic
+<include> msg
+
+<package> msghdr_default
+<var>
+  char *msg_hdr_default = "Sonic:";
