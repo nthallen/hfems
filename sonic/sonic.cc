@@ -76,7 +76,7 @@ int TMcollect::send(){
   return 0;
 }
 
-sonic_ctrl::sonic_ctrl() : Selectee() {
+sonic_ctrl::sonic_ctrl(int serdevice) : Selectee() {
   
   buf = new char[SONIC_REC_SIZE+1];
   TM.init( this, "Sonic", &TMdata, sizeof(TMdata) );
@@ -84,7 +84,7 @@ sonic_ctrl::sonic_ctrl() : Selectee() {
   resynchs = 0;
   untransferred = 0;
   retransferred = 0;
-  sonic_fd = open( argv[optind], O_RDONLY );
+  sonic_fd = open( serdevice, O_RDONLY );
   if ( sonic_fd == -1 )
 	msg( 3, "Unable to open serial device \"%s\"", argv[optind] );  
   collect_proxy = Col_set_proxy( SONIC_PROXY, 0 );
@@ -204,11 +204,11 @@ int sonic_ctrl::ProcessData( int flag ){
 void main( int argc, char **argv ) {
   oui_init_options(argc, argv);
   BEGIN_MSG;
-  Selector.Sr;
+  Selector Sr;
   if ( optind >= argc )
 	msg( 3, "Must specify a serial device: optind = %d", optind );
   Quitter Q;
-  sonic_ctrl SC( optind );
+  sonic_ctrl SC( argv[optind] );
   if ( Q.fd >= 0)
     Sr.add_child(&Q);
   Sr.add_child(&SC);

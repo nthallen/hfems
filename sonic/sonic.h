@@ -12,7 +12,7 @@ typedef struct {
   short U, V, W, T;
   short transferred;
 } sonic_t;
-
+class sonic_ctrl;
 class TMcollect : public Selectee {
   public:
     TMcollect();
@@ -21,7 +21,7 @@ class TMcollect : public Selectee {
     int send();
   private:
     send_id TMid;
-	agilent_ctrl *par;
+	sonic_ctrl *par;
 };
 
 class Quitter : public Selectee {
@@ -35,7 +35,7 @@ class sonic_ctrl : public Selectee {
   public:
     TMcollect TM;
 	struct termios termios_p;
-	sonic_ctrl();
+	sonic_ctrl(int serdevice);
 	int ProcessData(int flag);
 	void sonic_record( short U, short V, short W, short T );
 	void sonic_fillbuf( void );
