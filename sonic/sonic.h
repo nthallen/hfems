@@ -6,7 +6,13 @@
   * 1, so when it comes time to fill the frame again, we can see
   * whether new data has arrived or not
 */
+
 #ifndef _SONIC_H_INCLUDED
+
+
+#include "Selector.h"
+#include "collect.h"
+
 #define _SONIC_H_INCLUDED
 typedef struct {
   short U, V, W, T;
