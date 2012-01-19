@@ -54,23 +54,22 @@
 	Solenoid Hub_sp2 106 107 0
 	Solenoid Shk_sp1 108 109 0
 	Solenoid Shk_sp2 110 111 0
-
-	Solenoid SpCMD17 32 33 0
-	Solenoid SpCmd18 34 35 0
-	Solenoid SpCmd19 36 37 0
-	Solenoid SpCmd20 38 39 0
-	Solenoid SpCmd21 40 41 0
-	Solenoid SpCmd22 42 43 0
-	Solenoid SpCmd23 44 45 0
-	Solenoid SpCmd24 46 47 0
-	Solenoid SpCmd25 48 49 0
-	Solenoid SpCmd26 50 51 0
-	Solenoid SpCmd27 52 53 0
-	Solenoid SpCmd28 54 55 0
-	Solenoid SpCmd29 56 57 0
-	Solenoid SpCmd30 58 59 0
-	Solenoid SpCmd31 60 61 0
-	Solenoid SpCmd32 62 63 0
+	Solenoid SpCmd_17 32 33 0
+	Solenoid SpCmd_18 34 35 0
+	Solenoid SpCmd_19 36 37 0
+	Solenoid SpCmd_20 38 39 0
+	Solenoid SpCmd_21 40 41 0
+	Solenoid SpCmd_22 42 43 0
+	Solenoid SpCmd_23 44 45 0
+	Solenoid SpCmd_24 46 47 0
+	Solenoid SpCmd_25 48 49 0
+	Solenoid SpCmd_26 50 51 0
+	Solenoid SpCmd_27 52 53 0
+	Solenoid SpCmd_28 54 55 0
+	Solenoid SpCmd_29 56 57 0
+	Solenoid SpCmd_30 58 59 0
+	Solenoid SpCmd_31 60 61 0
+	Solenoid SpCmd_32 62 63 0
 	Solenoid Sol_41 112 113 0
 	Solenoid Sol_42 114 115 0
 	Solenoid Sol_43 116 117 0
@@ -113,6 +112,8 @@ DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
 	   k:25 l:36 m:16 n:17 o:27 p:28 q:8 }
 
      Resolution = 60/1	; One minute resolution
+
+
 routine Sample {
   SolSt:  aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
   Lvl1:  OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -159,8 +160,9 @@ routine Sample {
   fcZer_NOy: ____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
+
 Mode 0 { ; Stop mode
-  Lvl1:  O
+  Lvl1:  O 
   Lvl2:  _
   Lvl3:  _
   Lvl4:  _
@@ -194,7 +196,52 @@ Mode 0 { ; Stop mode
   pCO2_cal1: _
   pCO2_cal2: _
   pCO2_cal3: _
-  pCO2_cala: _
+  pCO2_cala: _ 
+  pCO2_calR: _
+  fcNO_NOx: _
+  fcNO2_NOx: _
+  fc_CO2e: _
+  fcNO_NOy: _
+  fcEff_NOy: _
+  fcZer_NOy: _
+}
+
+Mode 1 { ; Test mode
+  Lvl1:  _ 
+  Lvl2:  _
+  Lvl3:  _
+  Lvl4:  _
+  Lvl5:  _
+  Lvl6:  _
+  Lvl7:  _
+  Lvl8:  _
+  eCO2cal: _
+  CO2add1: _
+  CO2add2: _
+  CO_smpl: _
+  CO_cal1: _
+  CO_cal2: _
+  CO_zer: _
+  eff_Hg: _
+  zNOy_Hg: _
+  NO_NOy_on: _
+  NPN_on: _
+  NO_NOy_add: _
+  NPN_add: _
+  NOy_eff_add: _
+  zNOy_add: _
+  zNOx_Hg: _
+  NO_NOx_on: _
+  NO2_on: _
+  zNOx_add: _
+  NO_NOx_add: _
+  NO2_add: _
+  Shutter: _
+  pCO2_smpl: O
+  pCO2_cal1: _
+  pCO2_cal2: _
+  pCO2_cal3: O
+  pCO2_cala: _ 
   pCO2_calR: _
   fcNO_NOx: _
   fcNO2_NOx: _
