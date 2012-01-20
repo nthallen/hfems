@@ -48,7 +48,10 @@ class sonic_ctrl : public Selectee {
 	int sonic_getc( void );
 	int sonic_not_c( int c );
 	int sonic_not_num( signed short *num );
-		
+
+	long resynchs;
+	long untransferred;
+	long retransferred;	
   private:
 	char *buf;
 	sonic_t TMdata;
@@ -60,9 +63,7 @@ class sonic_ctrl : public Selectee {
 	pid_t serdev_proxy;
 	send_id col_id;
 	sonic_t collect_buf;
-	long resynchs;
-	long untransferred;
-	long retransferred;
+
 };
 
 /* This is a magic number... */

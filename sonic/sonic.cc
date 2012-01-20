@@ -2,9 +2,9 @@
    Written by NTA 5/9/97
 */
 #include <termios.h>
-#include <sys/dev.h>
-#include <sys/proxy.h>
-#include <sys/kernel.h>
+//#include <sys/dev.h>
+//#include <sys/proxy.h>
+//#include <sys/kernel.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <errno.h>
@@ -86,8 +86,8 @@ sonic_ctrl::sonic_ctrl( char* serdevice) : Selectee() {
   sonic_fd = open( serdevice, O_RDONLY );
   if ( sonic_fd == -1 )
 	nl_error( 3, "Unable to open serial device \"%s\"", serdevice );  
-  collect_proxy = Col_set_proxy( SONIC_PROXY, 0 );
-  quit_proxy    = cc_quit_request( 0 );
+  collect_proxy = collect::Col_set_proxy( SONIC_PROXY, 0 );
+  quit_proxy    = collect::cc_quit_request( 0 );
   serdev_proxy  = qnx_proxy_attach( 0, NULL, 0, -1 );
   if ( serdev_proxy == -1 )	nl_error( 3, "Unable to attach proxy" );
   if( tcgetattr( fd, &termios_p ) )
@@ -112,16 +112,16 @@ void sonic_ctrl::sonic_record( short U, short V, short W, short T ) {
 	untransferred++;
   collect_buf.transferred++;
 }
-
+/*
 void got_collect_proxy( void ) {
   if ( collect_buf.transferred ) {
 	Col_send(col_id);
 	collect_buf.transferred = 0;
   } else retransferred++;
 }
-
+*/
 void sonic_ctrl::sonic_fillbuf( void ) {
-  static armed = 0;
+//  static armed = 0;
   unsigned n;
 /*  
   while ( armed ) {
@@ -201,7 +201,7 @@ int sonic_ctrl::ProcessData( int flag ){
 	}
 }
 
-void main( int argc, char **argv ) {
+int main( int argc, char **argv ) {
   oui_init_options(argc, argv);
   Selector Sr;
   if ( optind >= argc )
@@ -217,4 +217,6 @@ void main( int argc, char **argv ) {
   nl_error( 0, "Resynchronized %ld times", SC.resynchs );
   nl_error( 0, "Untransferred records: %ld", SC.untransferred );
   nl_error( 0, "Retransferred records: %ld", SC.retransferred );
+  
+  return 0;
 }
