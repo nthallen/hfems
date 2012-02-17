@@ -12,7 +12,7 @@
 #include "nortlib.h"
 #include "collect.h"
 #include "oui.h"
-#include "cltsrvr.h"
+//#include "cltsrvr.h"
 #include "sonic.h"
 #include "Selector.h"
 #include "Timeout.h"
@@ -79,15 +79,15 @@ sonic_ctrl::sonic_ctrl( char* serdevice) : Selectee() {
   
   buf = new char[SONIC_REC_SIZE+1];
   TM.init( this, "Sonic", &TMdata, sizeof(TMdata) );
-  chars_accepted = 0;
-  resynchs = 0;
-  untransferred = 0;
-  retransferred = 0;
+  int chars_accepted = 0;
+  int resynchs = 0;
+  int untransferred = 0;
+  int retransferred = 0;
   sonic_fd = open( serdevice, O_RDONLY );
   if ( sonic_fd == -1 )
 	nl_error( 3, "Unable to open serial device \"%s\"", serdevice );  
-  collect_proxy = collect::Col_set_proxy( SONIC_PROXY, 0 );
-  quit_proxy    = collect::cc_quit_request( 0 );
+  collect_proxy = TMcollect::Col_set_proxy( SONIC_PROXY, 0 );
+  quit_proxy    = TMcollect::cc_quit_request( 0 );
   serdev_proxy  = qnx_proxy_attach( 0, NULL, 0, -1 );
   if ( serdev_proxy == -1 )	nl_error( 3, "Unable to attach proxy" );
   if( tcgetattr( fd, &termios_p ) )
@@ -121,7 +121,7 @@ void got_collect_proxy( void ) {
 }
 */
 void sonic_ctrl::sonic_fillbuf( void ) {
-//  static armed = 0;
+  static int armed = 0;
   unsigned n;
 /*  
   while ( armed ) {
@@ -181,24 +181,26 @@ int sonic_ctrl::ProcessData( int flag ){
 	  short U, V, W, T;
 
 	  chars_accepted = 0;
-	  if ( sonic_not_c( 'U' ) ) break;
-	  if ( sonic_not_num( &U ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( 'V' ) ) break;
-	  if ( sonic_not_num( &V ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( 'W' ) ) break;
-	  if ( sonic_not_num( &W ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( ' ' ) ) break;
-	  if ( sonic_not_c( 'T' ) ) break;
-	  if ( sonic_not_num( &T ) ) break;
-	  if ( sonic_not_c( '\r' ) ) break;
-	  if ( sonic_not_c( '\n' ) ) break;
+	  if ( sonic_not_c( 'U' ) )  ||
+	  if ( sonic_not_num( &U ) ) ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( 'V' ) )  ||
+	  if ( sonic_not_num( &V ) ) ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( 'W' ) )  ||
+	  if ( sonic_not_num( &W ) ) ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( ' ' ) )  ||
+	  if ( sonic_not_c( 'T' ) )  ||
+	  if ( sonic_not_num( &T ) ) ||
+	  if ( sonic_not_c( '\r' ) ) ||
+	  if ( sonic_not_c( '\n' ) ) 
+		break;
 	  sonic_record( U, V, W, T );
 	}
+	return 0;
 }
 
 int main( int argc, char **argv ) {
