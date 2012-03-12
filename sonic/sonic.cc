@@ -4,10 +4,6 @@
 #include "oui.h"
 
 #define SONIC_REC_SIZE 35
-
-
-
-
 const char *sonic_path = "/net/path/to/device";
 
 int main(int argc, char **argv) {
@@ -48,6 +44,7 @@ int Sonic::ProcessData(int flag) {
 	  // U32767  V32767  W32767  T32767\r\n
       if ( fillbuf() ) return 1;
       cp = 0;
+	  // Do check for a complete record
 	  if( not_found( '\n' ) return 0;
 	  cp = 0;
       while ( cp < nc ) {

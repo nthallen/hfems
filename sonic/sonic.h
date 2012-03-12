@@ -3,10 +3,10 @@
 
 #ifdef __cplusplus
 #include "SerSelector.h"
-typedef struct {
+typedef struct sonicdata{
   short U, V, W, T;
   unsigned char SC_stat;
-} sonic_t;
+} Sonic_t;
 #define SC_PRESENT 1
 #define SC_FRESH 2
 
