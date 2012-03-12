@@ -1,5 +1,5 @@
 #include <errno.h>
-#include "sonic.h"
+#include "sonic_int.h"
 #include "nortlib.h"
 #include "oui.h"
 
@@ -34,6 +34,7 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
 }
 
 int Sonic::ProcessData(int flag) {
+  int sign;
   if ( flag & Selector::gflag(0) ) {
     IssueQuery(1);
   }else {
@@ -48,15 +49,14 @@ int Sonic::ProcessData(int flag) {
 	  if( not_found( '\n' )) return 0;
 	  cp = 0;
       while ( cp < nc ) {
-	  // for not_int() it doesn't require the address of?
 		if( not_str( "U" ) ||
-		not_int( U ) ||
+		not_signed_int( U ) ||
 		not_str( "  V" ) ||
-		not_int( V ) ||
-		not_str( "  W" ) ||
-		not_int( W ) ||
+		not_signed_int( V ) ||
+		not_str( "  W" ) ||
+		not_signed_int( W ) ||
 		not_str( "  T" ) ||
-		not_int( T ) ||
+		not_signed_int( T ) ||
 		not_str( "\r\n" )){
     	  if ( cp < nc ) {
 	        consume(cp);
@@ -76,6 +76,28 @@ int Sonic::ProcessData(int flag) {
     }
   }
   return 0;
+}
+int not_signed_int( int &val ){
+  int sign;
+  sign = sign_val();
+  if ( not_int( val ) ) return 1;
+  val *= sign;
+  return 0;
+}
+
+int sign_val(){
+  if ( '+' == buf[cp] ){
+    cp++;
+    return 1;
+  }
+  else if ( '-' == buf[cp] ){
+    cp++;
+    return -1;
+  }
+  else{
+    report_err( "Expected +/- at column %d", cp );
+	return 1; //returning 1 so it doesn't break
+  }
 }
 
 void Sonic::IssueQuery(bool synch) {
