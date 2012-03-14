@@ -34,7 +34,6 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
 }
 
 int Sonic::ProcessData(int flag) {
-  int sign;
   if ( flag & Selector::gflag(0) ) {
     IssueQuery(1);
   }else {
@@ -77,7 +76,7 @@ int Sonic::ProcessData(int flag) {
   }
   return 0;
 }
-int not_signed_int( int &val ){
+int Sonic::not_signed_int( int &val ){
   int sign;
   sign = sign_val();
   if ( not_int( val ) ) return 1;
@@ -85,7 +84,7 @@ int not_signed_int( int &val ){
   return 0;
 }
 
-int sign_val(){
+int Sonic::sign_val(){
   if ( '+' == buf[cp] ){
     cp++;
     return 1;

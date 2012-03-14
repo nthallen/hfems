@@ -12,7 +12,7 @@ class Sonic : public Ser_Sel {
     int ProcessData(int flag);
   private:
 	int sign_val();
-	int not_signed_int( int *val );
+	int not_signed_int( int &val );
     void IssueQuery(bool synch);
     SC_next state;
     bool query_pending;
