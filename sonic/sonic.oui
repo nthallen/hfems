@@ -1,5 +1,13 @@
 <package> sonic
 <include> msg
+<include> "sonic_int.h"
+
+<opts> "d:"
+<switch>
+	case 'd': sonic_path = optarg; break;
+	
+<sort>
+	-d <path> serial device for sonic input
 
 <package> msghdr_default
 <var>

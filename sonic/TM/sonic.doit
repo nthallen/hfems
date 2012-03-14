@@ -1,0 +1,4 @@
+display sonicdisp
+client sonicclt
+memo
+batchfile interact

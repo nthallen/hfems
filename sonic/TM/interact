@@ -1,0 +1,13 @@
+# Startup script for Sonic
+
+  Launch memo memo -o Sonic.log
+  Launch TM/DCo TMbfr
+  memo=/dev/huarp/$Experiment/memo
+  echo "Running script interact" >$memo
+
+  Launch DG/cmd soniccol
+  Launch cmd/server sonicsrvr
+  Launch - lgr -N `mlf_find LOG`
+  Launch - Sonic -d /dev/ser1
+
+

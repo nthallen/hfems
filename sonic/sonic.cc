@@ -4,7 +4,7 @@
 #include "oui.h"
 
 #define SONIC_REC_SIZE 35
-const char *sonic_path = "/net/path/to/device";
+const char *sonic_path = "/dev/ser1";
 
 int main(int argc, char **argv) {
   oui_init_options(argc, argv);
@@ -24,8 +24,6 @@ int main(int argc, char **argv) {
 
 Sonic::Sonic( const char *path, Sonic_t *data ) :
     Ser_Sel( path, O_RDWR | O_NONBLOCK, 40 ) {
-  state = Q1;
-  query_pending = 0;
   TMdata = data;
   TMdata->U = 0;
   TMdata->V = 0;
@@ -33,8 +31,6 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
   TMdata->T = 0;
   TMdata->SC_stale = 0;
   flags |= Selector::gflag(0);
-  //initialize TMdata if necessary
-  TMdata->SC_stat = SC_PRESENT;
   nl_error( 0, "Sonic fd = %d, flags = %d", fd, flags );
 }
 

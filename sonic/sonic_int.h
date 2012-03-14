@@ -1,6 +1,8 @@
 #ifndef SONIC_H_INT_INCLUDED
 #define SONIC_H_INT_INCLUDED
 
+extern const char *sonic_path;
+
 #ifdef __cplusplus
 #include "sonic.h"
 #include "SerSelector.h"

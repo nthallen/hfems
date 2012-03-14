@@ -1,0 +1,13 @@
+Sonic{
+	U_: (U_, 5);
+	V_: (V_, 5);
+	W_: (W_, 5);
+	T_: (T_, 5);
+	DStale: (sd_stale, 3);
+	Stale: (sonic_stale, 3);
+}
+
+{ [Sonic];
+   -;
+   >{(MFCtr,5)}
+}
