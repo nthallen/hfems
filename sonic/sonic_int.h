@@ -12,6 +12,7 @@ class Sonic : public Ser_Sel {
     int ProcessData(int flag);
   private:
 	int sign_val();
+	int not_signed_int( int *val );
     void IssueQuery(bool synch);
     SC_next state;
     bool query_pending;
@@ -22,4 +23,5 @@ class Sonic : public Ser_Sel {
 /* This is a magic number... */
 #define SONIC_PROXY 5
 
+#endif
 #endif
