@@ -27,6 +27,11 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
   state = Q1;
   query_pending = 0;
   TMdata = data;
+  TMdata->U = 0;
+  TMdata->V = 0;
+  TMdata->W = 0;
+  TMdata->T = 0;
+  TMdata->SC_stale = 0;
   flags |= Selector::gflag(0);
   //initialize TMdata if necessary
   TMdata->SC_stat = SC_PRESENT;
@@ -35,7 +40,7 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
 
 int Sonic::ProcessData(int flag) {
   if ( flag & Selector::gflag(0) ) {
-    IssueQuery(1);
+	++TMdata->SC_stale;
   }else {
     //int addr1, addr2;
     int U, V, W, T;
@@ -65,12 +70,9 @@ int Sonic::ProcessData(int flag) {
 		  TMdata->V = V;
 		  TMdata->W = W;
 		  TMdata->T = T;
-	      TMdata->SC_stat |= SC_FRESH;
-	      state = Q1;
+	      TMdata->SC_stale = 0;
 	    }
 	    consume(cp);
-	    if (query_pending )
-	      IssueQuery(0);
 	  }
     }
   }
@@ -96,30 +98,5 @@ int Sonic::sign_val(){
   else{
     report_err( "Expected +/- at column %d", cp );
 	return 1; //returning 1 so it doesn't break
-  }
-}
-
-void Sonic::IssueQuery(bool synch) {
-  const char *query;
-  query_pending = synch;
-  int rv;
-
-  if ( synch ) {
-    TMdata->SC_stat &= ~(SC_FRESH);
-  }
-  switch (state) {
-    case R1:
-      report_err("Timeout reading from device");
-      // fall through
-    case Q1:
-      query = "replace with what a query looks like?";
-      state = R1;
-      break;
-  }
-  rv = write( fd, query, 11 );
-  if ( rv < 0 ) {
-    report_err( "Error %d writing to Sonic", errno );
-  } else if ( rv < 11 ) {
-    report_err( "Wrote only %d bytes", rv );
   }
 }

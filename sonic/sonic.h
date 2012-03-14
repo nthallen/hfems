@@ -1,11 +1,9 @@
 #ifndef SONIC_H_INCLUDED
 #define SONIC_H_INCLUDED
 
-typedef struct sonicdata{
+typedef struct __attribute__((__packed__)) {
   short U, V, W, T;
-  unsigned char SC_stat;
+  unsigned char SC_stale;
 } Sonic_t;
-#define SC_PRESENT 1
-#define SC_FRESH 2
 
 #endif

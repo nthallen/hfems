@@ -13,9 +13,6 @@ class Sonic : public Ser_Sel {
   private:
 	int sign_val();
 	int not_signed_int( int &val );
-    void IssueQuery(bool synch);
-    SC_next state;
-    bool query_pending;
     Sonic_t *TMdata;
 
 };
