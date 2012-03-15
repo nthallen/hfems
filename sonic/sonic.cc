@@ -70,13 +70,14 @@ int Sonic::ProcessData(int flag) {
 		  TMdata->W = W;
 		  TMdata->T = T;
 	      TMdata->SC_stale = 0;
-	    }
-	    consume(cp);
+	      consume(cp);
+		 }
 	  }
     }
   }
   return 0;
 }
+// Looking for "sign" int "." int and converting to a fixed float stored as 1 int
 int Sonic::not_signed_ffloat( int &val ){
   int sign, temp;
   sign = sign_val();
@@ -101,6 +102,6 @@ int Sonic::sign_val(){
       return -1;
     default:  
       report_err( "Expected '+',' ', or '-' at column %d", cp );
-	  return 1; //assuming number and not signed.
+	  return 1; // assuming number and not signed.
   }
 }
