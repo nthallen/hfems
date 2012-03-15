@@ -8,8 +8,8 @@
 	case 'n': sonic_name = optarg; break;
 	
 <sort>
-	-d <path> serial device for sonic input
-	-n <name> name of device for TM
+	-d <path> serial device for sonic input (default: /dev/ser1)
+	-n <name> name of device for TM (default: Sonic)
 
 <package> msghdr_default
 <var>
