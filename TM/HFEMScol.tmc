@@ -3,6 +3,6 @@
   unsigned int SolStatA;
 
   #include "sonic.h"
-  sonic_t SonicData1;
-  sonic_t SonicData2;
+  Sonic_t SonicData1;
+  Sonic_t SonicData2;
 %}

@@ -9,7 +9,7 @@
   Launch DG/cmd     HFEMScol
   Launch cmd/server HFEMSsrvr
   Launch -          lgr -N `mlf_find LOG`
-# Launch -          sonic /dev/ser1
-# Launch -          sonic /dev/ser2
+  Launch -          sonic -m SonicData1 -d /dev/ser1
+# Launch -          sonic -m SonicData2 -d /dev/ser2
   Launch -          soldrv $TMBINDIR/HFEMS.sft
   Launch -          HFEMSalgo -v

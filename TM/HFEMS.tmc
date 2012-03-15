@@ -12,11 +12,15 @@ TM 8   Hz Anemo      ueddy1;
 TM 8   Hz Anemo      veddy1;
 TM 8   Hz Anemo      weddy1;
 TM 8   Hz Anemo      teddy1;
+TM 8   Hz UCHAR      sdev_stale1;
+TM 8   Hz UCHAR      sdrv_stale1;
 TM 8   Hz Anemo      ueddy2;
 TM 8   Hz Anemo      veddy2;
 TM 8   Hz Anemo      weddy2;
 TM 8   Hz Anemo      teddy2;
-TM 1/2  Hz UBYTE      SolSt;
+TM 8   Hz UCHAR      sdev_stale2;
+TM 8   Hz UCHAR      sdrv_stale2;
+TM 1/2 Hz UBYTE      SolSt;
 
 TM 4 Hz AD12_Biplr vCO2e1;
 TM 4 Hz AD12_Biplr vH2Oe1;
@@ -225,6 +229,8 @@ group anemometer1 ( ueddy1, veddy1, weddy1, teddy1 ) {
   veddy1 = SonicData1.V;
   weddy1 = SonicData1.W;
   teddy1 = SonicData1.T;
+  sdev_stale1 = SonicData1.SC_stale;
+  sdrv_stale1 = SonicData1_obj->stale(255);
   SonicData1_obj->synch();
 }
 
@@ -234,6 +240,8 @@ group anemometer2 ( ueddy2, veddy2, weddy2, teddy2 ) {
   veddy2 = SonicData2.V;
   weddy2 = SonicData2.W;
   teddy2 = SonicData2.T;
+  sdev_stale2 = SonicData2.SC_stale;
+  sdrv_stale2 = SonicData2_obj->stale(255);
   SonicData2_obj->synch();
 }
 

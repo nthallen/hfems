@@ -1,4 +1,4 @@
-# Makefile Generated Mon Nov 14 16:02:34 UTC 2011
+# Makefile Generated Thu Mar 15 13:24:49 EDT 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
@@ -17,7 +17,7 @@ OBJ+=HFEMSalgooui.o HFEMSalgo.o HFEMSclt.o HFEMScltoui.c
 OBJ+=HFEMScltoui.o HFEMScltnc.o HFEMScltncoui.c HFEMScltncoui.o
 TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
 TGT+=HFEMSalgo HFEMSclt HFEMScltnc
-DISTRIB=HFEMS.sft HFEMS.pcm tm.dac
+DISTRIB=HFEMS.sft ../sonic/sonic HFEMS.pcm tm.dac
 IDISTRIB=Experiment.config VERSION HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
 NONRCS=
@@ -130,10 +130,8 @@ clean : tidy
 	rm -f $(TARGET)
 .cvsignore :
 	@for i in Makefile '.B4*' $(OBJECT) $(TARGET); do echo "$$i"; done >.cvsignore
+CPPFLAGS+=-I../sonic
 COLFLAGS=-Haddress.h
 address.h : HFEMScol.cc
 HFEMSsrvr.o : address.h
 CYCLE=cycle > $@
-
-HFEMSeddy.ext:HFEMSeddy.edf
-HFEMSext2.ext:HFEMSext2.edf
