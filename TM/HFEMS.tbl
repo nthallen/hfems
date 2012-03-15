@@ -148,7 +148,7 @@ Temp {
 
 {
   HBox { |+;
-        { [Sonic]; [Eddy];[Profile];[Radiation]}; |+;
+        { [Sonic];[Eddy];[Profile];[Counts];[Radiation]}; |+;
         { [Pressure_Flow];
           HBox { [RH]; |+; { +-+; VGlue 0+1; >MFCtr: (MFCtr,5) }; };
         }; |+;    

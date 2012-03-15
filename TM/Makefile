@@ -1,4 +1,4 @@
-# Makefile Generated Wed Oct 19 14:10:47 EDT 2011
+# Makefile Generated Mon Nov 14 16:02:34 UTC 2011
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
@@ -134,3 +134,6 @@ COLFLAGS=-Haddress.h
 address.h : HFEMScol.cc
 HFEMSsrvr.o : address.h
 CYCLE=cycle > $@
+
+HFEMSeddy.ext:HFEMSeddy.edf
+HFEMSext2.ext:HFEMSext2.edf
