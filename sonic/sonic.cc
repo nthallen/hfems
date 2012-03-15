@@ -4,7 +4,7 @@
 #include "oui.h"
 #define SONIC_REC_BUF 36
 const char *sonic_path = "/dev/ser1";
-const char *sonic_name - "Sonic";
+const char *sonic_name = "Sonic";
 int main(int argc, char **argv) {
   oui_init_options(argc, argv);
   { Selector S;
