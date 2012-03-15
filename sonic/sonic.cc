@@ -3,7 +3,6 @@
 #include "nortlib.h"
 #include "oui.h"
 
-#define SONIC_REC_SIZE 35
 const char *sonic_path = "/dev/ser1";
 
 int main(int argc, char **argv) {
@@ -11,7 +10,7 @@ int main(int argc, char **argv) {
   { Selector S;
     Sonic_t SCdata;
     Sonic SC( sonic_path, &SCdata );
-    SC.setup(38400, 8, 'n', 1, 28, 1 ); //need parameters for Sonic setup
+    SC.setup(9600, 7, 'e', 1, 35, 0 );
     Cmd_Selectee QC;
     TM_Selectee TM( "Sonic", &SCdata, sizeof(SCdata) );
     S.add_child(&SC);
