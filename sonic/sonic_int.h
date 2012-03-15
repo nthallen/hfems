@@ -1,7 +1,7 @@
 #ifndef SONIC_H_INT_INCLUDED
 #define SONIC_H_INT_INCLUDED
 
-extern const char *sonic_path;
+extern const char *sonic_path;
 extern const char *sonic_name;
 
 #ifdef __cplusplus
@@ -15,11 +15,10 @@ class Sonic : public Ser_Sel {
     Sonic( const char *path, Sonic_t *data );
     int ProcessData(int flag);
   private:
-	int sign_val();
-	int not_signed_ffloat( int &val );
+    int not_sign(int &val);
+    int not_signed_ffloat( int &val );
 	
     Sonic_t *TMdata;
-
 };
 
 /* This is a magic number... */

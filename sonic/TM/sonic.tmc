@@ -4,7 +4,7 @@ Sonic_t Sonic;
 %}
 
 TM "Receive" Sonic 1;
-TM typedef unsigned short wind_t { text "%5u";}
+TM typedef signed short wind_t { text "%5.2lf";}
 TM typedef unsigned char UCHAR { text "%3u";}
 TM 8 Hz wind_t U_ ;
 TM 8 Hz wind_t V_ ;
