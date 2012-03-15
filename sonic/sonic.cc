@@ -82,7 +82,7 @@ int Sonic::not_signed_int( int &val ){
 }
 
 int Sonic::sign_val(){
-   switch (buf[cp])
+   switch (buf[cp]){
 	case '+': 
       cp++;
       return 1;
