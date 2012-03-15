@@ -41,7 +41,7 @@ int Sonic::ProcessData(int flag) {
     int U, V, W, T;
     if ( flag & Selector::Sel_Read ) {
       // Read and parse data
-	  // U32767  V32767  W32767  T32767\r\n
+	  // U 32767  V-32767  W 32767  T-32767\r\n
       if ( fillbuf() ) return 1;
       cp = 0;
 	  // Do check for a complete record
@@ -82,16 +82,18 @@ int Sonic::not_signed_int( int &val ){
 }
 
 int Sonic::sign_val(){
-  if ( '+' == buf[cp] ){
-    cp++;
-    return 1;
-  }
-  else if ( '-' == buf[cp] ){
-    cp++;
-    return -1;
-  }
-  else{
-    report_err( "Expected +/- at column %d", cp );
-	return 1; //returning 1 so it doesn't break
+   switch (buf[cp])
+	case '+': 
+      cp++;
+      return 1;
+	case ' ':
+	  cp++;
+	  return 1;
+	case '-':
+      cp++;
+      return -1;
+    default:  
+      report_err( "Expected '+',' ', or '-' at column %d", cp );
+	  return 1; //assuming number and not signed.
   }
 }
