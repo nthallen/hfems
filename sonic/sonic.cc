@@ -2,7 +2,7 @@
 #include "sonic_int.h"
 #include "nortlib.h"
 #include "oui.h"
-
+#define SONIC_REC_BUF 36
 const char *sonic_path = "/dev/ser1";
 
 int main(int argc, char **argv) {
@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
   { Selector S;
     Sonic_t SCdata;
     Sonic SC( sonic_path, &SCdata );
-    SC.setup(9600, 7, 'e', 1, 35, 0 );
+    SC.setup(9600, 7, 'e', 1, SONIC_REC_BUF, 0 );
     Cmd_Selectee QC;
     TM_Selectee TM( "Sonic", &SCdata, sizeof(SCdata) );
     S.add_child(&SC);
@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 }
 
 Sonic::Sonic( const char *path, Sonic_t *data ) :
-    Ser_Sel( path, O_RDWR | O_NONBLOCK, 40 ) {
+    Ser_Sel( path, O_RDONLY | O_NONBLOCK, 108 ) {
   TMdata = data;
   TMdata->U = 0;
   TMdata->V = 0;
@@ -45,8 +45,12 @@ int Sonic::ProcessData(int flag) {
       if ( fillbuf() ) return 1;
       cp = 0;
 	  // Do check for a complete record
-	  if( not_found( '\n' )) return 0;
-	  cp = 0;
+	  if( not_found( 'U' )) return 0;
+	  if( cp > 1 )
+		consume(cp-1);
+	  if( nc < SONIC_REC_BUF )
+		return 0;
+
       while ( cp < nc ) {
 		if( not_str( "U" ) ||
 		not_signed_int( U ) ||
