@@ -2,10 +2,12 @@
 #define SONIC_H_INT_INCLUDED
 
 extern const char *sonic_path;
+extern const char *sonic_name;
 
 #ifdef __cplusplus
 #include "sonic.h"
 #include "SerSelector.h"
+
 enum SC_next { Q1, R1 };
 
 class Sonic : public Ser_Sel {
@@ -14,7 +16,8 @@ class Sonic : public Ser_Sel {
     int ProcessData(int flag);
   private:
 	int sign_val();
-	int not_signed_int( int &val );
+	int not_signed_ffloat( int &val );
+	
     Sonic_t *TMdata;
 
 };

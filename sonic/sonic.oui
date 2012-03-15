@@ -2,12 +2,14 @@
 <include> msg
 <include> "sonic_int.h"
 
-<opts> "d:"
+<opts> "d:n"
 <switch>
 	case 'd': sonic_path = optarg; break;
+	case 'n': sonic_name = optarg; break;
 	
 <sort>
 	-d <path> serial device for sonic input
+	-n <name> name of device for TM
 
 <package> msghdr_default
 <var>

@@ -4,7 +4,7 @@
 #include "oui.h"
 #define SONIC_REC_BUF 36
 const char *sonic_path = "/dev/ser1";
-
+const char *sonic_name - "Sonic";
 int main(int argc, char **argv) {
   oui_init_options(argc, argv);
   { Selector S;
@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     Sonic SC( sonic_path, &SCdata );
     SC.setup(9600, 7, 'e', 1, SONIC_REC_BUF, 0 );
     Cmd_Selectee QC;
-    TM_Selectee TM( "Sonic", &SCdata, sizeof(SCdata) );
+    TM_Selectee TM( sonic_name, &SCdata, sizeof(SCdata) );
     S.add_child(&SC);
     S.add_child(&QC);
     S.add_child(&TM);
@@ -53,13 +53,13 @@ int Sonic::ProcessData(int flag) {
 
       while ( cp < nc ) {
 		if( not_str( "U" ) ||
-		not_signed_int( U ) ||
+		not_signed_ffloat( U ) ||
 		not_str( "  V" ) ||
-		not_signed_int( V ) ||
+		not_signed_ffloat( V ) ||
 		not_str( "  W" ) ||
-		not_signed_int( W ) ||
+		not_signed_ffloat( W ) ||
 		not_str( "  T" ) ||
-		not_signed_int( T ) ||
+		not_signed_ffloat( T ) ||
 		not_str( "\r\n" )){
     	  if ( cp < nc ) {
 	        consume(cp);
@@ -77,11 +77,14 @@ int Sonic::ProcessData(int flag) {
   }
   return 0;
 }
-int Sonic::not_signed_int( int &val ){
-  int sign;
+int Sonic::not_signed_ffloat( int &val ){
+  int sign, temp;
   sign = sign_val();
-  if ( not_int( val ) ) return 1;
-  val *= sign;
+  if ( not_int( temp ) ) return 1;
+  val = temp * 100;
+  if ( not_str( "." ) ) return 1;
+  if ( not_int( temp ) ) return 1;
+  val = (val + temp) * sign;
   return 0;
 }
 
