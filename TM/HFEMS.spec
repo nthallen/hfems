@@ -7,7 +7,7 @@ cmdbase = /usr/local/share/huarp/getcon.cmd
 
 SCRIPT = interact
 SCRIPT = HFEMS.dccc
-DISTRIB = HFEMS.sft ../sonic/sonic
+DISTRIB = HFEMS.sft ../sonic/Sonic
 
 SRC = a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c 
 #SRC = timeout.c timeoutoui.c devwatch.c devwatch.h devwatch.oui
@@ -29,8 +29,8 @@ HFEMS.sft : HFEMS.sol
 HFEMSalgo : HFEMS.tma
 #cycleext : /usr/local/share/huarp/flttime.tmc HFEMS.cyc HFEMScycle.tmc 
 
-HFEMSeddy.ext: HFEMSeddy.edf
-HFEMSext2.ext: HFEMSext2.edf
+HFEMSeddyext : HFEMSeddy.edf
+# HFEMSext2ext : HFEMSext2.edf
 
 %%
 CPPFLAGS+=-I../sonic
