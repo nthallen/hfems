@@ -5,7 +5,9 @@
 /* Output types */
 TM typedef double VOLTS { text "%4.2lf"; }
 TM typedef unsigned char UCHAR { text "%3u"; }
-TM typedef   signed char SCHAR { text "%4d"; }
+TM typedef   signed char SCHART { text "%4d"; }
+TM typedef unsigned char SCHAR { convert SCHART; text "%4d"; }
+  calibration (SCHAR,SCHART) { 0, 0, 127, 127, 128, -128, 255, -1 }
 TM typedef unsigned short UINT { text "%5u"; }
 TM typedef signed short SINT { text "%6d"; }
 TM typedef unsigned long int TMLONG { text "%8ld"; }
