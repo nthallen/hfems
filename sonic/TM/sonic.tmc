@@ -4,24 +4,25 @@ Sonic_t Sonic;
 %}
 
 TM "Receive" Sonic 1;
-TM typedef signed short wind_t { text "%5.2lf";}
-TM typedef unsigned char UCHAR { text "%3u";}
+TM typedef signed short wind_t { text "%5.2lf"; }
+TM typedef unsigned char UCHAR { text "%3u"; }
+TM typedef unsigned char SCHAR { text "%4d"; }
 TM 8 Hz wind_t U_ ;
 TM 8 Hz wind_t V_ ;
 TM 8 Hz wind_t W_ ;
 TM 8 Hz wind_t T_ ;
 TM 8 Hz UCHAR sonic_stale;
-TM 8 Hz UCHAR sd_stale;
+TM 8 Hz SCHAR sd_stale;
 
 
-Group Sonic ( U_, V_, W_, T_ ){
-U_ = Sonic.U;
-V_ = Sonic.V;
-W_ = Sonic.W;
-T_ = Sonic.T;
-sd_stale = Sonic.SC_stale;
-sonic_stale = Sonic_obj->stale(255);
-Sonic_obj->synch();
+Group Sonic ( U_, V_, W_, T_ ) {
+  U_ = Sonic.U;
+  V_ = Sonic.V;
+  W_ = Sonic.W;
+  T_ = Sonic.T;
+  sd_stale = Sonic.SC_stale;
+  sonic_stale = Sonic_obj->stale(255);
+  Sonic_obj->synch();
 }
 TM typedef unsigned short UINT { text "%5u";}
 TM 8 Hz UINT MFCtr, Synch;
