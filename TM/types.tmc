@@ -5,6 +5,7 @@
 /* Output types */
 TM typedef double VOLTS { text "%4.2lf"; }
 TM typedef unsigned char UCHAR { text "%3u"; }
+TM typedef unsigned char SCHAR { text "%4d"; }
 TM typedef unsigned short UINT { text "%5u"; }
 TM typedef signed short SINT { text "%6d"; }
 TM typedef unsigned long int TMLONG { text "%8ld"; }

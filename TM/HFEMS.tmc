@@ -12,13 +12,13 @@ TM 8   Hz Anemo      ueddy1;
 TM 8   Hz Anemo      veddy1;
 TM 8   Hz Anemo      weddy1;
 TM 8   Hz Anemo      teddy1;
-TM 8   Hz UCHAR      sdev_stale1;
+TM 8   Hz SCHAR      sdev_stale1;
 TM 8   Hz UCHAR      sdrv_stale1;
 TM 8   Hz Anemo      ueddy2;
 TM 8   Hz Anemo      veddy2;
 TM 8   Hz Anemo      weddy2;
 TM 8   Hz Anemo      teddy2;
-TM 8   Hz UCHAR      sdev_stale2;
+TM 8   Hz SCHAR      sdev_stale2;
 TM 8   Hz UCHAR      sdrv_stale2;
 TM 1/2 Hz UBYTE      SolSt;
 

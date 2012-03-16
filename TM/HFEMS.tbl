@@ -1,14 +1,22 @@
                                              
 Sonic {
   HBox { +-; "Sonic"; -+ };
- ueddy1: (ueddy1,6);
- veddy1: (veddy1,6);
- weddy1: (weddy1,6);
- Teddy1: (teddy1,6);
- ueddy2: (ueddy2,6);
- veddy2: (veddy2,6);
- weddy2: (weddy2,6);
- Teddy2: (teddy2,6);
+  ueddy1: (ueddy1,6);
+  veddy1: (veddy1,6);
+  weddy1: (weddy1,6);
+  Teddy1: (teddy1,6);
+  ueddy2: (ueddy2,6);
+  veddy2: (veddy2,6);
+  weddy2: (weddy2,6);
+  Teddy2: (teddy2,6);
+}
+
+SonicStat {
+  HBox { +-; "Sonic"; -+ };
+  Sdev1: (sdev_stale1,4);
+  Sdrv1: (sdrv_stale1,3);
+  Sdev2: (sdev_stale2,4);
+  Sdrv2: (sdrv_stale2,3);
 }
 
 Eddy{
@@ -54,7 +62,7 @@ Radiation {
 }
 
 Pressure {
-HBox { +-;Pressure; -+ };
+  HBox { +-;Pressure; -+ };
   Pamb: (Pamb,6);
   Pman:  (Pman,6) ;
   PrCO2p: (PrCO2p,6);
@@ -67,41 +75,41 @@ HBox { +-;Pressure; -+ };
 }
 
 Flow {
-         HBox { +-;Flow; -+ };
-          FlowT: (FlowT,6);
-          FlCO2p: (FlCO2p,6);
-          FlNOx: (FlNOx,6);
-          FlO3_NOx: (FlO3_NOx,6);
-          FlNOy: (FlNOy,6);
-          FlO3_NOy: (FlO3_NOy,6);
-          FlCO2e1: (FlCO2e1,6);
-          FlCO2e2: (FlCO2e2,6);
-          FlCO: (FlCO,6);
-          fcNO_NOx: (fcNO_NOx,6);
-          fcNO2_NOx: (fcNO2_NOx,6);
-          fcNO_NOy: (fcNO_NOy,6);
-          fcEff_NOy: (fcEff_NOy,6);
-          fcZer_NOy: (fcZer_NOy,6);
-          fc_CO2e: (fc_CO2e,6);
+  HBox { +-;Flow; -+ };
+  FlowT: (FlowT,6);
+  FlCO2p: (FlCO2p,6);
+  FlNOx: (FlNOx,6);
+  FlO3_NOx: (FlO3_NOx,6);
+  FlNOy: (FlNOy,6);
+  FlO3_NOy: (FlO3_NOy,6);
+  FlCO2e1: (FlCO2e1,6);
+  FlCO2e2: (FlCO2e2,6);
+  FlCO: (FlCO,6);
+  fcNO_NOx: (fcNO_NOx,6);
+  fcNO2_NOx: (fcNO2_NOx,6);
+  fcNO_NOy: (fcNO_NOy,6);
+  fcEff_NOy: (fcEff_NOy,6);
+  fcZer_NOy: (fcZer_NOy,6);
+  fc_CO2e: (fc_CO2e,6);
 }
 
 Pressure_Flow {
-  HBox { +-; Pressure_Flow; -+ };
-  HBox { [Pressure]; +|+; [Flow] };
+  # HBox { +-; Pressure_Flow; -+ };
+  HBox { [Pressure]; |+; [Flow] };
 }
 
 RH {
-  +-+;
-  RH1: (RH1,6);
-  RH2: (RH2,6);
-  RH3: (RH3,6);
-  RH4: (RH4,6);
-  RH5: (RH5,6);
-  RH6: (RH6,6);
-  RH7: (RH7,6);
-  RH8: (RH8,6);
-  RH9: (RH9,6);
- RH10: (RH10,6);
+  HBox { +-; Title: RH; -+ };
+  RH1:  (RH1,6);
+  RH2:  (RH2,6);
+  RH3:  (RH3,6);
+  RH4:  (RH4,6);
+  RH5:  (RH5,6);
+  RH6:  (RH6,6);
+  RH7:  (RH7,6);
+  RH8:  (RH8,6);
+  RH9:  (RH9,6);
+  RH10: (RH10,6);
 }
 
 Ts {
@@ -123,6 +131,7 @@ Ts {
   TCO2e2: (TCO2e2,6);
   TCO2p: (TCO2p,6);    
 }
+
 Ta {
   HBox { +-; Ta; -+ };
   Ta1: (Ta1,6);
@@ -140,22 +149,41 @@ Ta {
   Tr2: (Tr2,6);
   Tr3: (Tr3,6);
 }
+
 Temp {
-  HBox { +-;Temp; -+ };
-  HBox { [Ts]; +|+; [Ta] };
+  #HBox { +-;Temp; -+ };
+  HBox { [Ts]; |+; [Ta] };
+}
+
+MFCtr {
+  +-+;
+  VGlue 0+1;
+  >MFCtr: (MFCtr,5)
 }
 
 
 {
   HBox { |+;
-        { [Sonic];[Eddy];[Profile];[Counts];[Radiation]}; |+;
-        { [Pressure_Flow];
-          HBox { [RH]; |+; { +-+; VGlue 0+1; >MFCtr: (MFCtr,5) }; };
-        }; |+;    
-        { 
-        [Temp];
-        [Status];
-      }; |+
+    {
+      [Sonic];
+      [Eddy];
+      [Profile];
+      [Radiation]
+    }; |+;
+    {
+      [Pressure];
+      [Flow];
+    }; |+;    
+    { 
+      [Temp];
+      [Status];
+    }; |+;
+    {
+      [RH];
+      [SonicStat];
+      [Counts];
+      [MFCtr]
+    }; |+;
   };
   -;
 }
