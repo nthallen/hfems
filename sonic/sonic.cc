@@ -74,7 +74,7 @@ int Sonic::ProcessData(int flag) {
 	  TMdata->V = V;
 	  TMdata->W = W;
 	  TMdata->T = T;
-	  TMdata->SC_stale = 0;
+	  --TMdata->SC_stale;
 	  consume(cp);
 	  report_ok();
 	}

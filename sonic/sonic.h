@@ -3,7 +3,7 @@
 
 typedef struct __attribute__((__packed__)) {
   short U, V, W, T;
-  unsigned char SC_stale;
+  signed char SC_stale;
 } Sonic_t;
 
 #endif
