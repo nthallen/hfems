@@ -158,7 +158,9 @@ Temp {
 MFCtr {
   +-+;
   VGlue 0+1;
-  >MFCtr: (MFCtr,5)
+  CPU:    (CPU_Pct,3) %;
+  Disk:   (Disk,3) %;
+  >{ MFCtr:  (MFCtr,5) }
 }
 
 

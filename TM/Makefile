@@ -1,4 +1,4 @@
-# Makefile Generated Thu Mar 22 10:42:27 EDT 2012
+# Makefile Generated Thu Mar 22 14:06:36 EDT 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
@@ -24,8 +24,11 @@ TGT+=HFEMSalgo HFEMSeddyext HFEMSext2ext HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft ../sonic/Sonic HFEMS.pcm tm.dac
 IDISTRIB=Experiment.config VERSION HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
+SRCDIST+=/usr/local/share/huarp/cpu_usage.tmc
+SRCDIST+=/usr/local/share/huarp/tmdf.tmc
 NONRCS=
-TMCBASE=types.tmc HFEMS.tmc
+TMCBASE=types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc
+TMCBASE+=/usr/local/share/huarp/tmdf.tmc
 CMDBASE=/usr/local/share/huarp/root.cmd HFEMS.cmd
 CMDBASE+=/usr/local/share/huarp/phrtg.cmd
 CMDBASE+=/usr/local/share/huarp/getcon.cmd
@@ -82,8 +85,8 @@ HFEMSclt : HFEMSclt.o HFEMScltoui.o
 HFEMScltnc : HFEMScltnc.o HFEMScltncoui.o
 	$(LINK.normCXX) HFEMScltnc.o HFEMScltncoui.o -ltmnc -lncurses -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMScltncoui.c
-HFEMScol.cc : types.tmc HFEMS.tmc HFEMScol.tmc
-	$(TMC.col) types.tmc HFEMS.tmc HFEMScol.tmc
+HFEMScol.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMScol.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
+	$(TMC.col) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMScol.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
 HFEMScoloui.c : $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 HFEMScoloui.o : HFEMScoloui.c
@@ -100,16 +103,16 @@ HFEMSdoit.dep : HFEMS.doit
 -include HFEMSdoit.dep
 HFEMStbl.tmc : HFEMS.tbl
 	$(TABLE) HFEMS.tbl
-HFEMSdisp.cc : types.tmc HFEMS.tmc HFEMStbl.tmc
-	$(TMC) types.tmc HFEMS.tmc HFEMStbl.tmc
+HFEMSdisp.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStbl.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStbl.tmc
 HFEMSdispoui.c : $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSdispoui.o : HFEMSdispoui.c
 HFEMSdisp.o : HFEMSdisp.cc
 HFEMStblnc.tmc : HFEMS.tbl
 	$(NCTABLE) HFEMS.tbl
-HFEMSdispnc.cc : types.tmc HFEMS.tmc HFEMStblnc.tmc
-	$(TMC) types.tmc HFEMS.tmc HFEMStblnc.tmc
+HFEMSdispnc.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStblnc.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStblnc.tmc
 HFEMSdispncoui.c : $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSdispncoui.o : HFEMSdispncoui.c
@@ -117,8 +120,8 @@ HFEMSdispnc.o : HFEMSdispnc.cc
 HFEMSalgoa.tmc : HFEMS.tma HFEMSsrvr
 	$(SERVER) ./HFEMSsrvr
 	$(TMCALGO) -V "`./HFEMSsrvr -R`" HFEMS.tma
-HFEMSalgo.cc : types.tmc HFEMS.tmc HFEMSalgoa.tmc
-	$(TMC) types.tmc HFEMS.tmc HFEMSalgoa.tmc
+HFEMSalgo.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSalgoa.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSalgoa.tmc
 HFEMSalgooui.c : $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSalgooui.o : HFEMSalgooui.c
@@ -127,8 +130,8 @@ HFEMSeddyextcdf.oui : HFEMSeddy.cdf
 	$(EDF2OUI) HFEMSeddy.cdf
 HFEMSeddyext.tmc : HFEMSeddy.cdf
 	$(EDF2EXT) HFEMSeddy.cdf
-HFEMSeddyext.cc : types.tmc HFEMS.tmc HFEMSeddyext.tmc
-	$(TMC) types.tmc HFEMS.tmc HFEMSeddyext.tmc
+HFEMSeddyext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSeddyext.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSeddyext.tmc
 HFEMSeddyextoui.c : HFEMSeddyextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) HFEMSeddyextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSeddyextoui.o : HFEMSeddyextoui.c
@@ -137,8 +140,8 @@ HFEMSext2extcdf.oui : HFEMSext2.cdf
 	$(EDF2OUI) HFEMSext2.cdf
 HFEMSext2ext.tmc : HFEMSext2.cdf
 	$(EDF2EXT) HFEMSext2.cdf
-HFEMSext2ext.cc : types.tmc HFEMS.tmc HFEMSext2ext.tmc
-	$(TMC) types.tmc HFEMS.tmc HFEMSext2ext.tmc
+HFEMSext2ext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSext2ext.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSext2ext.tmc
 HFEMSext2extoui.c : HFEMSext2extcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) HFEMSext2extcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSext2extoui.o : HFEMSext2extoui.c

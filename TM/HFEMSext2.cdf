@@ -86,3 +86,7 @@ csv tcells 5
   2  TCO2e1
   3  TCO2e2
   4  TCO2p
+
+csv cpu 3
+  1  CPU_Pct
+  2  Disk
