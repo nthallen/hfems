@@ -5,7 +5,7 @@ csv sonic1 7
   3  weddy1
   4  Teddy1
   5  sdev_stale1
-  6  sdev_stale2
+  6  sdrv_stale1
 
 csv sonic2 7
   0  time %.3lf
@@ -13,8 +13,8 @@ csv sonic2 7
   2  veddy2
   3  weddy2
   4  Teddy2
-  5 sdev_stale1
-  6 sdev_stale2
+  5 sdev_stale2
+  6 sdrv_stale2
 
 csv eddy1 3
   0  time %.2lf
@@ -35,16 +35,6 @@ csv counts 4
   1  NOx 
   2  NOy 
   3  CtStat
-
-csv FPCO2_1 3
-  0  time %.2lf
-  1  FlCO2e1
-  2  PrCO2e1
-
-csv FPCO2_2 3
-  0  time %.2lf
-  1  FlCO2e2
-  2  PrCO2e2
 
 csv status 6
   0 time %.2lf
