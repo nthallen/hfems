@@ -29,8 +29,8 @@ HFEMS.sft : HFEMS.sol
 HFEMSalgo : HFEMS.tma
 #cycleext : /usr/local/share/huarp/flttime.tmc HFEMS.cyc HFEMScycle.tmc 
 
-HFEMSeddyext : HFEMSeddy.edf
-# HFEMSext2ext : HFEMSext2.edf
+HFEMSeddyext : HFEMSeddy.cdf
+HFEMSext2ext : HFEMSext2.cdf
 
 %%
 CPPFLAGS+=-I../sonic
