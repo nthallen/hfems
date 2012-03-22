@@ -31,14 +31,14 @@ csv profile 4
 
 csv radiation 10
   1  Rnet
-  2  Rnet_cal
-  3  PPFD_top
-  4  PPFD_mid
+  2  PPFD_top
+  3  PPFD_mid
+  4  PPFD_gnd
   5  PPFD_ref
-  6  PPFD_cal
-  7  PPFD_gnd
-  8  PPFD_t
-  9  PPFD_d
+  6  PPFD_t
+  7  PPFD_d
+  8  Rnet_cal
+  9  PPFD_cal
 
 csv RH 11
   1  RH1
@@ -52,7 +52,7 @@ csv RH 11
   9  RH9
   10 RH10
 
-csv tair 15
+csv tair 12
   1  Ta1
   2  Ta2
   3  Ta3
@@ -64,9 +64,11 @@ csv tair 15
   9  Ta9
   10 Ta10
   11 Tcal
-  12 Tr1
-  13 Tr2
-  14 Tr3
+
+csv troom 3
+  1 Tr1
+  2 Tr2
+  3 Tr3
 
 csv tsoil 12
   1  Ts1

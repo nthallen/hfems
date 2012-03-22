@@ -159,7 +159,7 @@ MFCtr {
   +-+;
   VGlue 0+1;
   CPU:    (CPU_Pct,3) %;
-  Disk:   (Disk,3) %;
+  Disk:   (Disk,5) %;
   >{ MFCtr:  (MFCtr,5) }
 }
 

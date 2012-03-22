@@ -1,4 +1,4 @@
-csv sonic 13
+csv sonic1 7
   0  time %.3lf
   1  ueddy1
   2  veddy1
@@ -6,20 +6,29 @@ csv sonic 13
   4  Teddy1
   5  sdev_stale1
   6  sdev_stale2
-  7  ueddy2
-  8  veddy2
-  9  weddy2
-  10 Teddy2
-  11 sdev_stale1
-  12 sdev_stale2
 
-csv eddy4hz 5
+csv sonic2 7
+  0  time %.3lf
+  1  ueddy2
+  2  veddy2
+  3  weddy2
+  4  Teddy2
+  5 sdev_stale1
+  6 sdev_stale2
+
+csv eddy1 3
   0  time %.2lf
   1  vCO2e1
   2  vH2Oe1
-  3  vCO2e2
-  4  vH2Oe2
-  5  vO3ed
+
+csv eddy2 3
+  0  time %.2lf
+  1  vCO2e2
+  2  vH2Oe2
+
+csv eddyO3 2
+  0  time %.3lf
+  1  vO3ed
 
 csv counts 4
   0  time %.3lf
@@ -27,6 +36,20 @@ csv counts 4
   2  NOy 
   3  CtStat
 
-csv flows 3
+csv FPCO2_1 3
+  0  time %.2lf
   1  FlCO2e1
-  2  FlCO2e2
+  2  PrCO2e1
+
+csv FPCO2_2 3
+  0  time %.2lf
+  1  FlCO2e2
+  2  PrCO2e2
+
+csv status 6
+  0 time %.2lf
+  1 DSt0
+  2 DSt1
+  3 DSt4
+  4 DSt5
+  5 Dst6

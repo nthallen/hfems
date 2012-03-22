@@ -8,6 +8,7 @@
   Launch dccc       dccc -f $TMBINDIR/HFEMS.dccc
   Launch DG/cmd     HFEMScol
   Launch cmd/server HFEMSsrvr
+  Launch -          tmdf
   Launch -          lgr -N `mlf_find LOG`
   Launch -          Sonic -n SonicData1 -d /dev/ser1
   Launch -          Sonic -n SonicData2 -d /dev/ser2
