@@ -1,4 +1,4 @@
-csv pressure 10
+csv pressures 10
   1  Pamb
   2  Pman
   3  PrCO2p
@@ -9,7 +9,7 @@ csv pressure 10
   8  PrO3e
   9  PrCO
 
-csv flow 14
+csv flows 14
   1  FlowT
   2  FlCO2p
   3  FlNOx
