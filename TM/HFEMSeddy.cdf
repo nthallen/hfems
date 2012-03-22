@@ -9,7 +9,7 @@ csv sonic 13
   7  ueddy2
   8  veddy2
   9  weddy2
-  10 Teddy2 %5.0lf
+  10 Teddy2
   11 sdev_stale1
   12 sdev_stale2
 
