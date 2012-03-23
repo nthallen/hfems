@@ -27,7 +27,7 @@ csv eddy2 3
   2  vH2Oe2
 
 csv eddyO3 2
-  0  time %.3lf
+  0  time %.2lf
   1  vO3ed
 
 csv counts 4
@@ -37,9 +37,8 @@ csv counts 4
   3  CtStat
 
 csv status 6
-  0 time %.2lf
-  1 DSt0
-  2 DSt1
-  3 DSt4
-  4 DSt5
-  5 Dst6
+  1 DSt0 %0lf
+  2 DSt1 %0lf
+  3 DSt4 %0lf
+  4 DSt5 %0lf
+  5 Dst6 %0lf
