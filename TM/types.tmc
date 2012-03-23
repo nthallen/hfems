@@ -29,10 +29,33 @@ Calibration (AD12_Biplr, VOLTS) {
 	 32768,  10
 }
 
+TM typedef short AD12_Biplrx2 {
+  collect x = (sbrwa(x.address) & 0x0fff) << 4;
+  convert VOLTS;
+  text "%6.4lf";
+}
+
+Calibration (AD12_Biplrx2, VOLTS) {
+	-32768, -5.,
+	 32768,  5
+}
+
 TM typedef AD12 AD12_2_5 { convert VOLTS; text "%6.3lf"; }
 Calibration (AD12_2_5, VOLTS) {
 	0,       0.,
 	65536, 2.50
+}
+
+TM typedef AD12 AD12_2_5x_25 { convert VOLTS; text "%6.3lf"; }
+Calibration (AD12_2_5x_25, VOLTS) {
+	0,       0.,
+	65536, 10.
+}
+
+TM typedef AD12 AD12_2_5_RH { convert VOLTS; text "%6.1lf"; }
+Calibration (AD12_2_5_RH, VOLTS) {
+	0,       0.,
+	65536, 100.
 }
 
 TM typedef UINT Ct16 { collect x = sbrwa(x.address); }
