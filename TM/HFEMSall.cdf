@@ -21,19 +21,19 @@ nan-text -9999
 csv eddy1 3
 nan-text -9999
   0  time %.2lf
-  1  vCO2e1
-  2  vH2Oe1
+  1  vCO2e1  %.4lf
+  2  vH2Oe1  %.4lf
 
 csv eddy2 3
 nan-text -9999
   0  time %.2lf
-  1  vCO2e2
-  2  vH2Oe2
+  1  vCO2e2  %.4lf
+  2  vH2Oe2  %.4lf
 
 csv eddyO3 2
 nan-text -9999
   0  time %.2lf
-  1  vO3ed
+  1  vO3ed  %.4lf
 
 csv counts 4
 nan-text -9999
@@ -64,37 +64,37 @@ nan-text -9999
 
 csv flows 14
 nan-text -9999
-  1  FlowT
-  2  FlCO2p
-  3  FlNOx
-  4  FlO3_NOx
-  5  fcNO_NOx
-  6  fcNO2_NOx
-  7  FlNOy
-  8  fcNO_NOy
-  9  fcEff_NOy
-  10 fcZer_NOy
-  11 FlO3_NOy
-  12 fc_CO2e
-  13 FlCO
+  1  FlowT  %.4lf
+  2  FlCO2p  %.4lf
+  3  FlNOx  %.4lf
+  4  FlO3_NOx  %.4lf
+  5  fcNO_NOx  %.4lf
+  6  fcNO2_NOx  %.4lf
+  7  FlNOy  %.4lf
+  8  fcNO_NOy  %.4lf
+  9  fcEff_NOy  %.4lf
+  10 fcZer_NOy  %.4lf
+  11 FlO3_NOy  %.4lf
+  12 fc_CO2e  %.4lf
+  13 FlCO  %.4lf
 
 csv profile 4
 nan-text -9999
-  1  vCO2prf
-  2  vO3prf
-  3  vCO
+  1  vCO2prf  %.4lf
+  2  vO3prf  %.4lf
+  3  vCO  %.4lf
 
 csv radiation 10
 nan-text -9999
-  1  Rnet
-  2  PPFD_top
-  3  PPFD_mid
-  4  PPFD_gnd
-  5  PPFD_ref
-  6  PPFD_t
-  7  PPFD_d
-  8  Rnet_cal
-  9  PPFD_cal
+  1  Rnet  %.4lf
+  2  PPFD_top  %.4lf
+  3  PPFD_mid  %.4lf
+  4  PPFD_gnd  %.4lf
+  5  PPFD_ref  %.4lf
+  6  PPFD_t  %.4lf
+  7  PPFD_d  %.4lf
+  8  Rnet_cal  %.4lf
+  9  PPFD_cal  %.4lf
 
 csv RH 11
 nan-text -9999
