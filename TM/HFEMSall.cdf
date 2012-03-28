@@ -1,4 +1,5 @@
-csv sonic1 7 nan-text -9999
+csv sonic1 7
+nan-text -9999
   0  time %.3lf
   1  ueddy1
   2  veddy1
@@ -7,7 +8,8 @@ csv sonic1 7 nan-text -9999
   5  sdev_stale1
   6  sdrv_stale1
 
-csv sonic2 7 nan-text -9999
+csv sonic2 7
+nan-text -9999
   0  time %.3lf
   1  ueddy2
   2  veddy2
@@ -16,34 +18,40 @@ csv sonic2 7 nan-text -9999
   5 sdev_stale2
   6 sdrv_stale2
 
-csv eddy1 3 nan-text -9999
+csv eddy1 3
+nan-text -9999
   0  time %.2lf
   1  vCO2e1
   2  vH2Oe1
 
-csv eddy2 3 nan-text -9999
+csv eddy2 3
+nan-text -9999
   0  time %.2lf
   1  vCO2e2
   2  vH2Oe2
 
-csv eddyO3 2 nan-text -9999
+csv eddyO3 2
+nan-text -9999
   0  time %.2lf
   1  vO3ed
 
-csv counts 4 nan-text -9999
+csv counts 4
+nan-text -9999
   0  time %.3lf
   1  NOx 
   2  NOy 
   3  CtStat
 
-csv status 6 nan-text -9999
+csv status 6
+nan-text -9999
   1 DSt0 %3.0f
   2 DSt1 %3.0f
   3 DSt4 %3.0f
   4 DSt5 %3.0f
   5 Dst6 %3.0f
 
-csv pressures 10 nan-text -9999
+csv pressures 10
+nan-text -9999
   1  Pamb
   2  Pman
   3  PrCO2p
@@ -54,7 +62,8 @@ csv pressures 10 nan-text -9999
   8  PrO3e
   9  PrCO
 
-csv flows 14 nan-text -9999
+csv flows 14
+nan-text -9999
   1  FlowT
   2  FlCO2p
   3  FlNOx
@@ -69,12 +78,14 @@ csv flows 14 nan-text -9999
   12 fc_CO2e
   13 FlCO
 
-csv profile 4 nan-text -9999
+csv profile 4
+nan-text -9999
   1  vCO2prf
   2  vO3prf
   3  vCO
 
-csv radiation 10 nan-text -9999
+csv radiation 10
+nan-text -9999
   1  Rnet
   2  PPFD_top
   3  PPFD_mid
@@ -85,7 +96,8 @@ csv radiation 10 nan-text -9999
   8  Rnet_cal
   9  PPFD_cal
 
-csv RH 11 nan-text -9999
+csv RH 11
+nan-text -9999
   1  RH1
   2  RH2
   3  RH3
@@ -97,7 +109,8 @@ csv RH 11 nan-text -9999
   9  RH9
   10 RH10
 
-csv tair 12 nan-text -9999
+csv tair 12
+nan-text -9999
   1  Ta1
   2  Ta2
   3  Ta3
@@ -110,12 +123,14 @@ csv tair 12 nan-text -9999
   10 Ta10
   11 Tcal
 
-csv troom 3 nan-text -9999
+csv troom 3
+nan-text -9999
   1 Tr1
   2 Tr2
   3 Tr3
 
-csv tsoil 12 nan-text -9999
+csv tsoil 12
+nan-text -9999
   1  Ts1
   2  Ts2
   3  TS3
@@ -128,12 +143,14 @@ csv tsoil 12 nan-text -9999
   10 Ts10
   11 Ts11
 
-csv tcells 5 nan-text -9999
+csv tcells 5
+nan-text -9999
   1  T_MB
   2  TCO2e1
   3  TCO2e2
   4  TCO2p
 
-csv cpu 3 nan-text -9999
+csv cpu 3
+nan-text -9999
   1  CPU_Pct
   2  Disk
