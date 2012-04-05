@@ -3,7 +3,7 @@
 %}
 
 /* Output types */
-TM typedef double VOLTS { text "%4.2lf"; }
+TM typedef double VOLTS { text "%5.3lf"; }
 TM typedef unsigned char UCHAR { text "%3u"; }
 TM typedef   signed char SCHART { text "%4d"; }
 TM typedef unsigned char SCHAR { convert SCHART; text "%4d"; }

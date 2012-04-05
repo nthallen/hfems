@@ -47,8 +47,8 @@
 	Solenoid pCO2_smpl 92 93 0;	profile CO2 sample/cal  - on for cal
 	Solenoid pCO2_cal1 94 95 0;	profile CO2 lo standard
 	Solenoid pCO2_cal2 96 97 0;	profile CO2 med standard
-	Solenoid pCO2_cal3 98 99 0;	profile CO2 hi standard, but not working use for archive
-	Solenoid pCO2_cala 100 101 0;	profile CO2 surveilance standard use for hi
+	Solenoid pCO2_cal3 98 99 0;	profile CO2 hi standard, 
+	Solenoid pCO2_cala 100 101 0;	profile CO2 surveilance standard 
 	Solenoid pCO2_calR 102 103 0;	profile CO2 reference/zero standard
 	Solenoid Hub_sp1 104 105 0
 	Solenoid Hub_sp2 106 107 0

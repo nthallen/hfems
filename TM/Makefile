@@ -1,10 +1,10 @@
-# Makefile Generated Thu Mar 22 14:06:36 EDT 2012
+# Makefile Generated Thu Apr 05 17:43:07 UTC 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
 SRC=a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c types.tmc
 SRC+=HFEMS.tmc HFEMScol.tmc HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol
-SRC+=HFEMS.tma HFEMSeddy.cdf HFEMSext2.cdf
+SRC+=HFEMS.tma HFEMSall.cdf
 TOOL=HFEMS.spec Makefile
 SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
@@ -13,14 +13,12 @@ OBJ+=HFEMSsrvroui.c HFEMSsrvroui.o HFEMSdoit.dep HFEMStbl.tmc
 OBJ+=HFEMSdisp.cc HFEMSdispoui.c HFEMSdispoui.o HFEMSdisp.o
 OBJ+=HFEMStblnc.tmc HFEMSdispnc.cc HFEMSdispncoui.c HFEMSdispncoui.o
 OBJ+=HFEMSdispnc.o HFEMSalgoa.tmc HFEMSalgo.cc HFEMSalgooui.c
-OBJ+=HFEMSalgooui.o HFEMSalgo.o HFEMSeddyextcdf.oui HFEMSeddyext.tmc
-OBJ+=HFEMSeddyext.cc HFEMSeddyextoui.c HFEMSeddyextoui.o
-OBJ+=HFEMSeddyext.o HFEMSext2extcdf.oui HFEMSext2ext.tmc
-OBJ+=HFEMSext2ext.cc HFEMSext2extoui.c HFEMSext2extoui.o
-OBJ+=HFEMSext2ext.o HFEMSclt.o HFEMScltoui.c HFEMScltoui.o
-OBJ+=HFEMScltnc.o HFEMScltncoui.c HFEMScltncoui.o
+OBJ+=HFEMSalgooui.o HFEMSalgo.o HFEMSallextcdf.oui HFEMSallext.tmc
+OBJ+=HFEMSallext.cc HFEMSallextoui.c HFEMSallextoui.o HFEMSallext.o
+OBJ+=HFEMSclt.o HFEMScltoui.c HFEMScltoui.o HFEMScltnc.o
+OBJ+=HFEMScltncoui.c HFEMScltncoui.o
 TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
-TGT+=HFEMSalgo HFEMSeddyext HFEMSext2ext HFEMSclt HFEMScltnc
+TGT+=HFEMSalgo HFEMSallext HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft ../sonic/Sonic HFEMS.pcm tm.dac
 IDISTRIB=Experiment.config VERSION HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
@@ -73,12 +71,9 @@ HFEMS.sft : HFEMS.sol
 HFEMSalgo : HFEMSalgo.o HFEMSalgooui.o
 	$(LINK.normCXX) HFEMSalgo.o HFEMSalgooui.o -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMSalgooui.c
-HFEMSeddyext : HFEMSeddyext.o HFEMSeddyextoui.o
-	$(LINK.normCXX) HFEMSeddyext.o HFEMSeddyextoui.o -ltmpp -ltm -lnort
-	$(OUIUSE) HFEMSeddyextoui.c
-HFEMSext2ext : HFEMSext2ext.o HFEMSext2extoui.o
-	$(LINK.normCXX) HFEMSext2ext.o HFEMSext2extoui.o -ltmpp -ltm -lnort
-	$(OUIUSE) HFEMSext2extoui.c
+HFEMSallext : HFEMSallext.o HFEMSallextoui.o
+	$(LINK.normCXX) HFEMSallext.o HFEMSallextoui.o -ltmpp -ltm -lnort
+	$(OUIUSE) HFEMSallextoui.c
 HFEMSclt : HFEMSclt.o HFEMScltoui.o
 	$(LINK.normCXX) HFEMSclt.o HFEMScltoui.o -ltmph -lph -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMScltoui.c
@@ -126,26 +121,16 @@ HFEMSalgooui.c : $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSalgooui.o : HFEMSalgooui.c
 HFEMSalgo.o : HFEMSalgo.cc
-HFEMSeddyextcdf.oui : HFEMSeddy.cdf
-	$(EDF2OUI) HFEMSeddy.cdf
-HFEMSeddyext.tmc : HFEMSeddy.cdf
-	$(EDF2EXT) HFEMSeddy.cdf
-HFEMSeddyext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSeddyext.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSeddyext.tmc
-HFEMSeddyextoui.c : HFEMSeddyextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
-	$(OUI) HFEMSeddyextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
-HFEMSeddyextoui.o : HFEMSeddyextoui.c
-HFEMSeddyext.o : HFEMSeddyext.cc
-HFEMSext2extcdf.oui : HFEMSext2.cdf
-	$(EDF2OUI) HFEMSext2.cdf
-HFEMSext2ext.tmc : HFEMSext2.cdf
-	$(EDF2EXT) HFEMSext2.cdf
-HFEMSext2ext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSext2ext.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSext2ext.tmc
-HFEMSext2extoui.c : HFEMSext2extcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
-	$(OUI) HFEMSext2extcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
-HFEMSext2extoui.o : HFEMSext2extoui.c
-HFEMSext2ext.o : HFEMSext2ext.cc
+HFEMSallextcdf.oui : HFEMSall.cdf
+	$(EDF2OUI) HFEMSall.cdf
+HFEMSallext.tmc : HFEMSall.cdf
+	$(EDF2EXT) HFEMSall.cdf
+HFEMSallext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSallext.tmc
+	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSallext.tmc
+HFEMSallextoui.c : HFEMSallextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
+	$(OUI) HFEMSallextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
+HFEMSallextoui.o : HFEMSallextoui.c
+HFEMSallext.o : HFEMSallext.cc
 HFEMSclt.o : HFEMScmd.cc
 	$(COMPILE.clt) HFEMScmd.cc
 HFEMScltoui.c : $(OUIDIR)/kbdclt.oui $(OUIDIR)/msg.oui
