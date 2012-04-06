@@ -1,6 +1,6 @@
 csv sonic1 7
 nan-text -9999
-  0  time %.3lf
+  0  Time %.3lf
   1  ueddy1
   2  veddy1
   3  weddy1
@@ -10,7 +10,7 @@ nan-text -9999
 
 csv sonic2 7
 nan-text -9999
-  0  time %.3lf
+  0  Time %.3lf
   1  ueddy2
   2  veddy2
   3  weddy2
@@ -20,31 +20,31 @@ nan-text -9999
 
 csv eddy1 3
 nan-text -9999
-  0  time %.2lf
+  0  Time %.2lf
   1  vCO2e1  %.4lf
   2  vH2Oe1  %.4lf
 
 csv eddy2 3
 nan-text -9999
-  0  time %.2lf
+  0  Time %.2lf
   1  vCO2e2  %.4lf
   2  vH2Oe2  %.4lf
 
 csv eddyO3 2
 nan-text -9999
-  0  time %.2lf
+  0  Time %.2lf
   1  vO3ed  %.4lf
 
 csv counts 4
 nan-text -9999
-  0  time %.3lf
+  0  Time %.3lf
   1  NOx 
   2  NOy 
   3  CtStat
 
 csv status 6
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1 DSt0 %3.0f
   2 DSt1 %3.0f
   3 DSt4 %3.0f
@@ -53,7 +53,7 @@ nan-text -9999
 
 csv pressures 10
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  Pamb
   2  Pman
   3  PrCO2p
@@ -64,9 +64,9 @@ nan-text -9999
   8  PrO3e
   9  PrCO
 
-csv flows 14
+csv flows 16
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  FlowT  %.4lf
   2  FlCO2p  %.4lf
   3  FlNOx  %.4lf
@@ -85,14 +85,14 @@ nan-text -9999
 
 csv profile 4
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  vCO2prf  %.4lf
   2  vO3prf  %.4lf
   3  vCO  %.4lf
 
 csv radiation 10
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  Rnet  %.4lf
   2  PPFD_top  %.4lf
   3  PPFD_mid  %.4lf
@@ -105,7 +105,7 @@ nan-text -9999
 
 csv RH 11
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  RH1
   2  RH2
   3  RH3
@@ -119,7 +119,7 @@ nan-text -9999
 
 csv tair 12
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  Ta1
   2  Ta2
   3  Ta3
@@ -134,14 +134,14 @@ nan-text -9999
 
 csv troom 3
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1 Tr1
   2 Tr2
   3 Tr3
 
 csv tsoil 12
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  Ts1
   2  Ts2
   3  TS3
@@ -156,7 +156,7 @@ nan-text -9999
 
 csv tcells 5
 nan-text -9999
-  0 time %.1lf
+  0 Time %.1lf
   1  T_MB
   2  TCO2e1
   3  TCO2e2
