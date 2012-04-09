@@ -1,0 +1,89 @@
+#! /bin/sh
+# do some interactive prompting for information here
+# only gets executed when manually restarting
+cd /home/hfems
+# check for space left
+fs=`df |awk '{print $5}'`
+echo $fs space left on disk
+if test $fs -lt 160000; then
+echo make more room!
+stop
+fi
+echo "Are you reading flowmeters?"
+read ans
+if test $ans = y; then
+# record flowmeter offsets
+# create a log file of important data
+echo "flowmeter offsets recorded on `date` " > fm_offsets.dat
+echo "************************** Fill in the log file now ***********"
+echo "enter your name "
+read oper
+echo "checked by $oper " >> fm_offsets.dat
+echo "enter some flow zero readings  "
+echo "if youve read only some of the flow offsets, "
+echo "then enter 0's for the flows you havent read"
+echo "FlowT "
+read FlTz
+echo "$FlTz is FlowT zero" >> fm_offsets.dat
+echo "Flow4 "
+read Fl4z
+echo "$Fl4z is FlNOy zero" >> fm_offsets.dat
+echo "FlowE aka pbeck"
+read FlEz
+echo "$FlEz is FlowE zero" >> fm_offsets.dat
+echo "FlowX aka s1201"
+read FlXz
+echo "$FlXz is FlNOx zero" >> fm_offsets.dat
+echo "FlowCO2 aka s0801"
+read FlCz
+echo "$FlCz is FlCO2 zero" >> fm_offsets.dat
+#
+echo "NOTES" >> fm_offsets.dat
+echo "Type any comments and end with ctrl D"
+echo "Edit the  log file now to check the entries"
+echo " and make any corrections"
+vi fm_offsets.dat
+# echo "remember, you can manually edit fm_offsets.dat during autoruns"
+# echo "to update it with new values that will be included in next data save"
+#echo " suspend logging when checking the zeros"
+#
+fi
+
+# check about new standards
+echo "did any calibration cylinders get changed? (y/n)"
+read ans
+if test $ans = y; then
+echo how many
+read ncyl
+nn=0
+while test $nn -lt $ncyl
+	do
+	echo "What gas"
+	read gas
+	echo "what cylinder #"
+	read id
+	echo "What concentration"
+	read conc
+	date "+%y.%j" >! ondate
+	echo "$gas   $id   $conc `cat ondate`" >> /home/hfems/standards.record
+	let nn=$nn+1
+	done
+	vi /home/hfems/standards.record
+	#cp /home/hfems/standards.record $date.$run
+	tail -$ncyl /home/hfems/standards.record >! new.stds
+	# set a flag to alert the saverun script
+	date +%y%m%d > standards.new
+fi
+# now proceed with the regular HFEMSdoit
+# HFEMSdoit runs continually until logging is manually stopped
+
+while true; do
+  date +%y%m%d > start_date
+  date +%j > start_jdate
+  HFEMSdoit
+  [ ! -f /home/hfems/saverun.log ] && break;
+  # call the autosave job to move the data files and create a logfile 
+  nice -2 reduce 
+  echo "0 HFEMSloop has initiated nightime saverun" >>/home/hfems/report.queue
+done
+echo "HFEMSloop exiting: no saverun.log"
