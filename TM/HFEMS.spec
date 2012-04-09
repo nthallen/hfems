@@ -10,7 +10,8 @@ cmdbase = /usr/local/share/huarp/getcon.cmd
 
 SCRIPT = interact 
 SCRIPT = HFEMS.dccc
-DISTRIB = HFEMS.sft ../sonic/Sonic HFEMS_autorun
+DISTRIB = HFEMS.sft ../sonic/Sonic 
+IDISTRIB = HFEMS_autorun
 
 SRC = a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c 
 #SRC = timeout.c timeoutoui.c devwatch.c devwatch.h devwatch.oui
