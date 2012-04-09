@@ -83,7 +83,7 @@ while true; do
   HFEMSdoit
   [ ! -f /home/hfems/saverun.log ] && break;
   # call the autosave job to move the data files and create a logfile 
-  nice -2 reduce 
+  reduce 
   echo "0 HFEMSloop has initiated nightime saverun" >>/home/hfems/report.queue
 done
 echo "HFEMSloop exiting: no saverun.log"
