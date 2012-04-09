@@ -2,6 +2,10 @@
 # do some interactive prompting for information here
 # only gets executed when manually restarting
 cd /home/hfems
+# Use the value of a command line argument to choose whether or not
+# to do the dialog section
+# 
+if test $1=local;then
 # check for space left
 fs=`df |awk '{print $5}'`
 echo $fs space left on disk
@@ -74,13 +78,14 @@ while test $nn -lt $ncyl
 	# set a flag to alert the saverun script
 	date +%y%m%d > standards.new
 fi
+fi
 # now proceed with the regular HFEMSdoit
 # HFEMSdoit runs continually until logging is manually stopped
 
 while true; do
   date +%y%m%d > start_date
   date +%j > start_jdate
-  HFEMSdoit
+  HFEMSdoit -s
   [ ! -f /home/hfems/saverun.log ] && break;
   # call the autosave job to move the data files and create a logfile 
   reduce 
