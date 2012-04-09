@@ -107,13 +107,13 @@ DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
 
 ; redefine SolSt values if we need them
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
-	   C:10 N:20 E:30 F:40 Z:50 S:60
+	   C:10 N:20 E:30 P:40 Z:50 S:60 L:70 M:80
 	   a:51 b:11 c:21 d:22 e:2 f:13 g:33 h:34 i:4 j:5
 	   k:25 l:36 m:16 n:17 o:27 p:28 q:8 }
 
      Resolution = 60/1	; One minute resolution
-; SolSt:	aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
 routine Sample {
+SolSt:	       aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
 Lvl1:          OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:          ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:          ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
@@ -158,8 +158,8 @@ fcEff_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
-; SolSt: CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:^
 routine Ecal{
+SolSt:       EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:^
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:       __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -204,8 +204,8 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
-;     SolSt: CC:CC:CC:CC:CC:CC:CC:CC:CC:^
 routine prf_eff { ; finishes the NOy eff, and profile CO2 cal
+SolSt:      PP:PP:PP:PP:PP:PP:PP:PP:PP:^
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:^
 Lvl3:       __:__:__:__:__:__:__:__:__:^
@@ -250,8 +250,8 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:^ 
 }
 
-; SolSt:     CC:CC:CC:CC:CC:CC:CC:CC:CC:^
 routine Cal {
+SolSt:     LL:LL:LL:LL:LL:LL:LL:LL:LL:^
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:^
 Lvl3:       __:__:__:__:__:__:__:__:__:^
@@ -296,8 +296,8 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:^ 
 }
 
-; SolSt:	SSSS:SS:^
 routine closeout { ; end with CO and CO2 zeros
+SolSt:	SSSS:SS:^
 Lvl1:		OOOO:OO:^
 Lvl2:		____:__:^
 Lvl3:		____:__:^
@@ -343,6 +343,7 @@ fcZer_NOy: 	____:__:^
 }
 
 Mode 0 { ; Stop mode
+SolSt: 1
   Lvl1:  O
   Lvl2:  _
   Lvl3:  _
