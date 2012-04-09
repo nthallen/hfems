@@ -13,17 +13,17 @@ State Initialize {
         > Set FlCO2p setpoint 2.
         > Set PrCO2e1 setpoint 5.0
         > Set PrCO2e2 setpoint 5.5
-        > Set PrCO setpoint 5.0
+#        > Set PrCO setpoint 5.0
         > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
         > Set fc_CO2e setpoint 0
         > Set fcNO_NOy setpoint 0
         > Set fcEff_NOy setpoint 0
         > Set fcZer_NOy setpoint 0
-        > Set FlNOx setpoint 4.5
-        > Set FlNOy setpoint 4.5
+        > Set FlNOx setpoint 0
+        > Set FlNOy setpoint 0
         > Set PrO3e setpoint 0
-        > Set FlCO setpoint 3.0
+        > Set FlCO setpoint 2.5
       +2 > Soldrv Select Mode 0
 }
 State RunMode {
