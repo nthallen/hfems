@@ -24,9 +24,10 @@ State Initialize {
         > Set FlNOy setpoint 0
         > Set PrO3e setpoint 0
         > Set FlCO setpoint 2.5
+	+2 Validate RunMode;
 }
 State RunMode {
-        +2 > Soldrv Select Mode 0
+        > Soldrv Select Mode 0
 	+5:00 > Soldrv Select Mode 3
 	depending on (1 Hz) {
             int cur_day;
