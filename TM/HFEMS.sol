@@ -85,12 +85,6 @@
 ; during the calibration cycle
 ; system pressure and flows will be set by commands in the algorithm
 ;jwm - Oct 5 2011
-;DtoA Pman 0xC60   
-;DtoA PrCO2p 0xC62   
-;DtoA FlCO2p 0xC64   
-;DtoA PrCO2e1 0xC66   
-;DtoA PrCO2e2 0xC68  
-;DtoA PrCO 0xC6A  
 ;set points defined based on 0-4096 range
 DtoA fcNO_NOx 0xC6C   {_:0 L:820 M:2048 H:3280}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:3280}
@@ -98,12 +92,6 @@ DtoA fc_CO2e 0xCE0  {_:0 L:820 M:2048 H:3280}
 DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:3280}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:3280}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
-;DtoA FlNOx 0xCE8  
-;DtoA FlNOy 0xCEA  
-;DtoA PrO3e 0xCEC  
-;DtoA FlCO 0xCEE  
-
-; last 4 setpoints are auxilliary and are manual control
 
 ; redefine SolSt values if we need them
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
