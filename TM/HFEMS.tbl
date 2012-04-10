@@ -24,7 +24,7 @@ Eddy{
   vCO2e1: (vCO2e1,5);
   vH2Oe1: (vH2Oe1,5);
   vCO2e2: (vCO2e2,5);
-  vH2Oe2: (vCO2e2,5);
+  vH2Oe2: (vH2Oe2,5);
   vO3ed:  (vO3ed,5);
 }
 Profile{
