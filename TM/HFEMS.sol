@@ -192,7 +192,7 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
-routine prf_eff { ; finishes the NOy eff, and profile CO2 cal
+routine prf_eff { ; finishes the NOy eff, and profile CO2 cal (H,M,L)
 SolSt:      PP:PP:PP:PP:PP:PP:PP:PP:PP:^
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:^
@@ -227,8 +227,8 @@ Shutter:     __:__:__:__:__:__:__:__:__:^
 pCO2_smpl:   OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 pCO2_cal1:   __:__:__:__:__:__:OO:OO:OO:^
 pCO2_cal2:   __:__:__:OO:OO:OO:__:__:__:^
-pCO2_cal3:   __:__:__:__:__:__:__:__:__:^
-pCO2_cala:   OO:OO:OO:__:__:__:__:__:__:^
+pCO2_cal3:   OO:OO:OO:__:__:__:__:__:__:^
+pCO2_cala:   __:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:^
 fcNO_NOx:    __:__:__:__:__:__:__:__:__:^ 
 fcNO2_NOx:   MM:MM:__:__:__:__:__:__:__:^ 
