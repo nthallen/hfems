@@ -5,6 +5,11 @@ cd /home/hfems
 # Use the value of a command line argument to choose whether or not
 # to do the dialog section
 # 
+function autolog {
+  now=`date +"%D %H:%M:%S %Z"`
+  echo "$now: $*" >>/home/hfems/autorun.log
+  echo "$now: $*"
+}
 if test $1=local;then
 # check for space left
 fs=`df |awk '{print $5}'`
@@ -83,12 +88,14 @@ fi
 # HFEMSdoit runs continually until logging is manually stopped
 
 while true; do
-  date +%y%m%d > start_date
-  date +%j > start_jdate
+  autolog Starting HFEMSdoit
   HFEMSdoit 
   [ ! -f /home/hfems/saverun.log ] && break;
   # call the autosave job to move the data files and create a logfile 
+  autolog Reduce completed
   reduce 
   echo "0 HFEMSloop has initiated nightime saverun" >>/home/hfems/report.queue
+  autolog Reduce completed
 done
+autolog "HFEMSloop exiting: no saverun.log"
 echo "HFEMSloop exiting: no saverun.log"
