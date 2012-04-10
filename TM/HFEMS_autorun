@@ -89,7 +89,7 @@ fi
 
 while true; do
   autolog Starting HFEMSdoit
-  HFEMSdoit 
+  /home/hfems/HFEMSdoit 
   [ ! -f /home/hfems/saverun.log ] && break;
   # call the autosave job to move the data files and create a logfile 
   autolog Reduce completed
