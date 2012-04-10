@@ -9,12 +9,12 @@ State Initialize {
 # modify these initial set points as needed to tune the system
 # voltages adjusted match up with system capacity as of 4/5
      +1 > Set Pman setpoint 5.5
+        > Set FlCO setpoint 3.0
+#       > Set PrCO setpoint 5.0
         > Set PrCO2p setpoint 4.5
         > Set FlCO2p setpoint 2.
         > Set PrCO2e1 setpoint 5.0
         > Set PrCO2e2 setpoint 5.5
-        > Set FlCO setpoint 2.5
-#        > Set PrCO setpoint 5.0
         > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
         > Set fc_CO2e setpoint 0
@@ -28,6 +28,7 @@ State Initialize {
 }
 State RunMode {
         > Soldrv Select Mode 0
+        > Set FlCO setpoint 3.0
 	+5:00 > Soldrv Select Mode 3
 	depending on (1 Hz) {
             int cur_day;
