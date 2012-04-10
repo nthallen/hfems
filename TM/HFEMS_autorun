@@ -12,12 +12,6 @@ function autolog {
 }
 if test $1=local;then
 # check for space left
-fs=`df |awk '{print $5}'`
-echo $fs space left on disk
-if test $fs -lt 160000; then
-echo make more room!
-stop
-fi
 echo "Are you reading flowmeters?"
 read ans
 if test $ans = y; then
