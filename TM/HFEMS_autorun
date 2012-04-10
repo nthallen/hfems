@@ -85,7 +85,7 @@ fi
 while true; do
   date +%y%m%d > start_date
   date +%j > start_jdate
-  HFEMSdoit -s
+  HFEMSdoit 
   [ ! -f /home/hfems/saverun.log ] && break;
   # call the autosave job to move the data files and create a logfile 
   reduce 
