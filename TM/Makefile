@@ -1,4 +1,4 @@
-# Makefile Generated Thu Apr 05 17:43:07 UTC 2012
+# Makefile Generated Mon Apr 09 20:38:16 UTC 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
@@ -20,7 +20,7 @@ OBJ+=HFEMScltncoui.c HFEMScltncoui.o
 TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
 TGT+=HFEMSalgo HFEMSallext HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft ../sonic/Sonic HFEMS.pcm tm.dac
-IDISTRIB=Experiment.config VERSION HFEMSdoit
+IDISTRIB=Experiment.config VERSION HFEMS_autorun HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
 SRCDIST+=/usr/local/share/huarp/cpu_usage.tmc
 SRCDIST+=/usr/local/share/huarp/tmdf.tmc
