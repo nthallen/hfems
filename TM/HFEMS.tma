@@ -27,6 +27,13 @@ State Initialize {
 	+2 Validate RunMode;
 }
 State RunMode {
+        > Set Pman setpoint 5.5
+        > Set PrCO2p setpoint 4.5
+        > Set FlCO setpoint 3.0
+#       > Set PrCO setpoint 5.0
+        > Set FlCO2p setpoint 2.
+        > Set PrCO2e1 setpoint 5.0
+        > Set PrCO2e2 setpoint 5.5
         > Soldrv Select Mode 0
         > Set Pman setpoint 5.5
         > Set PrCO2p setpoint 4.5
