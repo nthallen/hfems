@@ -10,11 +10,11 @@ State Initialize {
      +1 > Set Pman setpoint 5.5
         > Set PrCO2p setpoint 4.5
         > Set FlCO2p setpoint 2.
-     +2 > Set FlCO setpoint 3.0
+        > Set FlCO setpoint 3.0
         > Set PrCO setpoint 5.0
-     +3 > Set PrCO2e1 setpoint 5.0
+        > Set PrCO2e1 setpoint 5.0
         > Set PrCO2e2 setpoint 5.5
-     +4 > Set fcNO_NOx setpoint 0
+        > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
         > Set fc_CO2e setpoint 0
         > Set fcNO_NOy setpoint 0
@@ -23,11 +23,35 @@ State Initialize {
         > Set FlNOx setpoint 0
         > Set FlNOy setpoint 0
         > Set PrO3e setpoint 0
-     +5 > telemetry start
-	+6 Validate RunMode;
+        > telemetry start
+	  Validate RunMode;
 }
 State RunMode {
-	+5:00 > Soldrv Select Mode 3
+	> Soldrv select Mode 0
+# repeat the flow and pressure setpoints one at a time
+        +20 > Set Pman setpoint 5.5
+            > Set Pman setpoint 5.5
+            > Set Pman setpoint 5.5
+        +25 > Set PrCO2p setpoint 4.5
+            > Set PrCO2p setpoint 4.5
+            > Set PrCO2p setpoint 4.5
+        +30 > Set FlCO2p setpoint 2.
+            > Set FlCO2p setpoint 2.
+            > Set FlCO2p setpoint 2.
+        +35 > Set FlCO setpoint 3.0
+            > Set FlCO setpoint 3.0
+            > Set FlCO setpoint 3.0
+        +40 > Set PrCO setpoint 5.0
+            > Set PrCO setpoint 5.0
+            > Set PrCO setpoint 5.0
+        +45 > Set PrCO2e1 setpoint 5.0
+            > Set PrCO2e1 setpoint 5.0
+            > Set PrCO2e1 setpoint 5.0
+        +50 > Set PrCO2e2 setpoint 5.5
+            > Set PrCO2e2 setpoint 5.5
+            > Set PrCO2e2 setpoint 5.5
+# wait for 5 minutes to stabilize, then go into calibration mode
+  +5:00 > Soldrv Select Mode 3
 	depending on (1 Hz) {
             int cur_day;
             cur_day = (itime()-(5*3600))/86400L;
