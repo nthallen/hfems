@@ -27,7 +27,7 @@ TM 4 Hz AD12_Biplrx2 vH2Oe1;
 TM 4 Hz AD12_Biplrx2 vCO2e2;
 TM 4 Hz AD12_Biplrx2 vH2Oe2;
 TM 4 Hz AD12_2_5 vO3ed;
-TM 1/2 Hz AD12_Biplrx2 vCO2prf;
+TM 1/2 Hz AD12_Biplr vCO2prf;
 TM 1/2 Hz AD12_Biplr vO3prf;
 TM 1/2 Hz AD12_Biplr vCO;
 TM 1/2 Hz AD12_2_5 Ta1;
