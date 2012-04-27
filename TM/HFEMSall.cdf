@@ -120,39 +120,39 @@ nan-text -9999
 csv tair 12
 nan-text -9999
   0 Time %.1lf
-  1  Ta1
-  2  Ta2
-  3  Ta3
-  4  Ta4
-  5  Ta5
-  6  Ta6
-  7  Ta7
-  8  Ta8
-  9  Ta9
-  10 Ta10
-  11 Tcal
+  1  Ta1 %.4lf
+  2  Ta2 %.4lf
+  3  Ta3 %.4lf
+  4  Ta4 %.4lf
+  5  Ta5 %.4lf
+  6  Ta6 %.4lf
+  7  Ta7 %.4lf
+  8  Ta8 %.4lf
+  9  Ta9 %.4lf
+  10 Ta10 %.4lf
+  11 Tcal %.4lf
 
 csv troom 4
 nan-text -9999
   0 Time %.1lf
-  1 Tr1
-  2 Tr2
-  3 Tr3
+  1 Tr1 %.4lf
+  2 Tr2 %.4lf
+  3 Tr3 %.4lf
 
 csv tsoil 12
 nan-text -9999
   0 Time %.1lf
-  1  Ts1
-  2  Ts2
-  3  TS3
-  4  Ts4
-  5  Ts5
-  6  Ts6
-  7  Ts7
-  8  TS8
-  9  TS9
-  10 Ts10
-  11 Ts11
+  1  Ts1 %.4lf
+  2  Ts2 %.4lf
+  3  TS3 %.4lf
+  4  Ts4 %.4lf
+  5  Ts5 %.4lf
+  6  Ts6 %.4lf
+  7  Ts7 %.4lf
+  8  TS8 %.4lf
+  9  TS9 %.4lf
+  10 Ts10 %.4lf
+  11 Ts11 %.4lf
 
 csv tcells 5
 nan-text -9999
