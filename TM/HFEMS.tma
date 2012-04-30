@@ -5,8 +5,7 @@
 %}
 State Initialize {
 
-# modify these initial set points as needed to tune the system
-# voltages adjusted match up with system capacity as of 4/5
+        > telemetry start
      +2 > Soldrv select Mode 0
         > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
@@ -24,7 +23,6 @@ State Initialize {
         > Set PrCO setpoint 5.0
         > Set PrCO2e1 setpoint 5.0
         > Set PrCO2e2 setpoint 5.5
-        > telemetry start
 	  Validate RunMode;
 }
 State RunMode {
