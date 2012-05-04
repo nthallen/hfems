@@ -19,8 +19,8 @@ State Initialize {
      +5 > Set Pman setpoint 5.5
         > Set PrCO2p setpoint 4.5
         > Set FlCO2p setpoint 2.
-        > Set FlCO setpoint 2.1
-        > Set PrCO setpoint 6.1
+        > Set FlCO setpoint 2.25
+        > Set PrCO setpoint 5.75
         > Set PrCO2e1 setpoint 5.0
         > Set PrCO2e2 setpoint 5.5
 	  Validate RunMode;
@@ -36,12 +36,12 @@ State RunMode {
         +30 > Set FlCO2p setpoint 2.
             > Set FlCO2p setpoint 2.
             > Set FlCO2p setpoint 2.
-        +35 > Set FlCO setpoint 2.1
-            > Set FlCO setpoint 2.1
-            > Set FlCO setpoint 2.1
-        +40 > Set PrCO setpoint 6.1
-            > Set PrCO setpoint 6.1
-            > Set PrCO setpoint 6.1
+        +35 > Set FlCO setpoint 2.25
+            > Set FlCO setpoint 2.25
+            > Set FlCO setpoint 2.25
+        +40 > Set PrCO setpoint 5.75
+            > Set PrCO setpoint 5.75
+            > Set PrCO setpoint 5.75
         +45 > Set PrCO2e1 setpoint 5.0
             > Set PrCO2e1 setpoint 5.0
             > Set PrCO2e1 setpoint 5.0
