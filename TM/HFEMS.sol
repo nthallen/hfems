@@ -95,7 +95,7 @@ DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
 
 ; redefine SolSt values if we need them
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
-	   C:10 N:20 E:30 P:40 Z:50 S:60 L:70 M:80
+	   A:80 C:10 N:20 E:30 P:40 Z:50 S:60 L:70 
 	   a:51 b:11 c:21 d:22 e:2 f:13 g:33 h:34 i:4 j:5
 	   k:25 l:36 m:16 n:17 o:27 p:28 q:8 }
 
@@ -284,8 +284,54 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:^ 
 }
 
+routine Archive_cal { ; does the CO2 archive calibration
+SolSt:       AA:AA:^
+Lvl1: 	     OO:OO:^
+Lvl2: 	     __:__:^
+Lvl3:        __:__:^
+Lvl4:        __:__:^
+Lvl5:	     __:__:^
+Lvl6:	     __:__:^
+Lvl7:	     __:__:^
+Lvl8:        __:__:^
+eCO2cal:     __:__:^
+CO2add1:     __:__:^
+CO2add2:     __:__:^
+CO_smpl:     __:__:^
+CO_cal1:     __:__:^
+CO_cal2:     __:__:^
+CO_zer:      __:__:^
+eff_Hg:      __:__:^
+zNOy_Hg:     __:__:^
+NO_NOy_on:   __:__:^
+NPN_on:      __:__:^
+NO_NOy_add:  __:__:^
+NPN_add:     __:__:^
+NOy_eff_add: __:__:^
+zNOy_add:    __:__:^
+zNOx_Hg:     __:__:^
+NO_NOx_on:   __:__:^
+NO2_on:      __:__:^
+zNOx_add:    __:__:^
+NO_NOx_add:  __:__:^
+NO2_add:     __:__:^
+Shutter:     __:__:^
+pCO2_smpl:   OO:OO:^
+pCO2_cal1:   __:__:^
+pCO2_cal2:   __:__:^
+pCO2_cal3:   __:__:^
+pCO2_cala:   OO:OO:^
+pCO2_calR:   __:__:^
+fcNO_NOx:    __:__:^ 
+fcNO2_NOx:   __:__:^ 
+fc_CO2e:     __:__:^ 
+fcNO_NOy:    __:__:^ 
+fcEff_NOy:   __:__:^ 
+fcZer_NOy:   __:__:^ 
+}
+
 routine closeout { ; end with CO and CO2 zeros
-SolSt:	SSSS:SS:^
+SolSt:	        SSSS:SS:^
 Lvl1:		OOOO:OO:^
 Lvl2:		____:__:^
 Lvl3:		____:__:^
@@ -415,3 +461,7 @@ Mode 7 { ; abbreviated termination mode
      Select 0 ; stopping mode
 }
 
+Mode 8 { ; shutdown mode including a CO2 archive calibration
+	Archive_cal
+	Select 7
+}
