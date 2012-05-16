@@ -158,8 +158,10 @@ Temp {
 MFCtr {
   +-+;
   VGlue 0+1;
+  Drift:  (TDrift,7);
   CPU:    (CPU_Pct,3) %;
   Disk:   (Disk,5) %;
+  >(flttime,9)<;
   >{ MFCtr:  (MFCtr,5) }
 }
 

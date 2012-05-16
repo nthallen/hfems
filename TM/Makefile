@@ -1,10 +1,10 @@
-# Makefile Generated Mon Apr 09 20:38:16 UTC 2012
+# Makefile Generated Wed May 16 13:19:56 EDT 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
 SRC=a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c types.tmc
-SRC+=HFEMS.tmc HFEMScol.tmc HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol
-SRC+=HFEMS.tma HFEMSall.cdf
+SRC+=HFEMS.tmc tdrift.tmc HFEMScol.tmc tdrift_col.tmc HFEMS.cmd
+SRC+=HFEMS.doit HFEMS.tbl HFEMS.sol HFEMS.tma HFEMSall.cdf
 TOOL=HFEMS.spec Makefile
 SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
@@ -21,15 +21,21 @@ TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
 TGT+=HFEMSalgo HFEMSallext HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft ../sonic/Sonic HFEMS.pcm tm.dac
 IDISTRIB=Experiment.config VERSION HFEMS_autorun HFEMSdoit
-SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc
+SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc tdrift.tmc
 SRCDIST+=/usr/local/share/huarp/cpu_usage.tmc
 SRCDIST+=/usr/local/share/huarp/tmdf.tmc
+SRCDIST+=/usr/local/share/huarp/flttime.tmc
 NONRCS=
-TMCBASE=types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc
+TMCBASE=types.tmc HFEMS.tmc tdrift.tmc
+TMCBASE+=/usr/local/share/huarp/cpu_usage.tmc
 TMCBASE+=/usr/local/share/huarp/tmdf.tmc
+TMCBASE+=/usr/local/share/huarp/flttime.tmc
 CMDBASE=/usr/local/share/huarp/root.cmd HFEMS.cmd
 CMDBASE+=/usr/local/share/huarp/phrtg.cmd
 CMDBASE+=/usr/local/share/huarp/getcon.cmd
+COLBASE=
+SWSBASE=
+QCLIBASE=
 RCS=$(SRC) $(TOOL) $(SCRIPT)
 SOURCE=$(RCS) $(NONRCS)
 OBJECT=$(OBJ) *.err
@@ -38,11 +44,11 @@ DSTRB=$(TGT) $(DISTRIB) $(SCRIPT)
 TGTDIR= $(TGTNODE)/home/hfems
 include /usr/local/share/huarp/appgen.mk
 
-all : Makefile $(TGT)
+all : Makefile $(TGT) .cvsignore
 Makefile : HFEMS.spec
 	appgen HFEMS.spec
 VERSION=`cat VERSION`
-extdistribution : $(DSTRB) $(SRCDIST)
+extdistribution : $(DSTRB) $(SRCDIST) VERSION
 	@[ -d $(TGTDIR)/bin ] || mkdir $(TGTDIR)/bin
 	@[ -d $(TGTDIR)/bin/$(VERSION) ] || mkdir $(TGTDIR)/bin/$(VERSION)
 	@[ -d  $(TGTDIR)/bin/$(VERSION)/Base ] || mkdir $(TGTDIR)/bin/$(VERSION)/Base
@@ -80,8 +86,8 @@ HFEMSclt : HFEMSclt.o HFEMScltoui.o
 HFEMScltnc : HFEMScltnc.o HFEMScltncoui.o
 	$(LINK.normCXX) HFEMScltnc.o HFEMScltncoui.o -ltmnc -lncurses -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMScltncoui.c
-HFEMScol.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMScol.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
-	$(TMC.col) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMScol.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
+HFEMScol.cc : types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMScol.tmc tdrift_col.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
+	$(TMC.col) types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMScol.tmc tdrift_col.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc
 HFEMScoloui.c : $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 HFEMScoloui.o : HFEMScoloui.c
@@ -97,17 +103,15 @@ HFEMSdoit.dep : HFEMS.doit
 	mkdoit3 -M -o HFEMSdoit  HFEMS.doit
 -include HFEMSdoit.dep
 HFEMStbl.tmc : HFEMS.tbl
-	$(TABLE) HFEMS.tbl
-HFEMSdisp.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStbl.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStbl.tmc
+HFEMSdisp.cc : types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMStbl.tmc
+	$(TMC) types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMStbl.tmc
 HFEMSdispoui.c : $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSdispoui.o : HFEMSdispoui.c
 HFEMSdisp.o : HFEMSdisp.cc
 HFEMStblnc.tmc : HFEMS.tbl
-	$(NCTABLE) HFEMS.tbl
-HFEMSdispnc.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStblnc.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMStblnc.tmc
+HFEMSdispnc.cc : types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMStblnc.tmc
+	$(TMC) types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMStblnc.tmc
 HFEMSdispncoui.c : $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/nctable.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSdispncoui.o : HFEMSdispncoui.c
@@ -115,8 +119,8 @@ HFEMSdispnc.o : HFEMSdispnc.cc
 HFEMSalgoa.tmc : HFEMS.tma HFEMSsrvr
 	$(SERVER) ./HFEMSsrvr
 	$(TMCALGO) -V "`./HFEMSsrvr -R`" HFEMS.tma
-HFEMSalgo.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSalgoa.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSalgoa.tmc
+HFEMSalgo.cc : types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMSalgoa.tmc
+	$(TMC) types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMSalgoa.tmc
 HFEMSalgooui.c : $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) $(OUIDIR)/tma.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSalgooui.o : HFEMSalgooui.c
@@ -125,8 +129,8 @@ HFEMSallextcdf.oui : HFEMSall.cdf
 	$(EDF2OUI) HFEMSall.cdf
 HFEMSallext.tmc : HFEMSall.cdf
 	$(EDF2EXT) HFEMSall.cdf
-HFEMSallext.cc : types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSallext.tmc
-	$(TMC) types.tmc HFEMS.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc HFEMSallext.tmc
+HFEMSallext.cc : types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMSallext.tmc
+	$(TMC) types.tmc HFEMS.tmc tdrift.tmc /usr/local/share/huarp/cpu_usage.tmc /usr/local/share/huarp/tmdf.tmc /usr/local/share/huarp/flttime.tmc HFEMSallext.tmc
 HFEMSallextoui.c : HFEMSallextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 	$(OUI) HFEMSallextcdf.oui $(OUIDIR)/dc.oui $(OUIDIR)/msg.oui
 HFEMSallextoui.o : HFEMSallextoui.c
@@ -146,8 +150,8 @@ tidy :
 	rm -f $(OBJECT)
 clean : tidy
 	rm -f $(TARGET)
-.cvsignore :
-	@for i in Makefile '.B4*' $(OBJECT) $(TARGET); do echo "$$i"; done >.cvsignore
+.cvsignore : Makefile
+	@for i in $(OBJECT) $(TARGET); do echo "$$i"; done >.cvsignore
 CPPFLAGS+=-I../sonic
 COLFLAGS=-Haddress.h
 address.h : HFEMScol.cc

@@ -163,7 +163,8 @@ nan-text -9999
   3  TCO2e2
   4  TCO2p
 
-csv cpu 3
+csv cpu 4
 nan-text -9999
   1  CPU_Pct
   2  Disk
+  3  TDrift

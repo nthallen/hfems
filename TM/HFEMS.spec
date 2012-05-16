@@ -1,7 +1,9 @@
 tmcbase = types.tmc
 tmcbase = HFEMS.tmc
+tmcbase = tdrift.tmc
 tmcbase = /usr/local/share/huarp/cpu_usage.tmc
 tmcbase = /usr/local/share/huarp/tmdf.tmc
+tmcbase = /usr/local/share/huarp/flttime.tmc
 
 cmdbase = /usr/local/share/huarp/root.cmd
 cmdbase = HFEMS.cmd
@@ -24,7 +26,7 @@ SRC = a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c
 TGTDIR = $(TGTNODE)/home/hfems
 OBJ = address.h
 
-HFEMScol : HFEMScol.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc -lsubbus
+HFEMScol : HFEMScol.tmc tdrift_col.tmc /usr/local/share/huarp/cpu_usage_col.tmc /usr/local/share/huarp/tmdf_col.tmc -lsubbus
 HFEMSsrvr : -lsubbus
 HFEMSdoit : HFEMS.doit
 #sonic : sonic.c
