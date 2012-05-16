@@ -42,7 +42,7 @@ nan-text -9999
   2  NOy 
   3  CtStat
 
-csv status 6
+csv status 7
 nan-text -9999
   0 Time %.1lf
   1 DSt0 %3.0f
@@ -50,6 +50,7 @@ nan-text -9999
   3 DSt4 %3.0f
   4 DSt5 %3.0f
   5 Dst6 %3.0f
+  6 SolSt
 
 csv pressures 10
 nan-text -9999
