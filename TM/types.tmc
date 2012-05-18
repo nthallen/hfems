@@ -46,6 +46,12 @@ Calibration (AD12_2_5, VOLTS) {
 	65536, 2.50
 }
 
+TM typedef AD12 AD12_2_5x2 { convert VOLTS; text "%6.3lf"; }
+Calibration (AD12_2_5x2, VOLTS) {
+	0,       0.,
+	65536, 5.0
+}
+
 TM typedef AD12 AD12_2_5x_25 { convert VOLTS; text "%6.3lf"; }
 Calibration (AD12_2_5x_25, VOLTS) {
 	0,       0.,
