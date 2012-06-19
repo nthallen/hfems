@@ -21,7 +21,7 @@ TM typedef unsigned short AD12 {
 TM typedef short AD12_Biplr {
   collect x = (sbrwa(x.address) & 0x0fff) << 4;
   convert VOLTS;
-  text "%6.4lf";
+  text "%7.4lf";
 }
 
 Calibration (AD12_Biplr, VOLTS) {
