@@ -9,8 +9,8 @@ State Initialize {
         > Soldrv select Mode 0
      +1 > Set Pman setpoint 5.5
         > Set PrCO2p setpoint 4.5
-        > Set FlCO2p setpoint 2.
-        > Set FlCO setpoint 2.0
+        > Set FlCO2p setpoint 2.0
+        > Set FlCO setpoint 2.25
         > Set PrCO setpoint 5.75
      +2 > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
@@ -35,12 +35,12 @@ State RunMode {
         +3 > Set Pman setpoint 5.5
             > Set Pman setpoint 5.5
             > Set Pman setpoint 5.5
-        +4 > Set FlCO2p setpoint 2.
-            > Set FlCO2p setpoint 2.
-            > Set FlCO2p setpoint 2.
-        +5 > Set FlCO setpoint 2.0
-            > Set FlCO setpoint 2.0
-            > Set FlCO setpoint 2.0
+        +4 > Set FlCO2p setpoint 2.0
+            > Set FlCO2p setpoint 2.0
+            > Set FlCO2p setpoint 2.0
+        +5 > Set FlCO setpoint 2.25
+            > Set FlCO setpoint 2.25
+            > Set FlCO setpoint 2.25
         +6 > Set PrCO setpoint 5.75
             > Set PrCO setpoint 5.75
             > Set PrCO setpoint 5.75
