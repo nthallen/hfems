@@ -21,17 +21,17 @@ SonicStat {
 
 Eddy{
   HBox { +-; "Eddy"; -+ };
-  vCO2e1: (vCO2e1,5);
-  vH2Oe1: (vH2Oe1,5);
-  vCO2e2: (vCO2e2,5);
-  vH2Oe2: (vH2Oe2,5);
-  vO3ed:  (vO3ed,5);
+  vCO2e1: (vCO2e1,6);
+  vH2Oe1: (vH2Oe1,6);
+  vCO2e2: (vCO2e2,6);
+  vH2Oe2: (vH2Oe2,6);
+  vO3ed:  (vO3ed,6);
 }
 Profile{
    HBox {+-;"Profile";-+};
-   vCO2prf: (vCO2prf,5);
-   vO3prf: (vO3prf,5);
-    vCO: (vCO,5);
+   vCO2prf: (vCO2prf,6);
+   vO3prf: (vO3prf,6);
+    vCO: (vCO,6);
 }
 Counts{
 HBox { +-; "Counts"; -+ };
@@ -50,15 +50,15 @@ Status {
 
 Radiation {
   HBox { +-; "Radiation"; -+ };
-  Rnet: (Rnet,6);
-  Rnet_cal: (Rnet_cal,6);
-  PPFD_top: (PPFD_top,6);
-  PPFD_mid: (PPFD_mid,6);
-  PPFD_ref: (PPFD_ref,6);
-  PPFD_cal: (PPFD_cal,6);
-  PPFD_gnd: (PPFD_gnd,6);
-  PPFD_t: (PPFD_t,6);
-  PPFD_d: (PPFD_d,6);
+  Rnet: (Rnet,7);
+  Rnet_cal: (Rnet_cal,7);
+  PPFD_top: (PPFD_top,7);
+  PPFD_mid: (PPFD_mid,7);
+  PPFD_ref: (PPFD_ref,7);
+  PPFD_cal: (PPFD_cal,7);
+  PPFD_gnd: (PPFD_gnd,7);
+  PPFD_t: (PPFD_t,7);
+  PPFD_d: (PPFD_d,7);
 }
 
 Pressure {
