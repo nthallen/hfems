@@ -26,8 +26,8 @@
 	Solenoid CO2add1 18 19 0;	CO2 std addition to Eddy1
 	Solenoid CO2add2 20 21 0;	CO2 std addition to Eddy2
 	Solenoid CO_smpl 22 23 0;	CO cal/sample select - on for cal
-	Solenoid CO_cal1 24 25 0;	CO calibration lo standard
-	Solenoid CO_cal2 26 27 0;	CO calibration hi standard
+	Solenoid CO_cal1 24 25 0;	CO calibration hi standard
+	Solenoid CO_cal2 26 27 0;	CO calibration lo standard
 	Solenoid CO_zer 28 29 0;	CO zeroing
 	Solenoid eff_Hg 30 31 0;	NOy efficiency lamp on
 	Solenoid zNOy_Hg 64 65 0;	NOy zeroing lamp on
