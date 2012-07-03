@@ -1,4 +1,4 @@
-# Makefile Generated Wed May 16 13:19:56 EDT 2012
+# Makefile Generated Fri May 18 19:05:34 UTC 2012
 MNC=HFEMS
 HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
@@ -36,6 +36,7 @@ CMDBASE+=/usr/local/share/huarp/getcon.cmd
 COLBASE=
 SWSBASE=
 QCLIBASE=
+PHTGT=HFEMStbl.tmc
 RCS=$(SRC) $(TOOL) $(SCRIPT)
 SOURCE=$(RCS) $(NONRCS)
 OBJECT=$(OBJ) *.err
@@ -44,7 +45,9 @@ DSTRB=$(TGT) $(DISTRIB) $(SCRIPT)
 TGTDIR= $(TGTNODE)/home/hfems
 include /usr/local/share/huarp/appgen.mk
 
-all : Makefile $(TGT) .cvsignore
+.PHONY : all extdistribution distribution clean check_photon
+
+all : Makefile check_photon $(TGT) .cvsignore
 Makefile : HFEMS.spec
 	appgen HFEMS.spec
 VERSION=`cat VERSION`
@@ -56,6 +59,12 @@ extdistribution : $(DSTRB) $(SRCDIST) VERSION
 	@distribute $(FORCE) $(TGTDIR)/bin/$(VERSION)/Base $(SRCDIST)
 distribution : extdistribution
 	@distribute $(FORCE) $(TGTDIR) $(IDISTRIB)
+check_photon :
+ifeq ($(WPHOTON),YES)
+	@for tgt in $(PHTGT); do \
+	  cmp -s $$tgt /usr/local/share/huarp/nulltbl.tmc && echo Remaking $$tgt && rm -f $$tgt; \
+	done; true
+endif
 HFEMScol : HFEMScol.o HFEMScoloui.o
 	$(LINK.privCXX) HFEMScol.o HFEMScoloui.o -lsubbus -ltmpp -ltm -lnort
 	$(OUIUSE) HFEMScoloui.c

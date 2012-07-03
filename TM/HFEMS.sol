@@ -484,17 +484,15 @@ Cal		;18 min - 162 cumulative
 Sample		;36 min - 198
 Sample		;36 min	- 234
 Sample		;36 min - 270
-Sample		;36 min - 306
-Ecal		;30 min - 336
+Ecal		;30 min - 300
+Sample		;36 min - 336
 Sample		;36 min - 372
 Sample		;36 min - 408
 Sample		;36 min - 444
-Sample		;36 min - 480
-Cal		;18 min - 498
-Sample		;36 min - 534
-Sample		;36 min - 570
-Sample		;36 min - 606
-Sample		;36 min - 642
+Cal		;18 min - 462
+Sample		;36 min - 498
+Sample		;36 min - 544
+Sample		;36 min - 580
 Select 3
 }
 
