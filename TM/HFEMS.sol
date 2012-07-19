@@ -470,29 +470,29 @@ fcZer_NOy: _
 }
 
 Mode 3 {	; Routine startup mode
+Sample		; 36 min
 ECcal		; 30 min
 prf_eff		; 12 min
-Select 4	; go to operation cycle 642/684
+Select 4	; go to operation cycle 534/612
 }
 
 Mode 4 {	; operation cycle
 Sample		;36 min - 36
 Sample		;36 min - 72
 Sample		;36 min - 108
-Sample		;36 min	- 144
-Cal		;18 min - 162 cumulative
-Sample		;36 min - 198
-Sample		;36 min	- 234
-Sample		;36 min - 270
-Ecal		;30 min - 300
+Cal		;18 min - 126 cumulative
+Sample		;36 min - 162
+Sample		;36 min	- 198
+Sample		;36 min - 234
+Ecal		;30 min - 264
+Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
 Sample		;36 min - 408
-Sample		;36 min - 444
-Cal		;18 min - 462
+Cal		;18 min - 426
+Sample		;36 min - 462
 Sample		;36 min - 498
-Sample		;36 min - 544
-Sample		;36 min - 580
+Sample		;36 min - 534
 Select 3
 }
 
