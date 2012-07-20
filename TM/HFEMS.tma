@@ -44,23 +44,37 @@ State RunMode {
         +6 > Set PrCO setpoint 5.75
             > Set PrCO setpoint 5.75
             > Set PrCO setpoint 5.75
-# wait for 5 minutes to stabilize, then go into calibration mode
+# wait for 5 minutes to stabilize, then go into normal run mode
   +4:00 > Set FlCO2p setpoint 2.0
   +5:00 > Soldrv Select Mode 3
 	depending on (1 Hz) {
-            int cur_day;
-            cur_day = (itime()-(5*3600))/86400L;
+      int cur_day;
+      cur_day = (itime()-(5*3600))/86400L;
 
-            if (initial_day == 0)
-              initial_day = cur_day;
-            else if (initial_day != cur_day)
-              Validate Restart;
-          }
+      if (initial_day == 0) {
+        initial_day = cur_day;
+      } else if (initial_day != cur_day) {
+        if ((cur_day % 8) != 0) {
+          Validate Shutdown_Cal;
+        } else {
+          Validate Shutdown;
+        }
+      }
+    }
 }
-State Restart{
-         > Soldrv Select Mode 7
-         Hold until (SolSt == 1) or 45:00
-         else > Soldrv Select Mode 0
-        > Savelog Automatic Restart
-        > Quit
+
+State Shutdown {
+    > Soldrv Select Mode 7
+    Hold until (SolSt == 1) or 45:00
+    else > Soldrv Select Mode 0
+    > Savelog Automatic Restart
+    > Quit
+}
+
+State Shuddown_Cal {
+    >Soldrv Select Mode 8
+    Hold until (SolSt == 1) or 55:00
+    else > Soldrv Select Mode 0
+    > Savelog Restart with Archive Cal;
+    > Quit
 }
