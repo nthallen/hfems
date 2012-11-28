@@ -147,7 +147,7 @@ fcEff_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
-routine SampleZ { # profile with CO2 zeroing
+routine SampleZ { ; profile with CO2 zeroing
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
 Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -193,6 +193,7 @@ fcNO_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcEff_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
+
 routine Ecal{
 SolSt:       EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:^
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
@@ -239,7 +240,7 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
-routine ECcal{ ; same as Ecal, but with CO calibration
+routine ECcal{ ; same as Ecal, but with CO calibration includes CO2zero
 SolSt:       CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:$
 Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -271,12 +272,12 @@ zNOx_add:    __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 NO_NOx_add:  __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
 NO2_add:     __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 Shutter:     __:__:__:__:__:__:__:__:OO:__:__:__:OO:OO:OO:^
-pCO2_smpl:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_smpl:   __:__:__:__:__:__:__:__:__:__:__:OO:OO:__:__:^
 pCO2_cal1:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal2:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal3:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
-pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:OO:OO:__:__:^
 fcNO_NOx:    __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
 fcNO2_NOx:   __:__:__:__:__:__:MM:MM:MM:MM:MM:MM:__:__:__:^ 
 fc_CO2e:     HH:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:__:__:^ 
@@ -516,14 +517,14 @@ fcZer_NOy: _
 }
 
 Mode 3 {	; Routine startup mode
-SampleZ		; 36 min
+Sample		; 36 min
 ECcal		; 30 min
 prf_eff		; 12 min
 Select 4	; go to operation cycle 534/612
 }
 
 Mode 4 {	; operation cycle
-Sample		;36 min - 36
+SampleZ		;36 min - 36
 Sample		;36 min - 72
 Sample		;36 min - 108
 Cal		;18 min - 126 cumulative
