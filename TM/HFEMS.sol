@@ -524,20 +524,20 @@ Select 4	; go to operation cycle 534/612
 }
 
 Mode 4 {	; operation cycle
-SampleZ		;36 min - 36
+Sample		;36 min - 36
 Sample		;36 min - 72
 Sample		;36 min - 108
 Cal		;18 min - 126 cumulative
-SampleZ		;36 min - 162
+Sample		;36 min - 162
 Sample		;36 min	- 198
 Sample		;36 min - 234
 Ecal		;30 min - 264
-SampleZ		;36 min - 300
+Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
 Sample		;36 min - 408
 Cal		;18 min - 426
-SampleZ		;36 min - 462
+Sample		;36 min - 462
 Sample		;36 min - 498
 Sample		;36 min - 534
 Select 3
