@@ -7,7 +7,7 @@ State Initialize {
 
         > telemetry start
         > Soldrv select Mode 0
-     +1 > Set Pman setpoint 5.5
+     +1 > Set Pman setpoint 5.75
         > Set PrCO2p setpoint 4.5
         > Set FlCO2p setpoint 3.0
         > Set FlCO setpoint 2.25
@@ -32,9 +32,9 @@ State RunMode {
         +2 > Set PrCO2p setpoint 4.5
             > Set PrCO2p setpoint 4.5
             > Set PrCO2p setpoint 4.5
-        +3 > Set Pman setpoint 5.5
-            > Set Pman setpoint 5.5
-            > Set Pman setpoint 5.5
+        +3 > Set Pman setpoint 5.75
+            > Set Pman setpoint 5.75
+            > Set Pman setpoint 5.75
         +4 > Set FlCO2p setpoint 3.0
             > Set FlCO2p setpoint 3.0
             > Set FlCO2p setpoint 3.0
