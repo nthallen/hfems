@@ -14,7 +14,7 @@
      ;-----------------------------------------------------------------------
 
 
-	Solenoid Lvl1 0 1 0;	profile level 1
+	Solenoid Lvl1 0 1 0;	profile level 1 This is a normally open 3/14/13
 	Solenoid Lvl2 2 3 0;	profile level 2
 	Solenoid Lvl3 4 5 0;	profile level 3
 	Solenoid Lvl4 6 7 0;	profile level 4
@@ -102,7 +102,7 @@ DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
      Resolution = 60/1	; One minute resolution
 routine Sample {
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Lvl1:           ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:		____:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:^
@@ -149,7 +149,7 @@ fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine SampleZ { ; profile with CO2 zeroing
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Lvl1:           ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:		____:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:^
@@ -196,7 +196,7 @@ fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine Ecal{
 SolSt:       EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+Lvl1: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -242,7 +242,7 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine ECcal{ ; same as Ecal, but with CO calibration includes CO2zero
 SolSt:       CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:$
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+Lvl1: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -288,7 +288,7 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine prf_eff { ; finishes the NOy eff, and profile CO2 cal (H,M,L)
 SolSt:       PP:PP:PP:PP:PP:PP:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:^
+Lvl1: 	     __:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:^
@@ -334,7 +334,7 @@ fcZer_NOy:   __:__:__:__:__:__:^
 
 routine Cal {
 SolSt:     LL:LL:LL:LL:LL:LL:LL:LL:LL:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+Lvl1: 	     __:__:__:__:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:^
 Lvl3:       __:__:__:__:__:__:__:__:__:^
 Lvl4:       __:__:__:__:__:__:__:__:__:^
@@ -380,7 +380,7 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:^
 
 routine Archive_cal { ; does the CO2 archive calibration
 SolSt:       AA:AA:^
-Lvl1: 	     OO:OO:^
+Lvl1: 	     __:__:^
 Lvl2: 	     __:__:^
 Lvl3:        __:__:^
 Lvl4:        __:__:^
@@ -426,7 +426,7 @@ fcZer_NOy:   __:__:^
 
 routine closeout { ; end with CO and CO2 zeros
 SolSt:	        SSSS:^
-Lvl1:		OOOO:^
+Lvl1:		____:^
 Lvl2:		____:^
 Lvl3:		____:^
 Lvl4:		____:^
@@ -472,7 +472,7 @@ fcZer_NOy: 	____:^
 
 Mode 0 { ; Stop mode
 SolSt: 1
-  Lvl1:  O
+  Lvl1:  _
   Lvl2:  _
   Lvl3:  _
   Lvl4:  _
