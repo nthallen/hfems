@@ -1,10 +1,8 @@
-# Makefile Generated Fri May 18 19:05:34 UTC 2012
+# Makefile Generated Wed Mar 27 14:19:47 EDT 2013
 MNC=HFEMS
-HOMEDIR=/home/hfems/src/TM
 SPECFILE=HFEMS.spec
-SRC=a2b.c a2bnew.c a2b HFEMS.fld sonic.h a2b10hz.c types.tmc
-SRC+=HFEMS.tmc tdrift.tmc HFEMScol.tmc tdrift_col.tmc HFEMS.cmd
-SRC+=HFEMS.doit HFEMS.tbl HFEMS.sol HFEMS.tma HFEMSall.cdf
+SRC=types.tmc HFEMS.tmc tdrift.tmc HFEMScol.tmc tdrift_col.tmc
+SRC+=HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol HFEMS.tma HFEMSall.cdf
 TOOL=HFEMS.spec Makefile
 SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
@@ -25,7 +23,6 @@ SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc tdrift.tmc
 SRCDIST+=/usr/local/share/huarp/cpu_usage.tmc
 SRCDIST+=/usr/local/share/huarp/tmdf.tmc
 SRCDIST+=/usr/local/share/huarp/flttime.tmc
-NONRCS=
 TMCBASE=types.tmc HFEMS.tmc tdrift.tmc
 TMCBASE+=/usr/local/share/huarp/cpu_usage.tmc
 TMCBASE+=/usr/local/share/huarp/tmdf.tmc

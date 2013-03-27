@@ -23,6 +23,8 @@
 &command
 	: Savelog %s (Enter Log Message) * { write_savelog($2); }
 	: &HFEMScmdset { if_dccc.Turf( "D%d\n", $1 ); }
+	: Soldrv select mode %d (Enter Mode Number) *
+	  { if_SoldrvA.Turf("S%d\n", $4 ); }
 	: Set &daspt_cmd %lf (Enter Setpoint Value in Volts) * {
 	    double N = $3 * 409.6;
 	    unsigned short bits;
@@ -181,8 +183,6 @@
 	: Solenoid Sol_47 OFF  * { $0 = 125 ; }
 	: Solenoid Sol_48 ON  * { $0 = 126 ; }
 	: Solenoid Sol_48 OFF  * { $0 = 127 ; }
-	: Soldrv select mode %d (Enter Mode Number) *
-	  { if_SoldrvA.Turf("S%d\n", $4 ); }
 	;
 
 ####### need to redefine this - if we need it ######################
