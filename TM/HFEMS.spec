@@ -13,7 +13,7 @@ cmdbase = /usr/local/share/huarp/getcon.cmd
 SCRIPT = interact 
 SCRIPT = HFEMS.dccc
 DISTRIB = HFEMS.sft ../sonic/Sonic 
-IDISTRIB = HFEMS_autorun
+IDISTRIB = HFEMS_autorun HFEMS_show
 
 TGTDIR = $(TGTNODE)/home/hfems
 OBJ = address.h

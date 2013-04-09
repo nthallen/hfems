@@ -1,0 +1,4 @@
+#! /bin/sh
+cd /home/hfems
+./HFEMSdoit wait
+

@@ -81,15 +81,5 @@ fi
 # now proceed with the regular HFEMSdoit
 # HFEMSdoit runs continually until logging is manually stopped
 
-while true; do
-  autolog Starting HFEMSdoit
-  /home/hfems/HFEMSdoit 
-  [ ! -f /home/hfems/saverun.log ] && break;
-  # call the autosave job to move the data files and create a logfile 
-  autolog Reduce completed
-  reduce 
-  echo "0 HFEMSloop has initiated nightime saverun" >>/home/hfems/report.queue
-  autolog Reduce completed
-done
-autolog "HFEMSloop exiting: no saverun.log"
-echo "HFEMSloop exiting: no saverun.log"
+# autolog Starting HFEMSdoit
+/home/hfems/HFEMSdoit 

@@ -1,4 +1,4 @@
-# Makefile Generated Wed Mar 27 14:19:47 EDT 2013
+# Makefile Generated Tue Apr 09 20:56:01 UTC 2013
 MNC=HFEMS
 SPECFILE=HFEMS.spec
 SRC=types.tmc HFEMS.tmc tdrift.tmc HFEMScol.tmc tdrift_col.tmc
@@ -18,7 +18,8 @@ OBJ+=HFEMScltncoui.c HFEMScltncoui.o
 TGT=HFEMScol HFEMSsrvr HFEMSdoit HFEMSdisp HFEMSdispnc HFEMS.sft
 TGT+=HFEMSalgo HFEMSallext HFEMSclt HFEMScltnc
 DISTRIB=HFEMS.sft ../sonic/Sonic HFEMS.pcm tm.dac
-IDISTRIB=Experiment.config VERSION HFEMS_autorun HFEMSdoit
+IDISTRIB=Experiment.config VERSION HFEMS_autorun HFEMS_show
+IDISTRIB+=HFEMSdoit
 SRCDIST=HFEMS.tbl HFEMS.sol HFEMS.tma types.tmc HFEMS.tmc tdrift.tmc
 SRCDIST+=/usr/local/share/huarp/cpu_usage.tmc
 SRCDIST+=/usr/local/share/huarp/tmdf.tmc
@@ -39,6 +40,7 @@ SOURCE=$(RCS) $(NONRCS)
 OBJECT=$(OBJ) *.err
 TARGET=$(TGT)
 DSTRB=$(TGT) $(DISTRIB) $(SCRIPT)
+TGTNODE=/net/ems-main
 TGTDIR= $(TGTNODE)/home/hfems
 include /usr/local/share/huarp/appgen.mk
 
