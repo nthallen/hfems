@@ -10,7 +10,7 @@ function autolog {
   echo "$now: $*" >>/home/hfems/autorun.log
   echo "$now: $*"
 }
-if test $1=local;then
+if test "$1" = local; then
 # check for space left
 echo "Are you reading flowmeters?"
 read ans
