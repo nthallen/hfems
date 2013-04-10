@@ -2,7 +2,7 @@
 <include> msg
 <include> "sonic_int.h"
 
-<opts> "d:n"
+<opts> "d:n:"
 <switch>
 	case 'd': sonic_path = optarg; break;
 	case 'n': sonic_name = optarg; break;

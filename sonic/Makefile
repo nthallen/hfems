@@ -1,5 +1,6 @@
 CPPFLAGS= -I /usr/local/include
 CXXFLAGS= -Wall -g
+CFLAGS= -Wall -g
 LDFLAGS=-Wl,-rpath -Wl,/usr/local/lib -L /usr/local/lib
 LIBS=-ltmpp -ltm -lnort
 
