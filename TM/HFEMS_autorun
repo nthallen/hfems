@@ -1,85 +1,91 @@
 #! /bin/sh
 # do some interactive prompting for information here
 # only gets executed when manually restarting
+
 cd /home/hfems
-# Use the value of a command line argument to choose whether or not
+
+# Use the value $SSH_CLIENT to choose whether or not
 # to do the dialog section
-# 
+
 function autolog {
   now=`date +"%D %H:%M:%S %Z"`
   echo "$now: $*" >>/home/hfems/autorun.log
   echo "$now: $*"
 }
-if test "$1" = local; then
-# check for space left
-echo "Are you reading flowmeters?"
-read ans
-if test $ans = y; then
-# record flowmeter offsets
-# create a log file of important data
-echo "flowmeter offsets recorded on `date` " > fm_offsets.dat
-echo "************************** Fill in the log file now ***********"
-echo "enter your name "
-read oper
-echo "checked by $oper " >> fm_offsets.dat
-echo "enter some flow zero readings  "
-echo "if youve read only some of the flow offsets, "
-echo "then enter 0's for the flows you havent read"
-echo "FlowT "
-read FlTz
-echo "$FlTz is FlowT zero" >> fm_offsets.dat
-echo "Flow4 "
-read Fl4z
-echo "$Fl4z is FlNOy zero" >> fm_offsets.dat
-echo "FlowE aka pbeck"
-read FlEz
-echo "$FlEz is FlowE zero" >> fm_offsets.dat
-echo "FlowX aka s1201"
-read FlXz
-echo "$FlXz is FlNOx zero" >> fm_offsets.dat
-echo "FlowCO2 aka s0801"
-read FlCz
-echo "$FlCz is FlCO2 zero" >> fm_offsets.dat
-#
-echo "NOTES" >> fm_offsets.dat
-echo "Type any comments and end with ctrl D"
-echo "Edit the  log file now to check the entries"
-echo " and make any corrections"
-vi fm_offsets.dat
-# echo "remember, you can manually edit fm_offsets.dat during autoruns"
-# echo "to update it with new values that will be included in next data save"
-#echo " suspend logging when checking the zeros"
-#
+
+if [ -z "$SSH_CLIENT" ]; then
+  # check for space left
+  echo "Are you reading flowmeters?"
+  read ans
+  if test $ans = y; then
+    # record flowmeter offsets
+    # create a log file of important data
+    echo "flowmeter offsets recorded on `date` " > fm_offsets.dat
+    echo "************************** Fill in the log file now ***********"
+    echo "enter your name "
+    read oper
+    echo "checked by $oper " >> fm_offsets.dat
+    echo "enter some flow zero readings  "
+    echo "if youve read only some of the flow offsets, "
+    echo "then enter 0's for the flows you havent read"
+    echo "FlowT "
+    read FlTz
+    echo "$FlTz is FlowT zero" >> fm_offsets.dat
+    echo "Flow4 "
+    read Fl4z
+    echo "$Fl4z is FlNOy zero" >> fm_offsets.dat
+    echo "FlowE aka pbeck"
+    read FlEz
+    echo "$FlEz is FlowE zero" >> fm_offsets.dat
+    echo "FlowX aka s1201"
+    read FlXz
+    echo "$FlXz is FlNOx zero" >> fm_offsets.dat
+    echo "FlowCO2 aka s0801"
+    read FlCz
+    echo "$FlCz is FlCO2 zero" >> fm_offsets.dat
+    #
+    echo "NOTES" >> fm_offsets.dat
+    echo "Type any comments and end with ctrl D"
+    echo "Edit the  log file now to check the entries"
+    echo " and make any corrections"
+    vi fm_offsets.dat
+    # echo "remember, you can manually edit fm_offsets.dat during autoruns"
+    # echo "to update it with new values that will be included in next data save"
+    #echo " suspend logging when checking the zeros"
+    #
+  fi
+
+  # check about new standards
+  echo "did any calibration cylinders get changed? (y/n)"
+  read ans
+  if test $ans = y; then
+    echo how many
+    read ncyl
+    nn=0
+    while test $nn -lt $ncyl; do
+      echo "What gas"
+      read gas
+      echo "what cylinder #"
+      read id
+      echo "What concentration"
+      read conc
+      date "+%y.%j" >! ondate
+      echo "$gas   $id   $conc `cat ondate`" >> /home/hfems/standards.record
+      let nn=$nn+1
+    done
+    vi /home/hfems/standards.record
+    #cp /home/hfems/standards.record $date.$run
+    tail -$ncyl /home/hfems/standards.record >! new.stds
+    # set a flag to alert the saverun script
+    date +%y%m%d > standards.new
+  fi
+else # -n $SSH_CLIENT
+  HFEMSDOIT_OPT_DEFAULT=${HFEMSDOIT_OPT--sa}
 fi
 
-# check about new standards
-echo "did any calibration cylinders get changed? (y/n)"
-read ans
-if test $ans = y; then
-echo how many
-read ncyl
-nn=0
-while test $nn -lt $ncyl
-	do
-	echo "What gas"
-	read gas
-	echo "what cylinder #"
-	read id
-	echo "What concentration"
-	read conc
-	date "+%y.%j" >! ondate
-	echo "$gas   $id   $conc `cat ondate`" >> /home/hfems/standards.record
-	let nn=$nn+1
-	done
-	vi /home/hfems/standards.record
-	#cp /home/hfems/standards.record $date.$run
-	tail -$ncyl /home/hfems/standards.record >! new.stds
-	# set a flag to alert the saverun script
-	date +%y%m%d > standards.new
-fi
-fi
 # now proceed with the regular HFEMSdoit
 # HFEMSdoit runs continually until logging is manually stopped
 
 # autolog Starting HFEMSdoit
-/home/hfems/HFEMSdoit 
+/home/hfems/HFEMSdoit $HFEMSDOIT_OPT_DEFAULT
+
