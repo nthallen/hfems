@@ -36,7 +36,7 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
 
 int Sonic::ProcessData(int flag) {
   if ( flag & Selector::gflag(0) ) {
-	++TMdata->SC_stale;
+        ++TMdata->SC_stale;
   } else {
     //int addr1, addr2;
     int U, V, W, T;
@@ -48,36 +48,33 @@ int Sonic::ProcessData(int flag) {
 
       // Do check for a complete record
       if( not_found( 'U' )) return 0;
-      if( cp > 1 ) {
-	consume(cp-1);
-      } else {
-	cp = 0;
-      }
+      if( cp > 1 ) consume(cp-1);
+      cp = 0;
       if( nc < SONIC_REC_SIZE )
-	return 0;
+        return 0;
 
       while ( cp < nc ) {
-	if( not_str( "U" ) ||
-	    not_signed_ffloat( U ) ||
-	    not_str( "  V" ) ||
-	    not_signed_ffloat( V ) ||
-	    not_str( "  W" ) ||
-	    not_signed_ffloat( W ) ||
-	    not_str( "  T" ) ||
-	    not_signed_ffloat( T ) ||
-	    not_str( "\r\n" )) {
-    	  if ( cp < nc ) {
-	    consume(cp);
-	  }
-	} else {
-	  TMdata->U = U;
-	  TMdata->V = V;
-	  TMdata->W = W;
-	  TMdata->T = T;
-	  --TMdata->SC_stale;
-	  consume(cp);
-	  report_ok();
-	}
+        if( not_str( "U" ) ||
+            not_signed_ffloat( U ) ||
+            not_str( "  V" ) ||
+            not_signed_ffloat( V ) ||
+            not_str( "  W" ) ||
+            not_signed_ffloat( W ) ||
+            not_str( "  T" ) ||
+            not_signed_ffloat( T ) ||
+            not_str( "\r\n" )) {
+          if ( cp < nc ) {
+            consume(cp > 0 ? cp : 1);
+          }
+        } else {
+          TMdata->U = U;
+          TMdata->V = V;
+          TMdata->W = W;
+          TMdata->T = T;
+          --TMdata->SC_stale;
+          consume(cp);
+          report_ok();
+        }
       }
     }
   }
