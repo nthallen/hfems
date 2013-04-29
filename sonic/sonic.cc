@@ -32,6 +32,7 @@ Sonic::Sonic( const char *path, Sonic_t *data ) :
   TMdata->SC_stale = 0;
   flags |= Selector::gflag(0);
   nl_error( 0, "Sonic fd = %d, flags = %d", fd, flags );
+  flush_input();
 }
 
 int Sonic::ProcessData(int flag) {
