@@ -1,4 +1,5 @@
 #! /bin/sh
 cd /home/hfems
-./HFEMSdoit wait
+[ "$TERM" = qansi-m ] || HFEMSDOIT_OPT_DEFAULT=${HFEMSDOIT_OPT--sa}
+./HFEMSdoit $HFEMSDOIT_OPT_DEFAULT wait
 
