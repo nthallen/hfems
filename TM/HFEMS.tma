@@ -9,7 +9,7 @@ State Initialize {
         > Soldrv select Mode 0
      +1 > Set Pman setpoint 5.75
         > Set PrCO2p setpoint 4.5
-        > Set FlCO2p setpoint 3.0
+        > Set FlCO2p setpoint 2.0
         > Set FlCO setpoint 2.25
         > Set PrCO setpoint 5.75
      +2 > Set fcNO_NOx setpoint 0
@@ -35,9 +35,9 @@ State RunMode {
         +3 > Set Pman setpoint 5.75
             > Set Pman setpoint 5.75
             > Set Pman setpoint 5.75
-        +4 > Set FlCO2p setpoint 3.0
-            > Set FlCO2p setpoint 3.0
-            > Set FlCO2p setpoint 3.0
+        +4 > Set FlCO2p setpoint 2.0
+            > Set FlCO2p setpoint 2.0
+            > Set FlCO2p setpoint 2.0
         +5 > Set FlCO setpoint 2.25
             > Set FlCO setpoint 2.25
             > Set FlCO setpoint 2.25
@@ -45,7 +45,6 @@ State RunMode {
             > Set PrCO setpoint 5.75
             > Set PrCO setpoint 5.75
 # wait for 5 minutes to stabilize, then go into normal run mode
-  +4:00 > Set FlCO2p setpoint 2.0
   +5:00 > Soldrv Select Mode 3
 	depending on (1 Hz) {
       int cur_day;
