@@ -11,6 +11,6 @@
   Launch -          tmdf
   Launch -          lgr -N `mlf_find LOG`
   Launch -          Sonic -n SonicData1 -d /dev/ser1 -h Sonic1
-  Launch -          Sonic -n SonicData2 -d /dev/ser3 -h Sonic2
+  Launch -          Sonic -n SonicData2 -d /dev/ser4 -h Sonic2
   Launch -          soldrv $TMBINDIR/HFEMS.sft
   Launch -          HFEMSalgo -v
