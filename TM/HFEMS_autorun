@@ -64,8 +64,9 @@ if [ -z "$SSH_CLIENT" ]; then
     read ncyl
     nn=0
     while test $nn -lt $ncyl; do
-      echo "What gas"
+      echo "What gas - COlo COhi CO2lo CO2md CO2hi CO2eddy NO NO2"
       read gas
+	grep $gas /home/hfems/standards.record
       echo "what cylinder #"
       read id
       echo "What concentration"
