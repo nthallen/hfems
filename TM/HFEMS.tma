@@ -15,7 +15,7 @@ State Initialize {
      +2 > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
         > Set fc_CO2e setpoint 0
-        > Set fcNO_NOy setpoint 0
+        > Set fcNO_NOy setpoint 2.5 
         > Set fcEff_NOy setpoint 0
         > Set fcZer_NOy setpoint 0
         > Set FlNOx setpoint 0
