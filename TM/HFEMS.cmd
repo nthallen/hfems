@@ -49,7 +49,7 @@
 	: fcZer_NOy setpoint { $0 = fcZer_NOy_SP_Address; }
 	: FlNOx setpoint { $0 = FlNOx_SP_Address; }
 	: FlNOy setpoint { $0 = FlNOy_SP_Address; }
-	: PrO3e setpoint { $0 = PrO3e_SP_Address; }
+	: FlCO2e3 setpoint { $0 = FlCO2e3_SP_Address; }
 	: FlCO setpoint { $0 = FlCO_SP_Address; }
 ;
 #
