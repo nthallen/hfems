@@ -88,7 +88,7 @@
 ;set points defined based on 0-4096 range
 DtoA fcNO_NOx 0xC6C   {_:0 L:820 M:2048 H:3280}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:3280}
-DtoA fc_CO2e 0xCE0  {_:0 L:600  H:1000}
+DtoA fc_CO2e 0xCE0  {_:0 L:600  H:1000	Y:2000	z:3200}
 DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:3280}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:3280}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
@@ -234,7 +234,7 @@ pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcNO_NOx:    __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
 fcNO2_NOx:   __:__:__:__:__:__:MM:MM:MM:MM:MM:MM:__:__:__:^ 
-fc_CO2e:     HH:HH:LL:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:^ 
+fc_CO2e:     ZZ:ZZ:YY:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:^ 
 ;fcNO_NOy:    __:__:__:MM:MM:MM:MM:MM:MM:MM:MM:MM:__:__:__:^ 
 fcEff_NOy:   __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
@@ -250,9 +250,9 @@ Lvl5:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl6:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl7:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl8:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
-eCO2cal:     OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
-CO2add1:     __:__:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
-CO2add2:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+eCO2cal:     OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:^
+CO2add1:     __:__:__:__:OO:OO:OO:OO:__:__:__:__:__:__:__:^
+CO2add2:     __:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:^
 CO_smpl:     __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 CO_cal1:     __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 CO_cal2:     __:__:__:OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:^
@@ -280,7 +280,8 @@ pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
 fcNO_NOx:    __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
 fcNO2_NOx:   __:__:__:__:__:__:MM:MM:MM:MM:MM:MM:__:__:__:^ 
-fc_CO2e:     HH:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:__:__:^ 
+fc_CO2e:     ZZ:ZZ:YY:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:^ 
+;fc_CO2e:     HH:HH:HH:HH:LL:LL:__:__:__:__:__:__:__:__:__:^ 
 ;fcNO_NOy:    __:__:__:MM:MM:MM:MM:MM:MM:MM:MM:MM:__:__:__:^ 
 fcEff_NOy:   __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
@@ -527,11 +528,13 @@ Mode 4 {	; operation cycle
 Sample		;36 min - 36
 Sample		;36 min - 72
 Sample		;36 min - 108
+Sample		;36 min
 ;Cal		;18 min - 126 cumulative
 Sample		;36 min - 162
 Sample		;36 min	- 198
 Sample		;36 min - 234
-Ecal		;30 min - 264
+Sample		;36 min
+;Ecal		;30 min - 264
 Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
