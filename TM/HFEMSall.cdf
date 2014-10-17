@@ -52,7 +52,7 @@ nan-text -9999
   5 Dst6 %3.0f
   6 SolSt
 
-csv pressures 10
+csv pressures 9
 nan-text -9999
   0 Time %.1lf
   1  Pamb
@@ -62,10 +62,9 @@ nan-text -9999
   5  PrNOy
   6  PrCO2e1
   7  PrCO2e2
-  8  PrO3e
-  9  PrCO
+  8  PrCO
 
-csv flows 16
+csv flows 17
 nan-text -9999
   0 Time %.1lf
   1  FlowT  %.4lf
@@ -81,8 +80,9 @@ nan-text -9999
   11 FlO3_NOy  %.4lf
   12 FlCO2e1 %.4lf
   13 FlCO2e2 %.4lf
-  14 fc_CO2e  %.4lf
-  15 FlCO  %.4lf
+  14 FlCO2e3 %.4lf
+  15 fc_CO2e  %.4lf
+  16 FlCO  %.4lf
 
 csv profile 4
 nan-text -9999
