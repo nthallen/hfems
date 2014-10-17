@@ -71,20 +71,20 @@ Pressure {
   PrCO:   (PrCO,6);
   PrNOx:  (PrNOx,6) ;
   PrNOy:  (PrNOy,6) ;
-  PrO3e:  (PrO3e,6) ;
 }
 
 Flow {
   HBox { +-;Flow; -+ };
   FlowT: (FlowT,6);
   FlCO2p: (FlCO2p,6);
+  FlCO2e1: (FlCO2e1,6);
+  FlCO2e2: (FlCO2e2,6);
+  FlCO2e3:  (FlCO2e3,6) ;
+  FlCO: (FlCO,6);
   FlNOx: (FlNOx,6);
   FlO3_NOx: (FlO3_NOx,6);
   FlNOy: (FlNOy,6);
   FlO3_NOy: (FlO3_NOy,6);
-  FlCO2e1: (FlCO2e1,6);
-  FlCO2e2: (FlCO2e2,6);
-  FlCO: (FlCO,6);
   fcNO_NOx: (fcNO_NOx,6);
   fcNO2_NOx: (fcNO2_NOx,6);
   fcNO_NOy: (fcNO_NOy,6);
