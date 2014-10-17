@@ -15,12 +15,12 @@ State Initialize {
      +2 > Set fcNO_NOx setpoint 0
         > Set fcNO2_NOx setpoint 0
         > Set fc_CO2e setpoint 0
-        > Set fcNO_NOy setpoint 2.5 
+        > Set fcNO_NOy setpoint 0 
         > Set fcEff_NOy setpoint 0
         > Set fcZer_NOy setpoint 0
         > Set FlNOx setpoint 0
         > Set FlNOy setpoint 0
-        > Set PrO3e setpoint 0
+        > Set FlCO2e3 setpoint 2.5
 # PrCO2e1 and e2 are controlled externally for now
         > Set PrCO2e1 setpoint 0.0
         > Set PrCO2e2 setpoint 0
@@ -38,6 +38,8 @@ State RunMode {
         +4 > Set FlCO2p setpoint 2.0
             > Set FlCO2p setpoint 2.0
             > Set FlCO2p setpoint 2.0
+            > Set FlCO2e3 setpoint 2.5
+            > Set FlCO2e3 setpoint 2.5
         +5 > Set FlCO setpoint 2.25
             > Set FlCO setpoint 2.25
             > Set FlCO setpoint 2.25
