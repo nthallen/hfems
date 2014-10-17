@@ -24,7 +24,7 @@
 	Solenoid Lvl8 14 15 0;	profile level 8
 	Solenoid eCO2cal 16 17 0;	CO2 std addition flow on
 	Solenoid CO2add1 18 19 0;	CO2 std addition to Eddy1
-	Solenoid CO2add2 20 21 0;	CO2 std addition to Eddy2
+	Solenoid CO2add2 20 21 0;	CO2 std addition to Eddy2 - not functional 10/17/14
 	Solenoid CO_smpl 22 23 0;	CO cal/sample select - on for cal
 	Solenoid CO_cal1 24 25 0;	CO calibration hi standard
 	Solenoid CO_cal2 26 27 0;	CO calibration lo standard
@@ -42,7 +42,7 @@
 	Solenoid NO2_on 82 83 0;	NOx NO2 standard on
 	Solenoid zNOx_add 84 85 0;	NOx zero on
 	Solenoid NO_NOx_add 86 87 0;	NOx NO standard addition on
-	Solenoid NO2_add 88 89 0;	NOx NO2 standard addition on
+	Solenoid NO2_add 88 89 0;	NOx NO2 standard addition on - used for CO2add2 10/17/14
 	Solenoid Shutter 90 91 0;	NO2 photolysis shutter open
 	Solenoid pCO2_smpl 92 93 0;	profile CO2 sample/cal  - on for cal
 	Solenoid pCO2_cal1 94 95 0;	profile CO2 lo standard
@@ -112,7 +112,7 @@ Lvl7:		____:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:__:__:^
 Lvl8:		____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
 eCO2cal:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 CO2add1:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
-CO2add2:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO2_add:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 CO_smpl:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 CO_cal1:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 CO_cal2:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -131,7 +131,7 @@ NO_NOx_on: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 NO2_on: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 zNOx_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 NO_NOx_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
-NO2_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO2add2: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Shutter: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_smpl: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal1: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
