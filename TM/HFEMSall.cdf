@@ -168,3 +168,24 @@ nan-text -9999
   1  CPU_Pct
   2  Disk
   3  TDrift
+
+csv setpt 17
+nan-text -9999
+ 0 Time %.1lf
+ 1 Pman_SP
+ 2 PrCO2p_SP
+ 3 FlCO2p_SP
+ 4 PrCO2e1_SP
+ 5 PrCO2e2_SP
+ 6 PrCO_SP
+ 7 fcNO_NOx_SP
+ 8 fcNO2_NOx_SP
+ 9 fc_CO2e_SP
+ 10 fcNO_NOy_SP
+ 11 fcEff_NOy_SP
+ 12 fcZer_NOy_SP
+ 13 FlNOx_SP
+ 14 FlNOy_SP
+ 15 FlCO2e3_SP
+ 16 FlCO_SP
+
