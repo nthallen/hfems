@@ -1,4 +1,3 @@
-                                             
 Sonic {
   HBox { +-; "Sonic"; -+ };
   ueddy1: (ueddy1,6);
@@ -46,6 +45,17 @@ Status {
   DSt4:  (DSt4,8);
   DSt5:  (DSt5,8);
   DSt6:  (DSt6,8);
+}
+
+Setpoints {
+  HBox { +-; Setpoints; -+ };
+  Pman: (Pman_SP,6);
+  PrCO2p: (PrCO2p_SP,6);
+  FlCO2p: (FlCO2p_SP,6);
+  FlCO2e3: (FlCO2e3_SP,6);
+  PrCO: (PrCO_SP,6);
+  FlCO: (FlCO_SP,6); 
+  fc_CO2e: (fc_CO2e_SP);
 }
 
 Radiation {
@@ -181,6 +191,7 @@ MFCtr {
     }; |+;    
     { 
       [Temp];
+      [Setpoints];
       [Status];
     }; |+;
     {
