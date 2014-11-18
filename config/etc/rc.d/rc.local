@@ -1,0 +1,26 @@
+echo "rc.local: Starting network drivers"
+mount -T io-pkt devn-i82544.so
+mount -T io-pkt -opci=0,vid=0x8086,did=0x1209 /lib/dll/devnp-speedo.so
+echo "rc.local: Starting netmanager"
+netmanager
+echo "rc.local: Starting io-display"
+io-display -dvid=0x8086,did=0x3582
+echo "rc.local: Starting subbusd_sc104"
+/usr/local/bin/subbusd_sc104 -o /root/subbusd.log &
+echo "rc.local: Starting sshd"
+/usr/sbin/sshd
+echo "rc.local: Updating LIBPATH"
+setconf LIBPATH $(getconf LIBPATH):/usr/pkg/lib:/usr/local/lib
+echo "rc.local: starting cron"
+cron &
+echo "==> Starting ser8250 for Xtreme/104"
+/sbin/devc-ser8250 -u5 380 -u6 388 -u7 390 -u8 398
+echo "===> wait 10 seconds for network to start up"
+sleep 10
+echo initializing the system clock to external server
+/usr/sbin/ntpdate tick.fas.harvard.edu
+echo reset the hardware clock to match system clock
+/sbin/rtc -s hw
+echo "rc.local: now start the time server daemon"
+/usr/sbin/ntpd -c /etc/ntp/ntp.conf
+echo "rc.local: Done"
