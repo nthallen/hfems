@@ -88,7 +88,7 @@
 ;set points defined based on 0-4096 range
 DtoA fcNO_NOx 0xC6C   {_:0 L:820 M:2048 H:3280}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:3280}
-DtoA fc_CO2e 0xCE0  {_:0 L:600  H:1000	Z:3200}
+DtoA fc_CO2e 0xCE0  {_:0 L:500  H:1500	Z:3000}
 DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:3280}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:3280}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
