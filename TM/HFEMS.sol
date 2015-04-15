@@ -88,9 +88,10 @@
 ;set points defined based on 0-4096 range 10V = 4096
 ; 2/4/15, put in fc_CO2e settings that are too low in order to get the faulty MFC
 ; to provide variation
+; 4/15/15, jwm, adjusted fc_CO2 setpoints based on manual tests to get desired flows
 DtoA fcNO_NOx 0xC6C   {_:0 L:820 M:2048 H:3280}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:3280}
-DtoA fc_CO2e 0xCE0  {_:0 L:100  H:250	Z:1800}
+DtoA fc_CO2e 0xCE0  {_:0 L:600  H:820	Z:1800}
 DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:3280}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:3280}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
