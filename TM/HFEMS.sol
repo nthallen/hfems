@@ -89,12 +89,13 @@
 ; 2/4/15, put in fc_CO2e settings that are too low in order to get the faulty MFC
 ; to provide variation
 ; 4/15/15, jwm, adjusted fc_CO2 setpoints based on manual tests to get desired flows
-DtoA fcNO_NOx 0xC6C   {_:0 L:820 M:2048 H:3280}
-DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:3280}
-DtoA fc_CO2e 0xCE0  {_:0 L:600  H:820	Z:1800}
-DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:3280}
-DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:3280}
-DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:3280}
+; jwm switched the assignments for fc_CO2e and fcNO_NOx
+DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
+DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:2000}
+DtoA fcNO_NOx 0xCE0  {_:0 L:600  M:820	H:1800}
+DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:2000}
+DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:2000}
+DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:2000}
 
 ; redefine SolSt values if we need them
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
