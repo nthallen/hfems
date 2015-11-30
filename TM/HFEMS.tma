@@ -25,43 +25,67 @@ State Initialize {
         > Set PrCO2e1 setpoint 0.0
         > Set PrCO2e2 setpoint 0
         > Soldrv select Mode 0
-	  Validate RunMode;
+        
+        # Test Shk_sp1 to make sure solenoids are
+        # switching correctly
+     +5 > Solenoid Shk_sp1 On
+        Hold until (Dst6 & 0x40) or 6
+        else {
+          msg(2, "Solenoid Shk_sp1 did not respond to On");
+          Validate Restart;
+        }
+
+     +2 > Solenoid Shk_sp1 Off
+        Hold until (!(Dst6 & 0x40)) or 6
+        else {
+          msg(2, "Solenoid Shk_sp1 did not respond to Off");
+          Validate Restart;
+        }
+     
+        Validate RunMode;
 }
+
 State RunMode {
 # repeat the flow and pressure setpoints one at a time
-        +2 > Set PrCO2p setpoint 4.5
-            > Set PrCO2p setpoint 4.5
-            > Set PrCO2p setpoint 4.5
-        +3 > Set Pman setpoint 5.9
-            > Set Pman setpoint 5.9
-            > Set Pman setpoint 5.9
-        +4 > Set FlCO2p setpoint 2.0
-            > Set FlCO2p setpoint 2.0
-            > Set FlCO2p setpoint 2.0
-            > Set FlCO2e3 setpoint 3
-            > Set FlCO2e3 setpoint 3
-        +5 > Set FlCO setpoint 2.25
-            > Set FlCO setpoint 2.25
-            > Set FlCO setpoint 2.25
-        +6 > Set PrCO setpoint 5.75
-            > Set PrCO setpoint 5.75
-            > Set PrCO setpoint 5.75
+     +2 > Set PrCO2p setpoint 4.5
+        > Set PrCO2p setpoint 4.5
+        > Set PrCO2p setpoint 4.5
+     +3 > Set Pman setpoint 5.9
+        > Set Pman setpoint 5.9
+        > Set Pman setpoint 5.9
+     +4 > Set FlCO2p setpoint 2.0
+        > Set FlCO2p setpoint 2.0
+        > Set FlCO2p setpoint 2.0
+        > Set FlCO2e3 setpoint 3
+        > Set FlCO2e3 setpoint 3
+     +5 > Set FlCO setpoint 2.25
+        > Set FlCO setpoint 2.25
+        > Set FlCO setpoint 2.25
+     +6 > Set PrCO setpoint 5.75
+        > Set PrCO setpoint 5.75
+        > Set PrCO setpoint 5.75
 # wait for 5 minutes to stabilize, then go into normal run mode
   +5:00 > Soldrv Select Mode 3
-	depending on (1 Hz) {
-      int cur_day;
-      cur_day = (itime()-(5*3600))/86400L;
+        depending on (1 Hz) {
+          int cur_day;
+          cur_day = (itime()-(5*3600))/86400L;
 
-      if (initial_day == 0) {
-        initial_day = cur_day;
-      } else if (initial_day != cur_day) {
-        if ((cur_day % 8) == 0) {
-          Validate Shutdown_Cal;
-        } else {
-          Validate Shutdown;
+          if (initial_day == 0) {
+            initial_day = cur_day;
+          } else if (initial_day != cur_day) {
+            if ((cur_day % 8) == 0) {
+              Validate Shutdown_Cal;
+            } else {
+              Validate Shutdown;
+            }
+          }
         }
-      }
-    }
+}
+
+State Restart {
+  +1 { msg(0, "Requesting restart due to solenoid issues"); }
+  +1 > Request Restart
+  +1 > Quit
 }
 
 State Shutdown {
