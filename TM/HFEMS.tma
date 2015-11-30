@@ -29,16 +29,16 @@ State Initialize {
         # Test Shk_sp1 to make sure solenoids are
         # switching correctly
      +5 > Solenoid Shk_sp1 On
-        Hold until (Dst6 & 0x40) or 6
+        Hold until (!(Dst6 & 0x40)) or 6
         else {
-          msg(2, "Solenoid Shk_sp1 did not respond to On");
+          nl_error(2, "Solenoid Shk_sp1 did not respond to On");
           Validate Restart;
         }
 
      +2 > Solenoid Shk_sp1 Off
-        Hold until (!(Dst6 & 0x40)) or 6
+        Hold until (Dst6 & 0x40) or 6
         else {
-          msg(2, "Solenoid Shk_sp1 did not respond to Off");
+          nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
           Validate Restart;
         }
      
@@ -83,7 +83,7 @@ State RunMode {
 }
 
 State Restart {
-  +1 { msg(0, "Requesting restart due to solenoid issues"); }
+  +1 { nl_error(0, "Requesting restart due to solenoid issues"); }
   +1 > Request Restart
   +1 > Quit
 }
