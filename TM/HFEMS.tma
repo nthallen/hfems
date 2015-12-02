@@ -25,22 +25,6 @@ State Initialize {
         > Set PrCO2e1 setpoint 0.0
         > Set PrCO2e2 setpoint 0
         > Soldrv select Mode 0
-        
-        # Test Shk_sp1 to make sure solenoids are
-        # switching correctly
-     +5 > Solenoid Shk_sp1 On
-        Hold until (!(Dst6 & 0x40)) or 6
-        else {
-          nl_error(2, "Solenoid Shk_sp1 did not respond to On");
-          /* Validate Restart; */
-        }
-
-     +2 > Solenoid Shk_sp1 Off
-        Hold until (Dst6 & 0x40) or 6
-        else {
-          nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
-          /* Validate Restart; */
-        }
      
         Validate RunMode;
 }
@@ -105,6 +89,8 @@ State Shutdown_Cal {
 }
 
 Partition
+# Monitor a spare solenoid channel to make sure cmdenbl
+# has not disappeared
 
 State Solenoid_Watch_Init{
      Hold Until Valid (RunMode);
@@ -118,14 +104,14 @@ State Solenoid_Watch NoLog {
         Hold until (!(Dst6 & 0x40)) or 6
         else {
           nl_error(2, "Solenoid Shk_sp1 did not respond to On");
-          /* Validate Restart; */
+          Validate Restart;
         }
 
      +2 > _Solenoid Shk_sp1 Off
         Hold until (Dst6 & 0x40) or 6
         else {
           nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
-          /* Validate Restart; */
+          Validate Restart;
         }
     +30 Validate Solenoid_Watch;
 }
