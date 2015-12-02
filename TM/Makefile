@@ -1,8 +1,10 @@
-# Makefile Generated Tue Apr 09 20:56:01 UTC 2013
+# Makefile Generated Wed Dec 02 11:24:08 EST 2015
 MNC=HFEMS
 SPECFILE=HFEMS.spec
+PCMFILE=HFEMS.pcm
 SRC=types.tmc HFEMS.tmc tdrift.tmc HFEMScol.tmc tdrift_col.tmc
-SRC+=HFEMS.cmd HFEMS.doit HFEMS.tbl HFEMS.sol HFEMS.tma HFEMSall.cdf
+SRC+=HFEMS.cmd cmdenbl.cmd HFEMS.doit HFEMS.tbl HFEMS.sol HFEMS.tma
+SRC+=HFEMSall.cdf
 TOOL=HFEMS.spec Makefile
 SCRIPT=interact HFEMS.dccc
 OBJ=address.h HFEMScol.cc HFEMS.pcm tm.dac HFEMScoloui.c
@@ -30,7 +32,7 @@ TMCBASE+=/usr/local/share/huarp/tmdf.tmc
 TMCBASE+=/usr/local/share/huarp/flttime.tmc
 CMDBASE=/usr/local/share/huarp/root.cmd HFEMS.cmd
 CMDBASE+=/usr/local/share/huarp/phrtg.cmd
-CMDBASE+=/usr/local/share/huarp/getcon.cmd
+CMDBASE+=/usr/local/share/huarp/getcon.cmd cmdenbl.cmd
 COLBASE=
 SWSBASE=
 QCLIBASE=
@@ -40,7 +42,6 @@ SOURCE=$(RCS) $(NONRCS)
 OBJECT=$(OBJ) *.err
 TARGET=$(TGT)
 DSTRB=$(TGT) $(DISTRIB) $(SCRIPT)
-TGTNODE=/net/ems-main
 TGTDIR= $(TGTNODE)/home/hfems
 include /usr/local/share/huarp/appgen.mk
 
@@ -53,7 +54,10 @@ VERSION=`cat VERSION`
 extdistribution : $(DSTRB) $(SRCDIST) VERSION
 	@[ -d $(TGTDIR)/bin ] || mkdir $(TGTDIR)/bin
 	@[ -d $(TGTDIR)/bin/$(VERSION) ] || mkdir $(TGTDIR)/bin/$(VERSION)
-	@[ -d  $(TGTDIR)/bin/$(VERSION)/Base ] || mkdir $(TGTDIR)/bin/$(VERSION)/Base
+	@[ -d $(TGTDIR)/bin/$(VERSION)/Base ] || mkdir $(TGTDIR)/bin/$(VERSION)/Base
+	@[ ! -f $(TGTDIR)/bin/$(VERSION)/$(PCMFILE) ] || \
+	  cmp -s $(TGTDIR)/bin/$(VERSION)/$(PCMFILE) $(PCMFILE) || \
+	  ( echo "$(PCMFILE) changed without VERSION update"; false )
 	@distribute $(FORCE) $(TGTDIR)/bin/$(VERSION) $(DSTRB)
 	@distribute $(FORCE) $(TGTDIR)/bin/$(VERSION)/Base $(SRCDIST)
 distribution : extdistribution
@@ -100,8 +104,8 @@ HFEMScoloui.c : $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui
 	$(OUI) $(OUIDIR)/collect.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui
 HFEMScoloui.o : HFEMScoloui.c
 HFEMScol.o : HFEMScol.cc
-HFEMScmd.cc : /usr/local/share/huarp/root.cmd HFEMS.cmd /usr/local/share/huarp/phrtg.cmd /usr/local/share/huarp/getcon.cmd
-	$(CMDGEN) -d HFEMScmd.dat /usr/local/share/huarp/root.cmd HFEMS.cmd /usr/local/share/huarp/phrtg.cmd /usr/local/share/huarp/getcon.cmd
+HFEMScmd.cc : /usr/local/share/huarp/root.cmd HFEMS.cmd /usr/local/share/huarp/phrtg.cmd /usr/local/share/huarp/getcon.cmd cmdenbl.cmd
+	$(CMDGEN) -d HFEMScmd.dat /usr/local/share/huarp/root.cmd HFEMS.cmd /usr/local/share/huarp/phrtg.cmd /usr/local/share/huarp/getcon.cmd cmdenbl.cmd
 HFEMSsrvr.o : HFEMScmd.cc
 	$(COMPILE.srvr) HFEMScmd.cc
 HFEMSsrvroui.c : $(OUIDIR)/cis.oui $(OUIDIR)/seteuid.oui $(OUIDIR)/subbus.oui $(OUIDIR)/msg.oui

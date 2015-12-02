@@ -9,6 +9,7 @@ cmdbase = /usr/local/share/huarp/root.cmd
 cmdbase = HFEMS.cmd
 cmdbase = /usr/local/share/huarp/phrtg.cmd
 cmdbase = /usr/local/share/huarp/getcon.cmd
+cmdbase = cmdenbl.cmd
 
 SCRIPT = interact 
 SCRIPT = HFEMS.dccc
