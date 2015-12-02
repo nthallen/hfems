@@ -1,16 +1,16 @@
 # Interact for HFEMS
   Launch memo       memo -o $Experiment.log
-  Launch TM/DCo     TMbfr
+  Launch TM/DCo     nice --2 TMbfr
 
   memo=/dev/huarp/$Experiment/memo
   echo "Running script interact" >$memo
 
   Launch dccc       dccc   -f $TMBINDIR/HFEMS.dccc
-  Launch DG/cmd     HFEMScol
+  Launch DG/cmd     nice --2 HFEMScol
   Launch cmd/server HFEMSsrvr
   Launch -          tmdf
   Launch -          lgr -N `mlf_find LOG`
-  Launch -          Sonic -n SonicData1 -d /dev/ser1 -h Sonic1
-  Launch -          Sonic -n SonicData2 -d /dev/ser2 -h Sonic2
+  Launch -          nice --2 Sonic -n SonicData1 -d /dev/ser1 -h Sonic1
+  Launch -          nice --2 Sonic -n SonicData2 -d /dev/ser2 -h Sonic2
   Launch -          soldrv $TMBINDIR/HFEMS.sft
   Launch -          HFEMSalgo -v

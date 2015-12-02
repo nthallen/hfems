@@ -32,14 +32,14 @@ State Initialize {
         Hold until (!(Dst6 & 0x40)) or 6
         else {
           nl_error(2, "Solenoid Shk_sp1 did not respond to On");
-          Validate Restart;
+          /* Validate Restart; */
         }
 
      +2 > Solenoid Shk_sp1 Off
         Hold until (Dst6 & 0x40) or 6
         else {
           nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
-          Validate Restart;
+          /* Validate Restart; */
         }
      
         Validate RunMode;
@@ -102,4 +102,30 @@ State Shutdown_Cal {
     else > Soldrv Select Mode 0
     > Savelog Restart with Archive Cal;
     > Quit
+}
+
+Partition
+
+State Solenoid_Watch_Init{
+     Hold Until Valid (RunMode);
+  +1 { nl_error(0, "Entering Solenoid_Watch");
+       Validate Solenoid_Watch;
+     }
+}
+
+State Solenoid_Watch NoLog {
+        > _Solenoid Shk_sp1 On
+        Hold until (!(Dst6 & 0x40)) or 6
+        else {
+          nl_error(2, "Solenoid Shk_sp1 did not respond to On");
+          /* Validate Restart; */
+        }
+
+     +2 > _Solenoid Shk_sp1 Off
+        Hold until (Dst6 & 0x40) or 6
+        else {
+          nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
+          /* Validate Restart; */
+        }
+    +30 Validate Solenoid_Watch;
 }
