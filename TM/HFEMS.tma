@@ -113,5 +113,5 @@ State Solenoid_Watch NoLog {
           nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
           Validate Restart;
         }
-    +30 Validate Solenoid_Watch;
+    +60 Validate Solenoid_Watch;
 }
