@@ -5,4 +5,8 @@
   #include "sonic.h"
   Sonic_t SonicData1;
   Sonic_t SonicData2;
+  static void Ct64_init( void ) {
+   sbwr( 0x600, 0x0100 ); /* 8 Hz */
+  }
 %}
+TM INITFUNC Ct64_init();
