@@ -543,7 +543,7 @@ Sample		;36 min - 162
 Sample		;36 min	- 198
 Sample		;36 min - 234
 Sample		;36 min
-;Ecal		;30 min - 264
+Ecal		;30 min - 264
 Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
