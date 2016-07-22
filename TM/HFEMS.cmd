@@ -146,7 +146,7 @@
   : Solenoid zNOx_Hg ON  * { $0 = 78 ; }
   : Solenoid zNOx_Hg OFF  * { $0 = 79 ; }
   : Solenoid NO_NOx_on ON  * { $0 = 80 ; }
-  : Solenoid NO_NOx OFF  * { $0 = 81 ; }
+  : Solenoid NO_NOx_on OFF  * { $0 = 81 ; }
   : Solenoid NO2_on ON  * { $0 = 82 ; }
   : Solenoid NO2_on OFF  * { $0 = 83 ; }
   : Solenoid zNOx_add ON  * { $0 = 84 ; }
