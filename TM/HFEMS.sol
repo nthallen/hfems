@@ -92,7 +92,7 @@
 ; jwm switched the assignments for fc_CO2e and fcNO_NOx
 DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:820 M:2048 H:2000}
-DtoA fcNO_NOx 0xCE0  {_:0 L:900  M:1250	H:1850}
+DtoA fcNO_NOx 0xCE0  {_:0 L:600  M:1200	H:2000}
 DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:2048 H:2000}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:2000}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:2000}
@@ -543,7 +543,7 @@ Sample		;36 min - 162
 Sample		;36 min	- 198
 Sample		;36 min - 234
 Sample		;36 min
-Ecal		;30 min - 264
+;Ecal		;30 min - 264
 Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
