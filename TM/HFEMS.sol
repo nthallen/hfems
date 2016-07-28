@@ -91,10 +91,10 @@
 ; 4/15/15, jwm, adjusted fc_CO2 setpoints based on manual tests to get desired flows
 ; jwm switched the assignments for fc_CO2e and fcNO_NOx
 DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
-DtoA fcNO2_NOx 0xC6E   {_:0 L:1000 M:1900 H:2000}
-DtoA fcNO_NOx 0xCE0  {_:0 L:600  M:1000	H:2000}
-DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:1960 H:2000}
-DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:2048 H:2000}
+DtoA fcNO2_NOx 0xC6E   {_:0 L:1000 M:1900 H:1900}
+DtoA fcNO_NOx 0xCE0  {_:0 L:600  M:1000	H:1800}
+DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:1960 H:1800}
+DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:1500 H:1800}
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:2000}
 
 ; redefine SolSt values if we need them
@@ -230,7 +230,7 @@ NO_NOx_on:   __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 NO_NOx_add:  __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 NO2_on:      __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:__:__:__:^
 NO2_add:     __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
-Shutter:     _O:_O:__:__:__:OO:__:__:__:_O:_O:_O:__:__:__:^
+Shutter:     _O:_O:__:__:__:_O:__:__:__:_O:_O:_O:__:__:__:^
 pCO2_smpl:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal1:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal2:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -276,7 +276,7 @@ NO_NOx_on:   __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 NO_NOx_add:  __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 NO2_on:      __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:__:__:__:^
 NO2_add:     __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
-Shutter:     _O:_O:__:__:__:OO:__:__:__:_O:_O:_O:__:__:__:^
+Shutter:     _O:_O:__:__:__:_O:__:__:__:_O:_O:_O:__:__:__:^
 pCO2_smpl:   __:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
 pCO2_cal1:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cal2:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
