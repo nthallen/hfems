@@ -100,17 +100,17 @@ State Solenoid_Watch_Init{
 }
 
 State Solenoid_Watch NoLog {
-        > _Solenoid Shk_sp1 On
+        > _Solenoid Shk_sp2 On
         Hold until (!(Dst6 & 0x40)) or 6
         else {
-          nl_error(2, "Solenoid Shk_sp1 did not respond to On");
+          nl_error(2, "Solenoid Shk_sp2 did not respond to On");
           Validate Restart;
         }
 
-     +2 > _Solenoid Shk_sp1 Off
+     +2 > _Solenoid Shk_sp2 Off
         Hold until (Dst6 & 0x40) or 6
         else {
-          nl_error(2, "Solenoid Shk_sp1 did not respond to Off");
+          nl_error(2, "Solenoid Shk_sp2 did not respond to Off");
           Validate Restart;
         }
     +60 Validate Solenoid_Watch;
