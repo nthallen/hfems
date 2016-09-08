@@ -47,15 +47,22 @@ Status {
   DSt6:  (DSt6,8);
 }
 
-Setpoints {
-  HBox { +-; Setpoints; -+ };
+PF_SP {
+  HBox { +-; PrFl; -+ };
   Pman: (Pman_SP,6);
   PrCO2p: (PrCO2p_SP,6);
   FlCO2p: (FlCO2p_SP,6);
   FlCO2e3: (FlCO2e3_SP,6);
   PrCO: (PrCO_SP,6);
   FlCO: (FlCO_SP,6); 
-  fc_CO2e: (fc_CO2e_SP);
+}
+
+fc_SP {
+  HBox { +-; cal_fc; -+ };
+  fc_CO2e: (fc_CO2e_SP,6);
+  fc_NO_NOx: (fcNO_NOx_SP,6);
+  fc_NO2_NOx: (fcNO2_NOx_SP,6);
+  fc_NO_NOy: (fcNO_NOy_SP,6);
 }
 
 Radiation {
@@ -164,6 +171,10 @@ Temp {
   #HBox { +-;Temp; -+ };
   HBox { [Ts]; |+; [Ta] };
 }
+
+Setpoints {
+  HBox { [PF_SP]; |+; [fc_SP] };
+} 
 
 MFCtr {
   +-+;
