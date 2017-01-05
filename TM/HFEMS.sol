@@ -268,8 +268,8 @@ CO_cal2:     __:__:__:OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:^
 CO_zer:      OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:OO:OO:OO:^
 eff_Hg:      __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 zNOy_Hg:     OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
-:NO_NOy_on:   __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
-:NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
+;NO_NOy_on:   __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
+;NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 NPN_on:      __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
 NO_NOy_on:   __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 NO_NOy_add:  __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:__:__:__:^
