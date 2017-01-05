@@ -31,7 +31,7 @@
 	Solenoid CO_zer 28 29 0;	CO zeroing
 	Solenoid eff_Hg 30 31 0;	NOy efficiency lamp on
 	Solenoid zNOy_Hg 64 65 0;	NOy zeroing lamp on
-	Solenoid NO_NOy_on 66 67 0;	NOy NO standard on
+	Solenoid NO_NOy_on 66 67 0;	NOy NO standard on not working, use NPN
 	Solenoid NPN_on 68 69 0;	NOy nPN standard on
 	Solenoid NO_NOy_add 70 71 0;	NOy NO standard addition on
 	Solenoid NPN_add 72 73 0;	NOy nPN standard addition on
@@ -219,8 +219,10 @@ CO_cal2:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 CO_zer:      OO:OO:OO:OO:__:__:__:__:OO:OO:OO:OO:__:__:__:^
 eff_Hg:      __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 zNOy_Hg:     OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
-NO_NOy_on:   __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
-NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
+;NO_NOy_on:   __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
+;NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
+NPN_on:       __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
+NO_NOy_on:   __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
 NO_NOy_add:  __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:__:__:__:^
 NPN_add:     __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 NOy_eff_add: __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
