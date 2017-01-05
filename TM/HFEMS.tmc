@@ -1,5 +1,5 @@
 TM 8 Hz Ct16 NOx; Address NOx 0x610;
-TM 8 Hz Ct16 NOy; Address NOy 0x614;
+TM 8 Hz Ct16 NOy; Address NOy 0x618;
 TM 8 Hz Ct16 CtStat; Address CtStat 0x600;
 
 Group Ct ( CtStat, NOx, NOy ) {
