@@ -91,8 +91,8 @@
 ; jwm switched the assignments for fc_CO2e and fcNO_NOx
 DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:1000 M:1650 H:1950}
-DtoA fcNO_NOx 0xCE0  {_:0 L:800  M:1450	H:1950}
-DtoA fcNO_NOy 0xCE2  {_:0 L:820 M:1450 H:1950}
+DtoA fcNO_NOx 0xCE0  {_:0 L:800  M:1250	H:1950}
+DtoA fcNO_NOy 0xCE2  {_:0 L:1000 M:1400 H:1950}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:1500 H:1800} ; this controls the NPN flow
 DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:2000}
 
@@ -251,7 +251,7 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 }
 
 routine ECcal{ ; same as Ecal, but with CO calibration includes CO2zero
-SolSt:       CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:$
+SolSt:       CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:CC:^
 Lvl1: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -270,7 +270,7 @@ CO_zer:      OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:OO:OO:OO:^
 eff_Hg:      __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 zNOy_Hg:     OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
 NPN_on:      __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:__:__:__:^
-NO_NOy_on:   __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
+NO_NOy_on:   __:__:__:__:__:__:__:__:_O:OO:OO:OO:OO:OO:OO:^
 NO_NOy_add:  __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 NPN_add:     __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
 NOy_eff_add: __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -289,9 +289,9 @@ pCO2_cal3:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
 Shk_sp1:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
-fcNO_NOx:    __:HH:HH:HM:MM:MM:MM:__:__:__:__:__:__:__:__:^
+fcNO_NOx:    __:HH:HH:HM:ML:LL:LL:__:__:__:__:__:__:__:__:^
 fcNO2_NOx:   __:__:__:__:__:__:__:HH:HH:HH:HH:HH:MM:MM:MM:^ 
-fcNO_NOy:    __:__:__:__:__:__:__:__:__:_H:HH:HM:MM:MM:MM:^ 
+fcNO_NOy:    __:__:__:__:__:__:__:__:_H:HH:HH:HM:LL:LL:LL:^ 
 fc_CO2e:     __:__:ZZ:LL:HH:HH:HL:LL:__:__:__:__:__:__:__:^ 
 ;fcEff_NOy:  __:__:__:__:__:__:HH:HH:HM:MM:MM:MM:__:__:__:^ 
 fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
