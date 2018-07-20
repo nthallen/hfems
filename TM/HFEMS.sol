@@ -52,7 +52,7 @@
 	Solenoid pCO2_calR 102 103 0;	profile CO2 reference/zero standard
 	Solenoid Hub_sp1 104 105 0
 	Solenoid Hub_sp2 106 107 0
-	Solenoid Shk_sp1 108 109 0;	on 8/12 set up to control O3 for NO2
+	Solenoid Shk_sp1 108 109 0;	7/9/18, configured to shut off NOy zero air
 	Solenoid Shk_sp2 110 111 0
 	Solenoid SpCMD17 32 33 0
 	Solenoid SpCmd18 34 35 0
@@ -89,12 +89,13 @@
 ; to provide variation
 ; 4/15/15, jwm, adjusted fc_CO2 setpoints based on manual tests to get desired flows
 ; jwm switched the assignments for fc_CO2e and fcNO_NOx
+; implemented use of set point for NOyzero 7/19/18
 DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:1000 M:1750 H:1950}
 DtoA fcNO_NOx 0xCE0  {_:0 L:800  M:1250	H:1950}
 DtoA fcNO_NOy 0xCE2  {_:0 L:1000 M:1400 H:1950}
 DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:1500 H:1800} ; this controls the NPN flow
-DtoA fcZer_NOy 0xCE6  {_:0 L:820 M:2048 H:2000}
+DtoA fcZer_NOy 0xCE6  {_:0 L:512 M:1230 H:2048}
 
 ; redefine SolSt values if we need them
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
@@ -337,13 +338,13 @@ pCO2_cal2:   __:__:OO:OO:__:__:__:^
 pCO2_cal3:   OO:OO:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:^
-Shk_sp1:     __:__:__:__:__:__:__:^
+Shk_sp1:     __:__:__:__:_O:OO:OO:^
 fcNO_NOx:    __:__:__:__:__:__:__:^ 
 fcNO2_NOx:   __:__:__:__:__:__:__:^ 
 fc_CO2e:     __:__:__:__:__:__:__:^ 
 fcNO_NOy:    LL:LL:LL:__:__:__:__:^ 
 fcEff_NOy:   __:__:__:__:__:__:__:^ 
-fcZer_NOy:   __:__:__:__:__:__:__:^ 
+fcZer_NOy:   __:__:__:__:_M:MM:MM:^ 
 }
 
 routine Cal { ; does the NOx/NOy calibrations

@@ -98,12 +98,12 @@ flttime_t flttime;
 
   #include "nortlib.h"
   #include "tma.h"
-  char ci_version[] = "$CGID: HFEMScmd.cc: Thu Sep  8 15:39:37 2016 $";
+  char ci_version[] = "$CGID: HFEMScmd.cc: Wed Mar  7 18:26:56 2018 $";
 
   tma_state Initialize_cmds_[] = {
     {       0, ">telemetry start\n" },
     {       0, ">Soldrv select Mode 0\n" },
-    {       1, ">Set Pman setpoint 5.9\n" },
+    {       1, ">Set Pman setpoint 5.5\n" },
     {       1, ">Set PrCO2p setpoint 4.5\n" },
     {       1, ">Set FlCO2p setpoint 2.0\n" },
     {       1, ">Set FlCO setpoint 2.25\n" },
@@ -116,7 +116,7 @@ flttime_t flttime;
     {       3, ">Set fcZer_NOy setpoint 0\n" },
     {       3, ">Set FlNOx setpoint 0\n" },
     {       3, ">Set FlNOy setpoint 0\n" },
-    {       3, ">Set FlCO2e3 setpoint 2.75\n" },
+    {       3, ">Set FlCO2e3 setpoint 2.9\n" },
     {       3, ">Set PrCO2e1 setpoint 0.0\n" },
     {       3, ">Set PrCO2e2 setpoint 0\n" },
     {       3, ">Soldrv select Mode 0\n" },
@@ -128,14 +128,14 @@ flttime_t flttime;
     {       2, ">Set PrCO2p setpoint 4.5\n" },
     {       2, ">Set PrCO2p setpoint 4.5\n" },
     {       2, ">Set PrCO2p setpoint 4.5\n" },
-    {       5, ">Set Pman setpoint 5.9\n" },
-    {       5, ">Set Pman setpoint 5.9\n" },
-    {       5, ">Set Pman setpoint 5.9\n" },
+    {       5, ">Set Pman setpoint 5.5\n" },
+    {       5, ">Set Pman setpoint 5.5\n" },
+    {       5, ">Set Pman setpoint 5.5\n" },
     {       9, ">Set FlCO2p setpoint 2.0\n" },
     {       9, ">Set FlCO2p setpoint 2.0\n" },
     {       9, ">Set FlCO2p setpoint 2.0\n" },
-    {       9, ">Set FlCO2e3 setpoint 2.75\n" },
-    {       9, ">Set FlCO2e3 setpoint 2.75\n" },
+    {       9, ">Set FlCO2e3 setpoint 2.9\n" },
+    {       9, ">Set FlCO2e3 setpoint 2.9\n" },
     {      14, ">Set FlCO setpoint 2.25\n" },
     {      14, ">Set FlCO setpoint 2.25\n" },
     {      14, ">Set FlCO setpoint 2.25\n" },

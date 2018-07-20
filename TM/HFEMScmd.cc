@@ -1,5 +1,5 @@
 /* cmdgen output.
- * Thu Sep  8 15:39:37 2016
+ * Wed Mar  7 18:26:56 2018
  */
 /* cmdgen.skel skeleton file */
 #include <stdlib.h>
@@ -484,7 +484,7 @@ static int ibufidx;
   int cgc_exit_code = 0;
 #endif
 
-char ci_version[] = "$CGID: HFEMScmd.cc: Thu Sep  8 15:39:37 2016 $";
+char ci_version[] = "$CGID: HFEMScmd.cc: Wed Mar  7 18:26:56 2018 $";
 #define VTP_SHRT vu01
 #define VTP_DBL vu02
 #define VTP_STR vu00
