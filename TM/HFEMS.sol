@@ -94,7 +94,7 @@ DtoA fc_CO2e 0xC6C   {_:0 L:100 H:200 Z:1840}
 DtoA fcNO2_NOx 0xC6E   {_:0 L:1000 M:1750 H:1950}
 DtoA fcNO_NOx 0xCE0  {_:0 L:800  M:1250	H:1950}
 DtoA fcNO_NOy 0xCE2  {_:0 L:1000 M:1400 H:1950}
-DtoA fcEff_NOy 0xCE4  {_:0 L:820 M:1500 H:1800} ; this controls the NPN flow
+DtoA fcEff_NOy 0xCE4  {_:0 L:1000 M:1400 H:1950} ; this controls the NPN flow
 DtoA fcZer_NOy 0xCE6  {_:0 L:512 M:1230 H:2048}
 
 ; redefine SolSt values if we need them
@@ -246,8 +246,8 @@ fcNO_NOx:    __:__:__:__:__:__:HH:HH:HH:MM:MM:MM:__:__:__:^
 fcNO2_NOx:   HH:HH:HM:MM:MM:MM:__:__:__:__:__:__:__:__:__:^ 
 fcNO_NOy:    __:__:__:__:__:__:HH:HH:HM:MM:MM:MM:LL:LL:LL:^ 
 fc_CO2e:     ZZ:LL:HH:HH:HL:LL:__:__:__:__:__:__:__:__:__:^ 
-;fcEff_NOy:  __:__:__:__:__:__:__:__:__:MM:MM:MM:MM:MM:MM:^ 
-fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcEff_NOy:  __:__:__:__:__:__:__:__:__:HH:HH:HM:LL:LL:LL:^ 
+;fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
@@ -294,8 +294,8 @@ fcNO_NOx:    __:HH:HH:HM:ML:LL:LL:__:__:__:__:__:__:__:__:__:^
 fcNO2_NOx:   __:__:__:__:__:__:__:HH:HH:HH:HH:HH:HH:MM:MM:MM:^ 
 fcNO_NOy:    __:__:__:__:__:__:__:__:__:_H:HH:HH:HM:LL:LL:LL:^ 
 fc_CO2e:     __:__:ZZ:LL:HH:HH:HL:LL:__:__:__:__:__:__:__:__:^ 
-;fcEff_NOy:  __:__:__:__:__:__:__:HH:HH:HM:MM:MM:MM:__:__:__:^ 
-fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcEff_NOy:  __:__:__:__:__:__:__:HH:HH:HM:MM:MM:MM:__:__:__:^ 
+;fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }
 
