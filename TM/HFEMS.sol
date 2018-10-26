@@ -222,7 +222,7 @@ eff_Hg:      __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
 zNOy_Hg:     OO:OO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:^
 ;NO_NOy_on:   __:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:__:__:__:^
 ;NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
-NPN_on:      __:__:__:__:__:__:__:__:__:OO:OO:OO:OO:OO:OO:^
+NPN_on:      __:__:__:__:__:__:__:__:_O:OO:OO:OO:OO:OO:OO:^
 NO_NOy_on:   __:__:__:__:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 NO_NOy_add:  __:__:__:__:__:__:__:__:__:OO:OO:OO:__:__:__:^
 NPN_add:     __:__:__:__:__:__:__:__:__:__:__:__:OO:OO:OO:^
@@ -246,7 +246,7 @@ fcNO_NOx:    __:__:__:__:__:__:HH:HH:HH:MM:MM:MM:__:__:__:^
 fcNO2_NOx:   HH:HH:HM:MM:MM:MM:__:__:__:__:__:__:__:__:__:^ 
 fcNO_NOy:    __:__:__:__:__:__:HH:HH:HM:MM:MM:MM:LL:LL:LL:^ 
 fc_CO2e:     ZZ:LL:HH:HH:HL:LL:__:__:__:__:__:__:__:__:__:^ 
-fcEff_NOy:  __:__:__:__:__:__:__:__:__:HH:HH:HM:LL:LL:LL:^ 
+fcEff_NOy:   __:__:__:__:__:__:__:__:_H:HH:HH:ML:LL:LL:LL:^ 
 ;fcEff_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 }

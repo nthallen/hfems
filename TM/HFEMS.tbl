@@ -63,6 +63,7 @@ fc_SP {
   fc_NO_NOx: (fcNO_NOx_SP,6);
   fc_NO2_NOx: (fcNO2_NOx_SP,6);
   fc_NO_NOy: (fcNO_NOy_SP,6);
+  fc_Eff_NOy: (fcEff_NOy_SP,6);
 }
 
 Radiation {
