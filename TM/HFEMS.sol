@@ -50,8 +50,8 @@
 	Solenoid pCO2_cal3 98 99 0;	profile CO2 hi standard, 
 	Solenoid pCO2_cala 100 101 0;	profile CO2 surveilance standard 
 	Solenoid pCO2_calR 102 103 0;	profile CO2 reference/zero standard
-	Solenoid Hub_sp1 104 105 0
-	Solenoid Hub_sp2 106 107 0
+	Solenoid Hub_sp1 104 105 0;	relay for LI7200 power
+	Solenoid Hub_sp2 106 107 0;	relay for sonic heater power
 	Solenoid Shk_sp1 108 109 0;	7/9/18, configured to shut off NOy zero air
 	Solenoid Shk_sp2 110 111 0
 	Solenoid SpCMD17 32 33 0
@@ -101,13 +101,15 @@ DtoA fcZer_NOy 0xCE6  {_:0 L:512 M:1230 H:2048}
 DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
 	   A:80 C:10 N:20 E:30 P:40 Z:50 S:60 L:70 
 	   a:51 b:11 c:21 d:22 e:2 f:13 g:33 h:34 i:4 j:5
-	   k:25 l:36 m:16 n:17 o:27 p:28 q:8 }
+	   l: 81 k:25 l:36 m:16 n:17 o:27 p:28 q:8 }
 
      Resolution = 60/1	; One minute resolution
 routine Sample {
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-Lvl1:           OOOO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl1:         ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl2:         ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 ;leaving lvl1 off because the valve is bad, lvl2 for duration
+Lvl1:           ____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:           OOOO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:		____:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:^
@@ -145,6 +147,59 @@ pCO2_cal3: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Shk_sp1: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Hub_sp2: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+fcNO_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcNO2_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fc_CO2e: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcNO_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcEff_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+}
+
+routine Sample_melt { ; same as Sample but turns on Sonic heater for a bit
+SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
+; Lvl1:         ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl2:         ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
+;leaving lvl1 off because the valve is bad, lvl2 for duration
+Lvl1:           ____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Lvl2:           OOOO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
+Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
+Lvl4:		____:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:^
+Lvl5:		____:__:__:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:^
+Lvl6:		____:__:__:__:__:__:__:__:__:__:__:OO:OO:__:__:__:__:^
+Lvl7:		____:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:__:__:^
+Lvl8:		____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
+eCO2cal:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO2add1:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO2add2: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO_smpl:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO_cal1:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO_cal2:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+CO_zer:	        OOOO:OO:__:__:__:OO:OO:OO:__:__:__:OO:OO:OO:__:__:__:^
+;CO_zer:	OOOO:__:__:_O:OO:O_:__:__:OO:OO:__:__:_O:OO:O_:__:__:^
+eff_Hg:		____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+zNOy_Hg:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO_NOy_on:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NPN_on:		____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO_NOy_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NPN_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NOy_eff_add:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+zNOy_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+zNOx_Hg: 	OOOO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO_NOx_on: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO2_on: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+zNOx_add: 	__OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO_NOx_add: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+NO2_add:	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Shutter: 	_O__:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:_O:^
+pCO2_smpl: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_cal1: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_cal2: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_cal3: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_cala: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+pCO2_calR: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Shk_sp1: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Hub_sp2:	OOOO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcNO_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcNO2_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fc_CO2e: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
@@ -155,7 +210,10 @@ fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine SampleZ { ; profile with NOy zero air zeroing
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-Lvl1:           OOOO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl1:         ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl2:         ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
+; changed what Lvl1 does becaues valve if not working
+Lvl1:           ____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:           OOOO:OO:OO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:		____:__:__:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:^
@@ -194,6 +252,7 @@ pCO2_cal3: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Shk_sp1: 	OOO_:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
+Hub_sp2: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcNO_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fcNO2_NOx: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
 fc_CO2e: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^ 
@@ -204,8 +263,10 @@ fcZer_NOy: 	MMM_:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine Ecal{
 SolSt:       EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl1:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+; Lvl2:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 ; replacing lvl1 with lvl2 because lvl1 leaks
+Lvl1: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -244,6 +305,7 @@ pCO2_cal3:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Shk_sp1:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Hub_sp2:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcNO_NOx:    __:__:__:__:__:__:HH:HH:HH:MM:MM:MM:__:__:__:^
 fcNO2_NOx:   HH:HH:HM:MM:MM:MM:__:__:__:__:__:__:__:__:__:^ 
 fcNO_NOy:    __:__:__:__:__:__:HH:HH:HM:MM:MM:MM:LL:LL:LL:^ 
@@ -255,7 +317,10 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine ECcal{ ; same as Ecal, but with CO calibration includes CO2zero
 SolSt:       CC:CC:CC:CC:CC:CC:CC:CC;CC:CC:CC:CC:CC:CC:CC:CC:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl1:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+; Lvl2:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+; replacing Lvl1 open with Lvl2 open becaues Lv1 solenoid failed
+Lvl1: 	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -292,6 +357,7 @@ pCO2_cal3:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:OO:OO:^
 Shk_sp1:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
+Hub_Sp2:     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 fcNO_NOx:    __:HH:HH:HM:ML:LL:LL:__:__:__:__:__:__:__:__:__:^
 fcNO2_NOx:   __:__:__:__:__:__:__:HH:HH:HH:HH:HH:HH:MM:MM:MM:^ 
 fcNO_NOy:    __:__:__:__:__:__:__:__:__:_H:HH:HH:HM:LL:LL:LL:^ 
@@ -303,7 +369,10 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine prf_eff { ; finishes the NOy eff, and profile CO2 cal (H,M,L) adds 2 min pause after cal
 SolSt:       PP:PP:PP:PP:PP:PP:PP:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:^
+; Keeping Lvl2 open instead of Lvl1 because Lvl1 valve leaks and is capped
+; Lvl1:	     __:__:__:__:__:__:__:^
+; Lvl2:	     __:__:__:__:__:__:__:^
+Lvl1: 	     __:__:__:__:__:__:__:^
 Lvl2: 	     OO:OO:OO:OO:OO:OO:OO:^
 Lvl3:        __:__:__:__:__:__:__:^
 Lvl4:        __:__:__:__:__:__:__:^
@@ -341,6 +410,7 @@ pCO2_cal3:   OO:OO:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:^
 Shk_sp1:     __:__:__:__:__:_O:OO:^
+Hub_sp2:     __:__:__:__:__:__:__:^ 
 fcNO_NOx:    __:__:__:__:__:__:__:^ 
 fcNO2_NOx:   __:__:__:__:__:__:__:^ 
 fc_CO2e:     __:__:__:__:__:__:__:^ 
@@ -351,7 +421,10 @@ fcZer_NOy:   __:__:__:__:__:_M:MM:^
 
 routine Cal { ; does the NOx/NOy calibrations
 SolSt:     LL:LL:LL:LL:LL:LL:LL:LL:LL:^
-Lvl1: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; temporary change to use Lvl2 when Lvl1 should be open - valve has failed and is capped
+; Lvl1:	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+; Lvl2:	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
+Lvl1: 	     __:__:__:__:__:__:__:__:__:^
 Lvl2: 	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl3:       __:__:__:__:__:__:__:__:__:^
 Lvl4:       __:__:__:__:__:__:__:__:__:^
@@ -391,6 +464,7 @@ pCO2_cal3:   __:__:__:__:__:__:__:__:__:^
 pCO2_cala:   __:__:__:__:__:__:__:__:__:^
 pCO2_calR:   __:__:__:__:__:__:__:__:__:^
 Shk_sp1:     __:__:__:__:__:__:__:__:__:^
+Hub_sp2:     __:__:__:__:__:__:__:__:__:^
 fcNO_NOx:    __:__:__:__:__:__:__:__:__:^ 
 fcNO2_NOx:   __:__:__:__:__:__:__:__:__:^ 
 fc_CO2e:     __:__:__:__:__:__:__:__:__:^ 
@@ -399,57 +473,64 @@ fcEff_NOy:   __:__:__:__:__:__:__:__:__:^
 fcZer_NOy:   __:__:__:__:__:__:__:__:__:^ 
 }
 
-routine Archive_cal { ; does the CO2 archive calibration
-SolSt:       AA:AA:^
-Lvl1: 	     OO:OO:^
-Lvl2: 	     OO:OO:^
-Lvl3:        __:__:^
-Lvl4:        __:__:^
-Lvl5:	     __:__:^
-Lvl6:	     __:__:^
-Lvl7:	     __:__:^
-Lvl8:        __:__:^
-eCO2cal:     __:__:^
-CO2add1:     __:__:^
-CO2add2:     __:__:^
-CO_smpl:     __:__:^
-CO_cal1:     __:__:^
-CO_cal2:     __:__:^
-CO_zer:      __:__:^
-eff_Hg:      __:__:^
-zNOy_Hg:     __:__:^
-NO_NOy_on:   __:__:^
-NPN_on:      __:__:^
-NO_NOy_add:  __:__:^
-NPN_add:     __:__:^
-NOy_eff_add: __:__:^
-zNOy_add:    __:__:^
-zNOx_Hg:     __:__:^
-NO_NOx_on:   __:__:^
-NO2_on:      __:__:^
-zNOx_add:    __:__:^
-NO_NOx_add:  __:__:^
-;NO2_add:     __:__:^
-NO2_add:     __:__:^
-Shutter:     __:__:^
-pCO2_smpl:   OO:OO:^
-pCO2_cal1:   __:__:^
-pCO2_cal2:   __:__:^
-pCO2_cal3:   __:__:^
-pCO2_cala:   OO:OO:^
-pCO2_calR:   __:__:^
-Shk_sp1:     __:__:^
-fcNO_NOx:    __:__:^ 
-fcNO2_NOx:   __:__:^ 
-fc_CO2e:     __:__:^ 
-fcNO_NOy:    __:__:^ 
-fcEff_NOy:   __:__:^ 
-fcZer_NOy:   __:__:^ 
+routine Archive_cal { ; does the CO2 archive calibration and checks if Hub has leaks
+SolSt:       AA:AA:AA:l^
+; change for keeping Lvl1 open instead of Lvl1 because valve failed
+; Lvl1:	     __:__:__:O^
+; Lvl2:	     __:__:__:_^
+Lvl1: 	     __:__:__:_^
+Lvl2: 	     OO:OO:OO:_^
+Lvl3:        __:__:__:_^
+Lvl4:        __:__:__:_^
+Lvl5:	     __:__:__:_^
+Lvl6:	     __:__:__:_^
+Lvl7:	     __:__:__:_^
+Lvl8:        __:__:__:_^
+eCO2cal:     __:__:__:_^
+CO2add1:     __:__:__:_^
+CO2add2:     __:__:__:_^
+CO_smpl:     __:__:__:_^
+CO_cal1:     __:__:__:_^
+CO_cal2:     __:__:__:_^
+CO_zer:      __:__:__:_^
+eff_Hg:      __:__:__:_^
+zNOy_Hg:     __:__:__:_^
+NO_NOy_on:   __:__:__:_^
+NPN_on:      __:__:__:_^
+NO_NOy_add:  __:__:__:_^
+NPN_add:     __:__:__:_^
+NOy_eff_add: __:__:__:_^
+zNOy_add:    __:__:__:_^
+zNOx_Hg:     __:__:__:_^
+NO_NOx_on:   __:__:__:_^
+NO2_on:      __:__:__:_^
+zNOx_add:    __:__:__:_^
+NO_NOx_add:  __:__:__:_^
+;NO2_add:     __:__:__:_^
+NO2_add:     __:__:__:_^
+Shutter:     __:__:__:_^
+pCO2_smpl:   OO:OO:__:_^
+pCO2_cal1:   __:__:__:_^
+pCO2_cal2:   __:__:__:_^
+pCO2_cal3:   __:__:__:_^
+pCO2_cala:   OO:OO:__:_^
+pCO2_calR:   __:__:__:_^
+Shk_sp1:     __:__:__:_^
+Hub_sp2:     __:__:__:_^
+fcNO_NOx:    __:__:^__:_ 
+fcNO2_NOx:   __:__:^__:_ 
+fc_CO2e:     __:__:^__:_ 
+fcNO_NOy:    __:__:^__:_ 
+fcEff_NOy:   __:__:^__:_ 
+fcZer_NOy:   __:__:^__:_ 
 }
 
 routine closeout { ; end with CO and CO2 zeros
 SolSt:	        SSSS:^
-Lvl1:		OOOO:^
+; temporary change as noted above
+; Lvl1:		____:^
+; Lvl2:		____:^
+Lvl1:		____:^
 Lvl2:		OOOO:^
 Lvl3:		____:^
 Lvl4:		____:^
@@ -487,6 +568,7 @@ pCO2_cal3: 	____:^
 pCO2_cala: 	____:^
 pCO2_calR: 	OOOO:^
 Shk_sp1: 	____:^ 
+Hub_sp2: 	____:^ 
 fcNO_NOx: 	____:^ 
 fcNO2_NOx: 	____:^ 
 fc_CO2e: 	____:^ 
@@ -497,7 +579,10 @@ fcZer_NOy: 	____:^
 
 Mode 0 { ; Stop mode
 SolSt: 1
-  Lvl1:  O
+; change to use Lvl2
+; Lvl1:  _
+; Lvl2:  _
+  Lvl1:  _
   Lvl2:  O
   Lvl3:  _
   Lvl4:  _
@@ -534,12 +619,35 @@ SolSt: 1
   pCO2_cala: _
   pCO2_calR: _
   Shk_sp1:   _
+  Hub_sp2:   _
 fcNO_NOx: _
 fcNO2_NOx: _
 fc_CO2e: _
 fcNO_NOy: _
 fcEff_NOy: _
 fcZer_NOy: _
+}
+
+Mode 2 {	; operation cycle with sonic heater on
+Sample_melt		;36 min - 36
+Sample_melt		;36 min - 72
+Sample_melt		;36 min - 108
+Sample_melt		;36 min
+;Cal		;18 min - 126 cumulative
+SampleZ		;36 min - 162
+Sample		;36 min	- 198
+Sample		;36 min - 234
+Sample		;36 min
+;Ecal		;30 min - 264
+Sample		;36 min - 300
+Sample		;36 min - 336
+Sample		;36 min - 372
+Sample		;36 min - 408
+;Cal		;18 min - 426
+SampleZ		;36 min - 462
+Sample		;36 min - 498
+Sample		;36 min - 534
+Select 3
 }
 
 Mode 3 {	; Routine startup mode
@@ -564,6 +672,7 @@ Sample		;36 min - 300
 Sample		;36 min - 336
 Sample		;36 min - 372
 Sample		;36 min - 408
+
 ;Cal		;18 min - 426
 SampleZ		;36 min - 462
 Sample		;36 min - 498
