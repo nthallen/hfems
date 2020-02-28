@@ -24,7 +24,7 @@
 	Solenoid Lvl8 14 15 0;	profile level 8
 	Solenoid eCO2cal 16 17 0;	CO2 std addition flow on
 	Solenoid CO2add1 18 19 0;	CO2 std addition to Eddy1
-	Solenoid CO2add2 20 21 0;	CO2 std addition to Eddy2 - not functional 10/17/14 connector finished 12/4/14
+	Solenoid CO2add2 20 21 0;	CO2 std addition to Eddy2 - connector finished 12/4/14
 	Solenoid CO_smpl 22 23 0;	CO cal/sample select - on for cal
 	Solenoid CO_cal1 24 25 0;	CO calibration hi standard
 	Solenoid CO_cal2 26 27 0;	CO calibration lo standard
