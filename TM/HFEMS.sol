@@ -106,7 +106,6 @@ DtoA SolSt 0 { 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 8:8
      Resolution = 60/1	; One minute resolution
 routine Sample {
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-;Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl1:           ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
@@ -156,7 +155,6 @@ fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine Sample_melt { ; same as Sample but turns on Sonic heater for an 12 minute period
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-;Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl1:           ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
@@ -206,7 +204,6 @@ fcZer_NOy: 	____:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine SampleZ { ; profile with NOy zero air zeroing
 SolSt:	        aaaa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk:ll:mm:nn:oo:pp:qq:^
-; Lvl1:           OOOO:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl1:           ____:__:__:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl2:           ____:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:           ____:__:__:__:__:OO:OO:__:__:__:__:__:__:__:__:__:__:^
@@ -257,7 +254,6 @@ fcZer_NOy: 	MMM_:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine Ecal{
 SolSt:       EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:EE:^
-; Lvl1:	     OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl1:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -309,7 +305,6 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine ECcal{ ; same as Ecal, but with CO calibration includes CO2zero
 SolSt:       CC:CC:CC:CC:CC:CC:CC:CC;CC:CC:CC:CC:CC:CC:CC:CC:^
-; Lvl1:        OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl1:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl2:	     __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
@@ -359,7 +354,6 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:__:__:__:__:__:__:__:^
 
 routine prf_eff { ; finishes the NOy eff, and profile CO2 cal (H,M,L) adds 2 min pause after cal
 SolSt:       PP:PP:PP:PP:PP:PP:PP:^
-; Lvl1:      OO:OO:OO:OO:OO:OO:OO:^
 Lvl1:	     __:__:__:__:__:__:__:^
 Lvl2: 	     __:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:^
@@ -409,7 +403,6 @@ fcZer_NOy:   __:__:__:__:__:_M:MM:^
 
 routine Cal { ; does the NOx/NOy calibrations
 SolSt:     LL:LL:LL:LL:LL:LL:LL:LL:LL:^
-; Lvl1:	     OO:OO:OO:OO:OO:OO:OO:OO:OO:^
 Lvl1:	     __:__:__:__:__:__:__:__:__:^
 Lvl2:	     __:__:__:__:__:__:__:__:__:^
 Lvl3:        __:__:__:__:__:__:__:__:__:^
@@ -461,7 +454,6 @@ fcZer_NOy:   __:__:__:__:__:__:__:__:__:^
 
 routine Archive_cal { ; does the CO2 archive calibration and checks if Hub has leaks
 SolSt:       AA:AA:AA:l^
-; Lvl1:	     OO:OO:OO:_^
 Lvl1:	     __:__:__:O^
 Lvl2:	     __:__:__:_^
 Lvl3:        __:__:__:_^
@@ -511,7 +503,6 @@ fcZer_NOy:   __:__:^__:_
 
 routine closeout { ; end with CO and CO2 zeros
 SolSt:	        SSSS:^
-; Lvl1:		OOOO:^
 Lvl1:		____:^
 Lvl2:		____:^
 Lvl3:		____:^
@@ -561,7 +552,6 @@ fcZer_NOy: 	____:^
 
 Mode 0 { ; Stop mode
 SolSt: 1
-; Lvl1:  O
   Lvl1:  _
   Lvl2:  _
   Lvl3:  _
